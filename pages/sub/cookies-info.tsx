@@ -3,6 +3,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../../components/Layout';
+import Link from 'next/link';
 
 const Cookies = () => {
   return (
@@ -50,12 +51,12 @@ const Cookies = () => {
         <p className='text-sm text-gray-400 mt-8 text-center'>
           By continuing to use this website, you agree to essential cookie use.
           For more details, see our{' '}
-          <a
+          <Link
             href='/privacy-policy'
             className='underline text-purple-300 hover:text-purple-400'
           >
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
       </section>

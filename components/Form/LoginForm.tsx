@@ -104,7 +104,7 @@ const LoginForm = () => {
           )}
 
           <p className='text-sm text-center text-gray-800/70 mt-2'>
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link
               href='/signup'
               className='text-purple-400 hover:underline hover:text-purple-500'
@@ -123,7 +123,7 @@ const LoginForm = () => {
           </p>
         </form>
 
-        {/* New "To Home Page" Button */}
+        {/* New &quot;To Home Page&quot; Button */}
         <Link
           href='/'
           className='mt-6 inline-block w-full text-center bg-white/10 border border-primary/20 hover:bg-white/20 text-primary font-medium py-2.5 rounded-xl transition duration-300 backdrop-blur-md'

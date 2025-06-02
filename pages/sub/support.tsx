@@ -46,8 +46,8 @@ const Support = () => {
           </li>
           <li>
             <span className='font-semibold text-white'>Performance help:</span>{' '}
-            If your site needs updates, optimizations, or new features—we're
-            ready to scale with your growth.
+            If your site needs updates, optimizations, or new
+            features—we&apos;re ready to scale with your growth.
           </li>
         </ul>
 

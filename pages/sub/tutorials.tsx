@@ -20,7 +20,7 @@ const Tutorials = () => {
           Tutorials
         </h1>
         <p className='text-lg text-center mb-10 text-gray-300'>
-          New to LB Websites? Here's how to get started with ordering your
+          New to LB Websites? Here&apos;s how to get started with ordering your
           service and managing your site with ease.
         </p>
 
@@ -38,7 +38,9 @@ const Tutorials = () => {
               </li>
               <li>
                 Click{' '}
-                <span className='font-semibold text-white'>"Order Now"</span>{' '}
+                <span className='font-semibold text-white'>
+                  &quot;Order Now&quot;
+                </span>{' '}
                 and proceed to checkout. Payments are securely processed via
                 Stripe.
               </li>
@@ -47,7 +49,7 @@ const Tutorials = () => {
                 content, and preferences.
               </li>
               <li>
-                You'll get a confirmation and we'll begin development
+                You&apos;ll get a confirmation and we&apos;ll begin development
                 immediately.
               </li>
             </ol>
@@ -59,8 +61,8 @@ const Tutorials = () => {
             </h2>
             <ol className='list-decimal list-inside space-y-3'>
               <li>
-                Log in using your email and password from the website's client
-                area.
+                Log in using your email and password from the website&apos;s
+                client area.
               </li>
               <li>
                 Navigate to the CMS dashboard to manage:
@@ -68,7 +70,7 @@ const Tutorials = () => {
                   <li>Products and pricing</li>
                   <li>Blog posts</li>
                   <li>Categories and banners</li>
-                  <li>Orders & customer info</li>
+                  <li>Orders &amp; customer info</li>
                 </ul>
               </li>
               <li>

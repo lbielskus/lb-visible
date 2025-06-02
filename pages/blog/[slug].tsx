@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { db } from '../../lib/firebase';
@@ -98,7 +100,7 @@ export default function BlogPostPage() {
 
         {post.mainImage && (
           <div className='mb-8'>
-            <img
+            <Image
               src={post.mainImage}
               alt={post.title}
               className='rounded-lg mx-auto max-h-96 object-cover'

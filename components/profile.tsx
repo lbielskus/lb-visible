@@ -40,7 +40,7 @@ const UserProfile = () => {
         {session && session.user && (
           <>
             <h3 className='mb-4 text-2xl font-medium text-center md:text-left text-gray-300'>
-              Hello, {session.user.fullName || ''} !
+              Hello, {session.user.name || ''} !
             </h3>
             <h5 className='mb-4 text-gray-300'>{session.user.email}</h5>
             <div className='bg-third my-2 rounded-md py-2 px-2 text-gray-300  '>

@@ -1,6 +1,7 @@
 'use client';
 
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 
 const TermsOfService = () => {
@@ -32,7 +33,9 @@ const TermsOfService = () => {
             features as described at the time of purchase.
           </li>
           <li>
-            <span className='font-semibold text-white'>Payment & billing:</span>{' '}
+            <span className='font-semibold text-white'>
+              Payment &amp; billing:
+            </span>{' '}
             Payments are processed securely via Stripe. Services are delivered
             upon successful checkout unless otherwise stated.
           </li>
@@ -50,15 +53,15 @@ const TermsOfService = () => {
           </li>
           <li>
             <span className='font-semibold text-white'>
-              Privacy & compliance:
+              Privacy &amp; compliance:
             </span>{' '}
             We comply with EU GDPR laws. Please read our{' '}
-            <a
+            <Link
               href='/privacy-policy'
               className='underline text-primary hover:text-pink-400 transition'
             >
               Privacy Policy
-            </a>{' '}
+            </Link>{' '}
             for details.
           </li>
         </ul>

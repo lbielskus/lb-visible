@@ -1,4 +1,3 @@
-// components/Success.tsx
 import Link from 'next/link';
 
 export default function Success() {
@@ -28,8 +27,8 @@ export default function Success() {
             Checkout Successful
           </h2>
           <p className='text-gray-100 mt-2 max-w-sm'>
-            Your order has been received and is being processed. We'll send you
-            an email with more details.
+            Your order has been received and is being processed. We&apos;ll send
+            you an email with more details.
           </p>
           <Link
             href='/projects'

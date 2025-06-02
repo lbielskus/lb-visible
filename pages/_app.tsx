@@ -45,7 +45,7 @@ function AuthGate({ children }: { children: React.ReactNode }) {
         router.replace('/verify-email');
       }
     }
-  }, [user, loading, router.pathname]);
+  }, [user, loading, router]);
 
   if (loading) {
     return <div className='text-center py-20 text-xl'>Loading...</div>;
