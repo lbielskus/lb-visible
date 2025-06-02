@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import Header from '../components/Header';
@@ -15,6 +14,8 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import * as gtag from '../lib/gtag';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { app as firebaseApp } from '../lib/firebase';
 
 const CookieConsentBanner = dynamic(
   () => import('../components/CookieConsentBanner'),
@@ -32,22 +33,28 @@ const protectedPaths = ['/cart', '/profile'];
 function AuthGate({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
   const router = useRouter();
+  const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
-    const isProtected = protectedPaths.some((path) =>
-      router.pathname.startsWith(path)
-    );
+    const auth = getAuth(firebaseApp);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      const isProtected = protectedPaths.some((path) =>
+        router.pathname.startsWith(path)
+      );
 
-    if (!loading) {
-      if (!user && isProtected) {
+      if (!firebaseUser && isProtected) {
         router.replace('/login');
-      } else if (user && !user.emailVerified && isProtected) {
+      } else if (firebaseUser && !firebaseUser.emailVerified && isProtected) {
         router.replace('/verify-email');
       }
-    }
-  }, [user, loading, router]);
 
-  if (loading) {
+      setAuthChecked(true);
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
+  if (!authChecked || loading) {
     return <div className='text-center py-20 text-xl'>Loading...</div>;
   }
 
@@ -78,7 +85,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [hasConsent]);
+  }, [hasConsent, router.events]);
 
   return (
     <AuthProvider>
