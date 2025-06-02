@@ -40,7 +40,7 @@ export default function Home({
   blogPosts,
   pricingProducts,
 }: Props) {
-  const imageUrl = 'https://ik.imagekit.io/tooos2eo5/54612-01-01_m8sFKczc4.png';
+  const ogImageUrl = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/ogbanner.png`;
 
   return (
     <>
@@ -57,10 +57,11 @@ export default function Home({
             'Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.',
           images: [
             {
-              url: 'https://lb-visible.vercel.app/ogbanners/ogbanner.png',
+              url: ogImageUrl,
               width: 1200,
               height: 630,
               alt: 'LB Visible Website & CMS Preview',
+              type: 'image/png',
             },
           ],
         }}

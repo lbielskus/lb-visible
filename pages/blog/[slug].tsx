@@ -103,6 +103,8 @@ export default function BlogPostPage() {
             <Image
               src={post.mainImage}
               alt={post.title}
+              width={800}
+              height={630}
               className='rounded-lg mx-auto max-h-96 object-cover'
             />
           </div>
