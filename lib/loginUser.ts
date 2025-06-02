@@ -18,7 +18,7 @@ export const loginUser = async (
     // 🔑 Get Firebase ID token
     const token = await cred.user.getIdToken();
 
-    // 🚀 Send token to server to set cookie
+    // 🚀 Send token to server to set secure, HttpOnly session cookie
     const res = await fetch('/api/login-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -29,6 +29,10 @@ export const loginUser = async (
       const data = await res.json();
       return { ok: false, error: data.error || 'Failed to set session cookie' };
     }
+
+    // ✅ Delay to ensure cookie is set, then force full reload to trigger middleware with cookie
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    window.location.href = '/cart';
 
     return { ok: true };
   } catch (err: any) {
