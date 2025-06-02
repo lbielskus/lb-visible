@@ -280,7 +280,7 @@ export default function Cart() {
 
         {/* RIGHT */}
         {products.length > 0 && (
-          <div className='md:w-1/3 mt-16 md:mt-6 px-4'>
+          <div className='md:w-1/3 mt-16 md:mt-6 px-4 mr-2'>
             <header className='text-start flex flex-col w-full'>
               <h1 className='text-xl font-bold text-gray-600 sm:text-xl'>
                 Customer details
@@ -304,7 +304,7 @@ export default function Cart() {
                   <input
                     type='email'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -316,7 +316,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -328,7 +328,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -340,7 +340,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
@@ -352,7 +352,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                   />
@@ -364,7 +364,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                   />
