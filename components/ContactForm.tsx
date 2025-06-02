@@ -89,7 +89,11 @@ const ContactForm: React.FC = () => {
       <p className='text-center text-gray-500 mb-6'>
         Have a question? Feel free to contact us!
       </p>
-      {loading && <Spinner />}
+      {loading && (
+        <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40'>
+          <Spinner />
+        </div>
+      )}
       <form
         onSubmit={handleSubmit}
         className='grid grid-cols-1 md:grid-cols-2 gap-4'
