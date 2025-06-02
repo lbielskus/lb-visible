@@ -10,11 +10,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   setCookies('__session', token, {
     req,
     res,
-    path: '/',
-    secure: true,
     httpOnly: true,
+    secure: true,
     sameSite: 'lax',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    path: '/',
+    domain: '.lbvisible.com', // 👈 IMPORTANT FIX
+    maxAge: 60 * 60 * 24 * 7,
   });
 
   return res.status(200).json({ ok: true });
