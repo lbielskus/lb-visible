@@ -46,6 +46,12 @@ export default function Home({
   return (
     <>
       <Head>
+        <meta property='og:title' content='Home | LB Visible' />
+        <meta
+          property='og:description'
+          content='Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.'
+        />
+        <meta property='og:url' content='https://www.lbvisible.com' />
         <meta property='og:image' content={ogImageUrl} />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
