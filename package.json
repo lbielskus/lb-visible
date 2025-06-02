@@ -29,7 +29,7 @@
     "next-auth": "^4.24.7",
     "next-iron-session": "^4.2.0",
     "next-seo": "^6.5.0",
-    "nodemailer": "^6.9.12",
+    "nodemailer": "^6.10.1",
     "nookies": "^2.5.2",
     "postmark": "^4.0.2",
     "react": "^18",
