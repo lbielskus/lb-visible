@@ -151,10 +151,8 @@ export default function Cart() {
                 <Spinner />
               </div>
             ) : !products.length ? (
-              <div className='flex flex-col justify-center items-center min-h-screen mt-10 space-y-4'>
-                <p className='text-center text-xl text-primary'>
-                  Your cart is empty
-                </p>
+              <div className='flex flex-col justify-center items-center min-h-[70vh] px-4 text-center'>
+                <p className='text-xl text-primary mb-4'>Your cart is empty</p>
                 <Link
                   href='/pricing'
                   className='inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium text-md hover:bg-primary/80 transition'

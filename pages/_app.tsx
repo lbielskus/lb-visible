@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import * as gtag from '../lib/gtag';
+import Head from 'next/head';
 
 const CookieConsentBanner = dynamic(
   () => import('../components/CookieConsentBanner'),
@@ -83,6 +84,34 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <CartContextProvider>
+        <Head>
+          <meta property='fb:app_id' content='1223293146253930' />
+          <meta property='og:title' content='LB Visible' />
+          <meta
+            property='og:description'
+            content='Websites for your niche with custom CMS, SEO & Marketing tools.'
+          />
+          <meta property='og:url' content='https://www.lbvisible.com' />
+          <meta property='og:type' content='website' />
+          <meta
+            property='og:image'
+            content='https://www.lbvisible.com/ogbanners/ogbanner.png'
+          />
+          <meta property='og:image:width' content='1200' />
+          <meta property='og:image:height' content='630' />
+
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta name='twitter:title' content='LB Visible' />
+          <meta
+            name='twitter:description'
+            content='Websites for your niche with custom CMS, SEO & Marketing tools.'
+          />
+          <meta
+            name='twitter:image'
+            content='https://www.lbvisible.com/ogbanners/ogbanner.png'
+          />
+        </Head>
+
         <div className='relative min-h-screen'>
           <div className='absolute inset-0 -z-10'>
             <LayeredBackground />
