@@ -186,7 +186,7 @@ export default function ProductPage({ product }: { product: ProductType }) {
                   product.billingCycle || 'monthly'
                 );
                 addProduct(item);
-                toast.success('Item added to cart!');
+                toast.success('Plan added to cart!');
               }}
             >
               Add to Cart

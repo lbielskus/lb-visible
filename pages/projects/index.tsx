@@ -147,7 +147,7 @@ export default function Products() {
                           onClick={() => {
                             const item = createCartItem(product, 'monthly');
                             addProduct(item);
-                            toast.success('Item added to cart!');
+                            toast.success('Plan added to cart!');
                           }}
                           className='flex items-center gap-1 px-3 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-all text-sm'
                         >
