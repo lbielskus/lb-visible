@@ -6,8 +6,8 @@ import {
   useState,
   ReactNode,
 } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
-import { auth } from './firebaseAuth';
+import { onAuthStateChanged, User, getAuth } from 'firebase/auth';
+import { app } from './firebase';
 
 interface AuthContextType {
   user: User | null;
@@ -24,16 +24,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      if (firebaseUser) {
-        await firebaseUser.reload(); // ✅ Refresh emailVerified status
-        setUser(auth.currentUser); // ✅ Updated info
-      } else {
-        setUser(null);
-      }
+    const auth = getAuth(app);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
       setLoading(false);
     });
-
     return () => unsubscribe();
   }, []);
 
