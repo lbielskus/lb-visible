@@ -1,0 +1,63 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { getDocs, collection } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+
+type BannerData = {
+  url: string;
+  title: string;
+};
+
+export default function Banner() {
+  const [banner, setBanner] = useState<BannerData | null>(null);
+
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
+        const ref = collection(db, 'clients', clientId!, 'hero_banners');
+        const snapshot = await getDocs(ref);
+        if (!snapshot.empty) {
+          const firstDoc = snapshot.docs[0].data() as BannerData;
+          setBanner(firstDoc);
+        }
+      } catch (err) {
+        console.error('Error fetching banner:', err);
+      }
+    };
+
+    fetchBanner();
+  }, []);
+
+  if (!banner) return null;
+
+  return (
+    <section className='relative w-full h-[250px] sm:h-[300px] rounded-xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-md'>
+      {/* Background image — visible */}
+      <Image
+        src={banner.url}
+        alt={banner.title || 'Hero Banner'}
+        fill
+        priority
+        className='object-cover object-center'
+        sizes='100vw'
+      />
+
+      {/* Glass layer behind title and content only */}
+      <div className='absolute inset-0  border border-white/20 rounded-xl z-0' />
+
+      {/* Foreground content — not blurred */}
+      <div className='absolute inset-0 z-10 flex items-center justify-start px-8'>
+        <div className='text-third  pl-48'>
+          <h1 className='text-3xl sm:text-5xl font-extrabold leading-snug drop-shadow-md'>
+            Confused?
+            <br />
+            <span className='text-third/90'>Let us help!</span>
+          </h1>
+        </div>
+      </div>
+    </section>
+  );
+}
