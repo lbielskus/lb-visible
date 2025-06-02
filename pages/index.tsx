@@ -15,6 +15,7 @@ import {
 } from 'firebase/firestore';
 import { DefaultSeo } from 'next-seo';
 import { Product, BlogPost } from '../types';
+import Head from 'next/head';
 
 interface Props {
   newProducts: Product[];
@@ -44,6 +45,13 @@ export default function Home({
 
   return (
     <>
+      <Head>
+        <meta property='og:image' content={ogImageUrl} />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
+        <meta property='og:image:type' content='image/png' />
+      </Head>
+
       <DefaultSeo
         title='Home | LB Visible'
         description='Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.'
