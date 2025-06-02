@@ -16,6 +16,7 @@
     "bcr": "^1.0.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "cookies-next": "^2.1.0",
     "date-fns": "^3.6.0",
     "firebase": "^11.7.1",
     "firebase-admin": "^13.3.0",

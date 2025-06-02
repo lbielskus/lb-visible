@@ -15,10 +15,20 @@ export const loginUser = async (
       };
     }
 
-    // ✅ Set cookie with Firebase ID token for middleware
+    // 🔑 Get Firebase ID token
     const token = await cred.user.getIdToken();
 
-    document.cookie = `__session=${token}; path=/; max-age=3600`;
+    // 🚀 Send token to server to set cookie
+    const res = await fetch('/api/login-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json();
+      return { ok: false, error: data.error || 'Failed to set session cookie' };
+    }
 
     return { ok: true };
   } catch (err: any) {
