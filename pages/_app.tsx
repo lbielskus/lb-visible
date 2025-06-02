@@ -31,21 +31,26 @@ const inter = Inter({
 const protectedPaths = ['/cart', '/profile'];
 
 function AuthGate({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useAuth();
   const router = useRouter();
   const [authChecked, setAuthChecked] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const auth = getAuth(firebaseApp);
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       const isProtected = protectedPaths.some((path) =>
         router.pathname.startsWith(path)
       );
 
-      if (!firebaseUser && isProtected) {
+      if (firebaseUser) {
+        if (!firebaseUser.emailVerified && isProtected) {
+          router.replace('/verify-email');
+        } else {
+          setIsAuthenticated(true);
+        }
+      } else if (isProtected) {
         router.replace('/login');
-      } else if (firebaseUser && !firebaseUser.emailVerified && isProtected) {
-        router.replace('/verify-email');
       }
 
       setAuthChecked(true);
@@ -54,7 +59,7 @@ function AuthGate({ children }: { children: React.ReactNode }) {
     return () => unsubscribe();
   }, [router]);
 
-  if (!authChecked || loading) {
+  if (!authChecked) {
     return <div className='text-center py-20 text-xl'>Loading...</div>;
   }
 
