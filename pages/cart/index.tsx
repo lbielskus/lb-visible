@@ -151,10 +151,16 @@ export default function Cart() {
                 <Spinner />
               </div>
             ) : !products.length ? (
-              <div className='flex justify-center items-start min-h-screen mt-10'>
-                <p className='text-center text-xl text-primary '>
+              <div className='flex flex-col justify-center items-center min-h-screen mt-10 space-y-4'>
+                <p className='text-center text-xl text-primary'>
                   Your cart is empty
                 </p>
+                <Link
+                  href='/pricing'
+                  className='inline-block rounded-2xl bg-primary px-6 py-3 text-white font-medium text-md hover:bg-primary/80 transition'
+                >
+                  Browse Plans
+                </Link>
               </div>
             ) : (
               <>
@@ -316,7 +322,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -328,7 +334,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -340,7 +346,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
@@ -352,7 +358,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                   />
@@ -364,7 +370,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                   />
