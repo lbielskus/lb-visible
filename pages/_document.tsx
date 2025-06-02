@@ -18,6 +18,7 @@ export default function Document() {
         />
 
         {/* ✅ Static Open Graph Meta Tags */}
+        <meta property='fb:app_id' content='1223293146253930' />
         <meta property='og:title' content='LB Visible' />
         <meta
           property='og:description'

@@ -304,7 +304,7 @@ export default function Cart() {
                   <input
                     type='email'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-300'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
