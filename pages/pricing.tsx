@@ -44,10 +44,10 @@ const Pricing = ({ allProducts }: Props) => {
           description: 'Websites for your niche',
           images: [
             {
-              url: '',
+              url: 'https://lb-visible.vercel.app/ogbanners/ogbanner.png',
               width: 1200,
               height: 630,
-              alt: 'Pricing page image',
+              alt: 'LB Visible Website & CMS Preview',
             },
           ],
         }}

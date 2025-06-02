@@ -280,7 +280,7 @@ export default function Cart() {
 
         {/* RIGHT */}
         {products.length > 0 && (
-          <div className='md:w-1/3 mt-16 md:mt-6'>
+          <div className='md:w-1/3 mt-16 md:mt-6 px-4'>
             <header className='text-start flex flex-col w-full'>
               <h1 className='text-xl font-bold text-gray-600 sm:text-xl'>
                 Customer details
@@ -296,8 +296,8 @@ export default function Cart() {
               }}
               className='mx-auto max-w-xl p-4 border my-3 shadow-lg rounded-3xl bg-white/10 backdrop-blur-md'
             >
-              <div className='grid grid-cols-12 gap-5'>
-                <div className='col-span-6'>
+              <div className='grid grid-cols-1 sm:grid-cols-12 gap-4'>
+                <div className='sm:col-span-6'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     Email
                   </label>
@@ -309,7 +309,7 @@ export default function Cart() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-                <div className='col-span-6'>
+                <div className='sm:col-span-6'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     Full Name
                   </label>
@@ -321,7 +321,7 @@ export default function Cart() {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-                <div className='col-span-12'>
+                <div className='sm:col-span-12'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     Address
                   </label>
@@ -333,7 +333,7 @@ export default function Cart() {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
-                <div className='col-span-6'>
+                <div className='sm:col-span-6'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     City
                   </label>
@@ -345,7 +345,7 @@ export default function Cart() {
                     onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
-                <div className='col-span-4'>
+                <div className='sm:col-span-4'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     Country
                   </label>
@@ -357,7 +357,7 @@ export default function Cart() {
                     onChange={(e) => setCountry(e.target.value)}
                   />
                 </div>
-                <div className='col-span-2'>
+                <div className='sm:col-span-2'>
                   <label className='block text-sm font-medium text-text mb-1'>
                     Zip
                   </label>
@@ -369,7 +369,7 @@ export default function Cart() {
                     onChange={(e) => setZip(e.target.value)}
                   />
                 </div>
-                <div className='col-span-12 text-center w-full'>
+                <div className='col-span-1 sm:col-span-12 text-center w-full'>
                   <button
                     type='submit'
                     className='block rounded-3xl bg-[#222b44] px-5 py-3 text-md text-white transition hover:bg-[#3d455a] w-full'
@@ -394,6 +394,19 @@ export default function Cart() {
                   <FaLock className='text-green-700' />
                   256-bit SSL Encryption Secured
                 </p>
+              </div>
+              <div className='mt-6 p-4 mb-4 rounded-2xl bg-yellow-50 border border-yellow-300 text-yellow-800 text-sm sm:text-base shadow-md'>
+                💬 <strong>Before placing your order</strong>, we highly
+                recommend reaching out to us to discuss your goals and
+                expectations. Together, we&rsquo;ll plan the best solution and
+                ensure you choose the most suitable plan for your business.{' '}
+                <Link
+                  href='/contact'
+                  className='underline font-medium text-yellow-900 hover:text-yellow-700'
+                >
+                  Contact us
+                </Link>
+                .
               </div>
             </form>
           </div>

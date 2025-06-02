@@ -7,21 +7,21 @@ const login = () => {
   return (
     <>
       <DefaultSeo
-        title='LB Websites | Login'
+        title='LB Visible | Login'
         description='Websites for your niche'
         openGraph={{
           type: 'website',
           locale: 'en_IE',
-          url: 'https://www.yourwebsite.com',
-          site_name: 'LB Websites',
-          title: 'LB Websites',
+          url: 'https://www.lbvisible.com',
+          site_name: 'LB Visible',
+          title: 'LB Visible',
           description: 'Websites for your niche',
           images: [
             {
-              url: '',
+              url: 'https://lb-visible.vercel.app/ogbanners/ogbanner.png',
               width: 1200,
               height: 630,
-              alt: 'Your image alt text',
+              alt: 'LB Visible Website & CMS Preview',
             },
           ],
         }}

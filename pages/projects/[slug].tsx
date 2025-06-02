@@ -211,7 +211,7 @@ export default function ProductPage({ product }: { product: ProductType }) {
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 mb-4 pt-4'>
               {details.map(([label, value, Icon], index) => (
                 <div key={index}>
-                  <label className='block text-sm font-semibold text-gray-600 mb-1'>
+                  <label className='block text-sm font-semibold text-gray-600 max-md:text-gray-300 mb-1'>
                     <Icon className='inline mr-2 text-pink-500' />
                     {label}:
                   </label>

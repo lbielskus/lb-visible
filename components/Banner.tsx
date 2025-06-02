@@ -34,8 +34,8 @@ export default function Banner() {
   if (!banner) return null;
 
   return (
-    <section className='relative w-full h-[250px] sm:h-[300px] rounded-xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-md'>
-      {/* Background image — visible */}
+    <section className='relative w-full h-[200px] sm:h-[300px] rounded-xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-md'>
+      {/* Background image */}
       <Image
         src={banner.url}
         alt={banner.title || 'Hero Banner'}
@@ -45,13 +45,13 @@ export default function Banner() {
         sizes='100vw'
       />
 
-      {/* Glass layer behind title and content only */}
-      <div className='absolute inset-0  border border-white/20 rounded-xl z-0' />
+      {/* Glass overlay */}
+      <div className='absolute inset-0 border border-white/20 rounded-xl z-0' />
 
-      {/* Foreground content — not blurred */}
-      <div className='absolute inset-0 z-10 flex items-center justify-start px-8'>
-        <div className='text-third  pl-48'>
-          <h1 className='text-3xl sm:text-5xl font-extrabold leading-snug drop-shadow-md'>
+      {/* Foreground text */}
+      <div className='absolute inset-0 z-10 flex items-center justify-start px-6 sm:px-8'>
+        <div className='text-third pl-4 sm:pl-48'>
+          <h1 className='text-2xl sm:text-5xl font-extrabold leading-snug drop-shadow-md'>
             Confused?
             <br />
             <span className='text-third/90'>Let us help!</span>

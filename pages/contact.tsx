@@ -27,10 +27,10 @@ const ContactPage = () => {
           description: 'Websites for your niche',
           images: [
             {
-              url: '/default-cover.jpg',
+              url: 'https://lb-visible.vercel.app/ogbanners/ogbanner.png',
               width: 1200,
               height: 630,
-              alt: 'LB Websites contact page',
+              alt: 'LB Visible Website & CMS Preview',
             },
           ],
         }}

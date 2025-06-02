@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from '../lib/CartContext';
@@ -26,9 +28,9 @@ const Header = () => {
 
   return (
     <header className='sticky top-0 z-40 w-full rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
-      <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-2 lg:px-4 border-b border-white/10'>
+      <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10'>
         <Link
-          className='flex gap-1 items-center text-gray-200 font-medium text-lg hover:text-gray-300 '
+          className='flex gap-1 items-center text-gray-200 font-medium text-lg hover:text-gray-300'
           href='/'
         >
           <Image
@@ -40,19 +42,21 @@ const Header = () => {
           <span> Visible</span>
         </Link>
 
-        <div className='lg:hidden'>
+        <div className='lg:hidden flex items-center'>
           <button
-            className='text-primary flex items-center focus:outline-none absolute left-32 top-5'
+            className='text-primary flex items-center focus:outline-none'
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
           >
-            <span>{isMobileNavOpen ? 'Menu' : 'Menu'}</span>
+            <span className='text-base'>
+              {isMobileNavOpen ? 'Menu' : 'Menu'}
+            </span>
             {isMobileNavOpen ? (
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                className='w-4 h-4 ml-1 mt-1'
+                className='w-5 h-5 ml-1 mt-[2px]'
               >
                 <path
                   strokeLinecap='round'
@@ -62,26 +66,19 @@ const Header = () => {
                 />
               </svg>
             ) : (
-              <FiChevronDown className='ml-1 mt-1' />
+              <FiChevronDown className='ml-1 mt-[2px]' />
             )}
           </button>
+
           {isMobileNavOpen && (
-            <div className='absolute top-[73px] left-0 w-2/3 right-0 bg-[rgba(31,41,55,0.85)] backdrop-blur-md p-4 rounded-xl border border-white/10 z-30 sm:w-full md:w-80 lg:w-80'>
+            <div className='absolute top-[73px] left-1/2 transform -translate-x-1/2 w-[90%] max-w-xs bg-[rgba(31,41,55,0.85)] backdrop-blur-md p-4 rounded-xl border border-white/10 z-30'>
               <ul className='flex flex-col gap-2 text-center'>
                 {['/', '/projects', '/contact', '/pricing', '/blog'].map(
                   (path, i) => (
                     <li key={i}>
                       <Link
-                        className={`$ {
-                          {
-                            '/': pathname === '/',
-                            '/projects': pathname === '/projects',
-                            '/contact': pathname === '/contact',
-                            '/pricing': pathname === '/pricing',
-                            '/blog': pathname === '/blog',
-                          }[path]
-                            ? 'text-primary'
-                            : 'text-third'
+                        className={`${
+                          pathname === path ? 'text-primary' : 'text-white'
                         } transition hover:text-primary`}
                         href={path}
                         onClick={handleLinkClick}
@@ -120,8 +117,8 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className='flex items-center gap-2'>
-          <div className='ml-4 flow-root lg:ml-4'>
+        <div className='flex items-center gap-4'>
+          <div className='flow-root'>
             <Link href='/cart' className='group -m-2 flex items-center p-2'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -146,7 +143,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <span className='mx-2 hidden sm:block '>|</span>
+          <span className='mx-3 hidden sm:block'>|</span>
 
           {user ? (
             <div className='flex items-center gap-2'>
@@ -161,7 +158,7 @@ const Header = () => {
               </button>
             </div>
           ) : (
-            <div className='flex gap-4'>
+            <div className='flex gap-5'>
               <Link href='/signup'>
                 <span className='text-sm text-white hover:underline'>
                   Register
