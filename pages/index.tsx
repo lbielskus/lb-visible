@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Banner from '../components/Banner';
+import AuditForm from '../components/AuditForm';
 import Products from '../components/Products';
 import ContactDiv from '../components/ContactDiv';
 import BlogSlide from '../components/BlogSlide';
@@ -88,6 +89,8 @@ export default function Home({
 
       <main className='h-full p-4'>
         <Banner />
+        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <AuditForm />
         <hr className='my-3 h-px border-0 bg-gray-200' />
         <Products products={newProducts} />
         <hr className='my-3 h-px border-0 bg-gray-200' />

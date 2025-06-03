@@ -24,6 +24,7 @@
     "iron-session": "^8.0.1",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.511.0",
     "micro": "^10.0.1",
     "mongoose": "^7.6.10",
     "next": "14.0.1",
