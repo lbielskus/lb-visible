@@ -14,7 +14,7 @@ export default async function handler(
     return res.status(400).json({ error: 'Invalid URL' });
   }
 
-  const apiKey = process.env.NEXT_PUBLIC_PSI_API_KEY;
+  const apiKey = process.env.PAGESPEED_API_KEY;
 
   if (!apiKey) {
     return res.status(500).json({ error: 'Missing API key' });
