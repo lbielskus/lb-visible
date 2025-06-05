@@ -75,10 +75,13 @@ export default function Cart() {
     }
   }, [clearCart]);
 
-  const subTotal = products.reduce(
-    (acc, item) => acc + Number(item.price) * item.quantity,
-    0
-  );
+  const subTotal = products.reduce((acc, item) => {
+    const unitPrice =
+      item.mode === 'subscription' && item.billingCycle === 'yearly'
+        ? Number(item.price) * 12
+        : Number(item.price);
+    return acc + unitPrice * item.quantity;
+  }, 0);
   const vatAmount = subTotal - subTotal / (1 + VAT_RATE);
   const total = subTotal;
 
@@ -201,8 +204,18 @@ export default function Cart() {
                         <p className='text-[15px] text-text'>
                           €{' '}
                           {formatPrice(
-                            Number(product.price) * product.quantity
+                            product.mode === 'subscription' &&
+                              product.billingCycle === 'yearly'
+                              ? Number(product.price) * 12 * product.quantity
+                              : Number(product.price) * product.quantity
                           )}
+                          <span className='text-xs text-gray-500 ml-1'>
+                            {product.mode === 'subscription'
+                              ? product.billingCycle === 'yearly'
+                                ? ' (per year)'
+                                : ' / month'
+                              : ''}
+                          </span>
                         </p>
                       </div>
                       <div className='flex items-center gap-1'>
