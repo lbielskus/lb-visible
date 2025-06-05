@@ -218,7 +218,7 @@ export default function Cart() {
                   {products.map((product) => (
                     <li
                       key={`${product._id}-${product.billingCycle}`}
-                      className='flex flex-col sm:grid sm:grid-cols-[auto_1fr_auto] gap-4 items-center sm:items-start bg-white/5 p-3 rounded-2xl'
+                      className='flex flex-col sm:grid sm:grid-cols-[auto_1fr_auto] gap-4 items-start sm:items-start bg-white/5 p-4 rounded-2xl'
                     >
                       <Image
                         src={product.imageUrl || '/no-image.png'}
@@ -227,7 +227,8 @@ export default function Cart() {
                         height={64}
                         className='rounded object-cover'
                       />
-                      <div>
+
+                      <div className='flex flex-col justify-between min-h-[120px] gap-y-2 w-full'>
                         <h3 className='text-md text-text max-w-md'>
                           {product.title}
                         </h3>
@@ -255,7 +256,7 @@ export default function Cart() {
                           </span>
                         </p>
 
-                        {/* Toggle plan button */}
+                        {/* Upgrade toggle */}
                         {product.mode === 'subscription' && (
                           <button
                             onClick={() => {
@@ -293,7 +294,7 @@ export default function Cart() {
                                   : `Switched to monthly plan`
                               );
                             }}
-                            className='text-md text-blue-500 underline mt-2 hover:text-blue-700'
+                            className='text-sm text-blue-500 underline mt-1 hover:text-blue-700'
                           >
                             {product.billingCycle === 'monthly'
                               ? `Upgrade to yearly and save €${formatPrice(
@@ -415,7 +416,7 @@ export default function Cart() {
                   <input
                     type='email'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -427,7 +428,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -439,7 +440,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                   />
@@ -451,7 +452,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
@@ -463,7 +464,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                   />
@@ -475,7 +476,7 @@ export default function Cart() {
                   <input
                     type='text'
                     required
-                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-200'
+                    className='block w-full rounded-2xl p-3 border text-gray-600 bg-gray-100'
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                   />
