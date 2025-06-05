@@ -86,7 +86,12 @@ export default function Cart() {
   const total = subTotal;
 
   const stripeCheckout = async () => {
-    const billingCycles = new Set(cartProducts.map((p) => p.billingCycle));
+    const billingCycles = new Set(
+      cartProducts
+        .filter((p) => p.mode === 'subscription' && !!p.billingCycle)
+        .map((p) => p.billingCycle)
+    );
+
     if (billingCycles.size > 1) {
       toast.error(
         'Only one billing type (monthly or yearly) is allowed per checkout. Please remove one of the items.'
