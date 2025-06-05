@@ -81,7 +81,12 @@ const Footer: React.FC = () => {
         <div className='mt-8'>
           <div className='footer-logo mb-4'>
             <Link href='/' className='social-logo flex items-center'>
-              <Image src={logoUrl} alt='logo-familia' width={42} height={42} />
+              <Image
+                src={logoUrl}
+                alt='logo-lbvisible'
+                width={42}
+                height={42}
+              />
               <span className='text-2xl mt-2 ml-2 text-gray-200'>Visible</span>
             </Link>
           </div>

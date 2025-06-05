@@ -25,7 +25,7 @@ export default function Products({ products }: Props) {
 
   return (
     <section className='px-4 sm:px-8 py-16'>
-      <div className='max-w-6xl mx-auto flex flex-col sm:flex-row bg-white/5 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden'>
+      <div className='max-w-6xl mx-auto flex flex-col sm:flex-row bg-white/30 backdrop-blur-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden'>
         <div className='relative w-full sm:w-1/2 aspect-[16/10] bg-gray-100 rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none overflow-hidden'>
           <Image
             src={product.gallery?.[0] || ''}

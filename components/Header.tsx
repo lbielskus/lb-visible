@@ -39,7 +39,9 @@ const Header = () => {
             width={38}
             height={38}
           />
-          <span className='mt-2 hidden lg:inline ml-4'>Let's Be Visible</span>
+          <span className='mt-2 hidden lg:inline ml-4'>
+            Let&apos;s Be Visible
+          </span>
         </Link>
 
         <div className='lg:hidden flex items-center'>
