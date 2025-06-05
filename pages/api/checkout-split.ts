@@ -37,8 +37,8 @@ export default async function handler(
   }
 
   try {
-    const lineItemsPayment = [];
-    const subscriptionItems = [];
+    const lineItemsPayment: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+    const subscriptionItems: any[] = [];
 
     for (const item of cartProducts) {
       if (!item.id || !item.stripePriceId || !item.quantity || !item.mode) {
@@ -48,7 +48,10 @@ export default async function handler(
 
       const ref = doc(db, 'clients', clientId, 'products', item.id);
       const snap = await getDoc(ref);
-      if (!snap.exists()) continue;
+      if (!snap.exists()) {
+        console.warn(`❌ Product not found in Firestore: ${item.id}`);
+        continue;
+      }
 
       const lineItem = {
         price: item.stripePriceId,
@@ -58,19 +61,20 @@ export default async function handler(
       if (item.mode === 'payment') {
         lineItemsPayment.push(lineItem);
       } else if (item.mode === 'subscription') {
-        subscriptionItems.push(item); // we store entire subscription products here
+        subscriptionItems.push(item); // store full item data for step 2
       }
     }
 
+    console.log('✅ lineItemsPayment:', lineItemsPayment);
+    console.log('✅ subscriptionItems:', subscriptionItems);
+
     if (!lineItemsPayment.length || !subscriptionItems.length) {
-      return res
-        .status(400)
-        .json({
-          message: 'Cart must include both setup fee and subscription.',
-        });
+      return res.status(400).json({
+        message: 'Cart must include both setup fee and subscription.',
+      });
     }
 
-    // Encode subscription items as base64 for sessionStorage use
+    // Encode subscription data
     const subEncoded = Buffer.from(JSON.stringify(subscriptionItems)).toString(
       'base64'
     );
@@ -82,14 +86,26 @@ export default async function handler(
       customer_email: email,
       success_url: `${req.headers.origin}/checkout-step2?data=${subEncoded}`,
       cancel_url: `${req.headers.origin}/cart?cancelled=true`,
-      metadata: { name, address, city, country, zip, clientId },
+      metadata: {
+        name,
+        address,
+        city,
+        country,
+        zip,
+        clientId,
+      },
     });
 
     return res.status(200).json({ url: session.url });
   } catch (error: any) {
-    console.error('🔥 Checkout-split error:', error.message || error);
-    return res
-      .status(500)
-      .json({ message: 'Stripe error', error: error.message });
+    console.error('🔥 Stripe Checkout Error:', {
+      message: error.message,
+      stack: error.stack,
+    });
+
+    return res.status(500).json({
+      message: 'Stripe error',
+      error: error.message,
+    });
   }
 }

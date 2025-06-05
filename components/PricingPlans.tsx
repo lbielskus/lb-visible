@@ -46,7 +46,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
   return (
     <section className='py-16 px-4 sm:px-8'>
-      {/* Toggle */}
+      {/* Toggle Switch */}
       <div className='max-w-2xl mx-auto text-center mb-12 bg-[rgba(31,41,55,0.45)] backdrop-blur-xl rounded-3xl p-4'>
         <h2 className='text-3xl font-bold text-white'>Plans built to scale</h2>
         <p className='text-gray-300 mt-2 text-sm'>
@@ -72,14 +72,15 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
         </div>
       </div>
 
-      {/* Mobile: Swiper */}
-      <div className='block sm:hidden'>
+      {/* Mobile Swiper */}
+      <div className='block sm:hidden relative overflow-hidden'>
         <Swiper
           modules={[Pagination]}
           pagination={{ clickable: true }}
+          slidesPerView={1}
+          centeredSlides={false}
           spaceBetween={16}
-          slidesPerView={1.1}
-          centeredSlides
+          className='!pb-10'
         >
           {sorted.map((product) => {
             const oneTime = product.oneTime || '0.00';
@@ -92,7 +93,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
             return (
               <SwiperSlide key={product.id}>
-                <div className='min-h-[620px] h-full flex flex-col justify-between bg-[rgba(31,41,55,0.45)] backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl px-6 py-8 text-white overflow-hidden'>
+                <div className='min-h-[640px] flex flex-col justify-between bg-[rgba(31,41,55,0.45)] backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl px-6 py-8 text-white mx-2'>
                   <div>
                     <h3 className='text-2xl font-bold mb-4 text-center'>
                       {product.title}
@@ -104,8 +105,8 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                       )?.map((feature, idx) => {
                         const clean = feature
                           ?.replace(/<[^>]*>/g, '')
-                          .replace(/^✔/, '')
-                          .trim();
+                          ?.replace(/^✔/, '')
+                          ?.trim();
                         return (
                           clean && (
                             <li key={idx} className='flex items-start gap-2'>
@@ -117,6 +118,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                       })}
                     </ul>
                   </div>
+
                   <div className='text-center'>
                     <p className='text-sm text-gray-300'>One-time setup:</p>
                     <p className='text-2xl font-bold text-white'>
@@ -151,7 +153,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
         </Swiper>
       </div>
 
-      {/* Desktop: Grid */}
+      {/* Desktop Grid */}
       <div className='hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center max-w-screen-xl mx-auto'>
         {sorted.map((product) => {
           const oneTime = product.oneTime || '0.00';
@@ -165,7 +167,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
           return (
             <div
               key={product.id}
-              className='h-full flex flex-col justify-between bg-[rgba(31,41,55,0.45)] backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl p-6 text-white hover:shadow-2xl transition-all overflow-hidden'
+              className='h-full flex flex-col justify-between bg-[rgba(31,41,55,0.45)] backdrop-blur-xl border border-white/10 shadow-xl rounded-3xl p-6 text-white hover:shadow-2xl transition-all'
             >
               <div>
                 <h3 className='text-2xl font-bold text-center mb-4'>
@@ -178,8 +180,8 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                   )?.map((feature, idx) => {
                     const clean = feature
                       ?.replace(/<[^>]*>/g, '')
-                      .replace(/^✔/, '')
-                      .trim();
+                      ?.replace(/^✔/, '')
+                      ?.trim();
                     return (
                       clean && (
                         <li key={idx} className='flex items-start gap-2'>
