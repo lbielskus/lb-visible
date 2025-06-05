@@ -26,12 +26,18 @@ const Header = () => {
     setIsMobileNavOpen(false);
   };
 
+  const handleLogoClick = () => {
+    if (window.innerWidth < 1024) {
+      router.push('/');
+    }
+  };
+
   return (
     <header className='sticky top-0 z-40 w-full rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
       <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10'>
-        <Link
-          className='flex gap-1 items-center text-gray-200 font-medium text-lg hover:text-gray-300'
-          href='/'
+        <div
+          className='flex gap-1 items-center text-gray-200 font-medium text-lg hover:text-gray-300 cursor-pointer'
+          onClick={handleLogoClick}
         >
           <Image
             src='https://ik.imagekit.io/tooos2eo5/42px.png?updatedAt=1749149087723'
@@ -42,7 +48,7 @@ const Header = () => {
           <span className='mt-2 hidden lg:inline ml-4'>
             Let&apos;s Be Visible
           </span>
-        </Link>
+        </div>
 
         <div className='lg:hidden flex items-center'>
           <button
