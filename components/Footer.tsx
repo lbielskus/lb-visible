@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
 
 const logoUrl =
-  'https://res.cloudinary.com/dcknlnne1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1709827936/favicon-32x32_rllh9h.jpg?_s=public-apps';
+  'https://ik.imagekit.io/tooos2eo5/42px.png?updatedAt=1749149087723';
 
 const Footer: React.FC = () => {
   const socialLinks: Record<string, string> = {
@@ -81,10 +81,8 @@ const Footer: React.FC = () => {
         <div className='mt-8'>
           <div className='footer-logo mb-4'>
             <Link href='/' className='social-logo flex items-center'>
-              <Image src={logoUrl} alt='logo-familia' width={30} height={30} />
-              <span className='text-2xl font-semibold ml-2 text-gray-200'>
-                Websites
-              </span>
+              <Image src={logoUrl} alt='logo-familia' width={42} height={42} />
+              <span className='text-2xl mt-2 ml-2 text-gray-200'>Visible</span>
             </Link>
           </div>
 

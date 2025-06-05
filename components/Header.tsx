@@ -34,12 +34,12 @@ const Header = () => {
           href='/'
         >
           <Image
-            src='https://ik.imagekit.io/tooos2eo5/android-chrome-192x192.png?updatedAt=1747311661438'
+            src='https://ik.imagekit.io/tooos2eo5/42px.png?updatedAt=1749149087723'
             alt='Logo'
-            width={24}
-            height={24}
+            width={38}
+            height={38}
           />
-          <span> Visible</span>
+          <span className='mt-2 hidden lg:inline ml-4'>Let's Be Visible</span>
         </Link>
 
         <div className='lg:hidden flex items-center'>
