@@ -163,7 +163,11 @@ export default function Cart() {
             ) : (
               <>
                 {/* Warning if billing cycles mixed */}
-                {new Set(products.map((p) => p.billingCycle)).size > 1 && (
+                {new Set(
+                  products
+                    .filter((p) => p.mode === 'subscription') // Only validate subscriptions
+                    .map((p) => p.billingCycle)
+                ).size > 1 && (
                   <p className='text-red-500 mt-4 text-sm'>
                     ⚠️ You can only checkout with one billing cycle (monthly or
                     yearly). Please remove one of the items.
