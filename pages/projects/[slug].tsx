@@ -27,7 +27,7 @@ import {
   FiEye,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { createCartItem } from '../../lib/cartUtils'; // ✅ Central logic
+import { createCartItem } from '../../lib/cartUtils';
 
 interface ProductType {
   id: string;
@@ -49,11 +49,16 @@ interface ProductType {
   additionalUrls?: string;
   stripePriceMonthlyId?: string;
   stripePriceYearlyId?: string;
-  billingCycle?: 'monthly' | 'yearly';
+  stripeOneTimePriceId?: string;
+  oneTime?: string;
+  priceMonthly?: string;
+  priceYearly?: string;
 }
 
-const formatPrice = (price: number) =>
-  price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const formatPrice = (price: number | string) => {
+  const parsed = typeof price === 'string' ? parseFloat(price) : price;
+  return parsed.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
 const calculateVatFromIncluded = (price: number) => {
   const vat = price - price / 1.21;
@@ -63,10 +68,12 @@ const calculateVatFromIncluded = (price: number) => {
 export default function ProductPage({ product }: { product: ProductType }) {
   const { addProduct } = useCart();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>(
+    'monthly'
+  );
   const images = [product.imageUrl || '', ...(product.gallery || [])].filter(
     Boolean
   );
-  const vat = calculateVatFromIncluded(product.price);
 
   const sanitizedDescription = sanitizeHtml(product.description || '', {
     allowedTags: ['br'],
@@ -109,6 +116,12 @@ export default function ProductPage({ product }: { product: ProductType }) {
     ],
   ];
 
+  const oneTimePrice = formatPrice(product.oneTime || product.price);
+  const ongoingPrice =
+    billingCycle === 'monthly'
+      ? formatPrice(product.priceMonthly || 0)
+      : formatPrice(product.priceYearly || 0);
+
   return (
     <>
       <DefaultSeo
@@ -117,7 +130,6 @@ export default function ProductPage({ product }: { product: ProductType }) {
       />
       <section className='mt-20 md:mt-6 p-4 rounded-xl'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
-          {/* Left - Images */}
           <div className='flex flex-col gap-4 w-full max-w-[700px]'>
             <div className='relative rounded-xl p-2 backdrop-blur-md bg-white/10'>
               <Image
@@ -153,46 +165,66 @@ export default function ProductPage({ product }: { product: ProductType }) {
             )}
           </div>
 
-          {/* Right - Info */}
-          <div className='backdrop-blur-md bg-white/20 border border-gray-200 p-6 rounded-xl shadow-xl'>
-            <h1 className='text-3xl font-bold mb-4 text-gray-600'>
-              {product.title}
-            </h1>
-            <p className='text-md p-1 rounded-xl text-gray-600'>
-              {product.shortDescription || 'N/A'}
-            </p>
+          <div className='backdrop-blur-md bg-white/20 border border-gray-200 p-6 rounded-xl shadow-xl '>
+            <div className='text-center'>
+              <h1 className='text-3xl font-bold mb-4 text-gray-600'>
+                {product.title}
+              </h1>
+              <p className='text-md p-1 rounded-xl text-gray-600'>
+                {product.shortDescription || 'N/A'}
+              </p>
+
+              <div className='flex justify-center gap-4 mb-4 mt-4'>
+                <label className='flex items-center gap-2 text-primary'>
+                  <input
+                    type='radio'
+                    checked={billingCycle === 'monthly'}
+                    onChange={() => setBillingCycle('monthly')}
+                    className='accent-pink-500'
+                  />
+                  Monthly
+                </label>
+                <label className='flex items-center gap-2 text-primary'>
+                  <input
+                    type='radio'
+                    checked={billingCycle === 'yearly'}
+                    onChange={() => setBillingCycle('yearly')}
+                    className='accent-pink-500'
+                  />
+                  Yearly
+                </label>
+              </div>
+            </div>
 
             <div className='text-right mb-4'>
-              {product.previousPrice && (
-                <p className='text-sm text-gray-400 line-through'>
-                  € {product.previousPrice}
-                </p>
-              )}
+              <p className='text-sm text-gray-400'>One-time setup fee:</p>
               <p className='text-xl font-bold text-pink-600'>
-                € {formatPrice(Number(product.price))}
+                € {oneTimePrice}
               </p>
-              <p className='text-sm text-gray-500'>VAT (21%): € {vat}</p>
+              <p className='text-sm text-gray-500'>
+                Ongoing service: € {ongoingPrice}{' '}
+                <span className='text-xs'>
+                  {billingCycle === 'monthly' ? '/month' : '/month*'}
+                </span>
+              </p>
+              <p className='text-xs text-gray-500'>
+                VAT: € {calculateVatFromIncluded(Number(oneTimePrice))} Included
+              </p>
             </div>
 
             <button
               className='bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-xl w-full mb-6 text-sm'
               onClick={() => {
-                const item = createCartItem(
-                  {
-                    ...product,
-                    stripePriceMonthlyId: product.stripePriceMonthlyId || '',
-                    stripePriceYearlyId: product.stripePriceYearlyId || '',
-                  },
-                  product.billingCycle || 'monthly'
+                addProduct(createCartItem(product, billingCycle, 'payment'));
+                addProduct(
+                  createCartItem(product, billingCycle, 'subscription')
                 );
-                addProduct(item);
-                toast.success('Plan added to cart!');
+                toast.success('Plan added to cart');
               }}
             >
               Add to Cart
             </button>
 
-            {/* Features */}
             <div className='mb-4'>
               <h2 className='text-xl font-semibold mb-2 text-gray-600'>
                 This Plan Covers:
@@ -207,7 +239,6 @@ export default function ProductPage({ product }: { product: ProductType }) {
               </div>
             </div>
 
-            {/* Metadata */}
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 mb-4 pt-4'>
               {details.map(([label, value, Icon], index) => (
                 <div key={index}>
