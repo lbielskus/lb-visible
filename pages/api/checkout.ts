@@ -35,56 +35,65 @@ export default async function handler(
   }
 
   try {
-    const line_items = [];
+    const lineItemsPayment = [];
+    const lineItemsSubscription = [];
 
     for (const item of cartProducts) {
-      if (!item.id || !item.stripePriceId || !item.quantity) {
-        console.warn('⚠️ Skipping item due to missing fields:', item);
+      if (!item.id || !item.stripePriceId || !item.quantity || !item.mode) {
+        console.warn('⚠️ Skipping invalid item:', item);
         continue;
       }
 
-      const productRef = doc(db, 'clients', clientId, 'products', item.id);
-      const productSnap = await getDoc(productRef);
+      const ref = doc(db, 'clients', clientId, 'products', item.id);
+      const snap = await getDoc(ref);
+      if (!snap.exists()) continue;
 
-      if (!productSnap.exists()) {
-        console.warn(`⚠️ Product not found: ${item.id}`);
-        continue;
-      }
-
-      line_items.push({
+      const lineItem = {
         price: item.stripePriceId,
         quantity: item.quantity,
+      };
+
+      if (item.mode === 'payment') lineItemsPayment.push(lineItem);
+      else lineItemsSubscription.push(lineItem);
+    }
+
+    if (!lineItemsPayment.length && !lineItemsSubscription.length) {
+      return res.status(400).json({ message: 'No valid items' });
+    }
+
+    const sessions = [];
+
+    if (lineItemsPayment.length) {
+      const paymentSession = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: lineItemsPayment,
+        mode: 'payment',
+        customer_email: email,
+        success_url: `${req.headers.origin}/cart?success=true`,
+        cancel_url: `${req.headers.origin}/cart?cancelled=true`,
+        metadata: { name, address, city, country, zip, clientId },
       });
+      sessions.push(paymentSession.url);
     }
 
-    if (line_items.length === 0) {
-      return res
-        .status(400)
-        .json({ message: 'No valid products for checkout.' });
+    if (lineItemsSubscription.length) {
+      const subSession = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: lineItemsSubscription,
+        mode: 'subscription',
+        customer_email: email,
+        success_url: `${req.headers.origin}/cart?success=true`,
+        cancel_url: `${req.headers.origin}/cart?cancelled=true`,
+        metadata: { name, address, city, country, zip, clientId },
+      });
+      sessions.push(subSession.url);
     }
 
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items,
-      mode: 'subscription',
-      customer_email: email,
-      success_url: `${req.headers.origin}/cart?success=true`,
-      cancel_url: `${req.headers.origin}/cart?cancelled=true`,
-      metadata: {
-        name,
-        address,
-        city,
-        country,
-        zip,
-        clientId,
-      },
-    });
-
-    return res.status(200).json({ url: session.url });
+    return res.status(200).json({ url: sessions[0] }); // default to first session (or handle both client-side)
   } catch (error: any) {
-    console.error('🔥 Stripe checkout error:', error.message || error);
+    console.error('🔥 Checkout error:', error.message || error);
     return res
       .status(500)
-      .json({ message: 'Checkout error', error: error.message || error });
+      .json({ message: 'Stripe error', error: error.message });
   }
 }

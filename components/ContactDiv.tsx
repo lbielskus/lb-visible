@@ -9,7 +9,7 @@ const ContactDiv: React.FC = () => {
         Have questions or need assistance? Feel free to contact us.
       </p>
       <Link href='/contact'>
-        <button className='bg-green-600/70 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl'>
+        <button className='bg-green-600/70 hover:bg-green-700 text-white  py-2 px-4 rounded-3xl'>
           Contact
         </button>
       </Link>

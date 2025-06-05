@@ -52,7 +52,7 @@ export default function BlogSlide({ posts }: Props) {
 
   return (
     <div className='w-full px-4 py-8 flex justify-center'>
-      <div className='w-full sm:max-w-4xl backdrop-blur-md bg-white/10 border border-primary border-opacity-40 rounded-2xl shadow-xl p-8 text-center'>
+      <div className='w-full sm:max-w-4xl backdrop-blur-md bg-white/10 border border-primary border-opacity-40 rounded-3xl shadow-xl p-8 text-center'>
         <h3 className='text-2xl font-bold text-gray-200 mb-2'>{post.title}</h3>
 
         <p className='text-gray-400 mb-2 text-sm'>
@@ -68,12 +68,10 @@ export default function BlogSlide({ posts }: Props) {
 
         <div className='mt-6'>
           <button
-            className='relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[rgba(94,86,86,0.92)] to-primary group-hover:from-[rgba(107,115,126,0.82)] group-hover:to-primary hover:text-white dark:text-white'
+            className='bg-primary hover:bg-primary/70 text-white px-5 py-2 rounded-3xl shadow hover:bg-opacity-90 transition'
             onClick={() => redirectToPost(post.slug)}
           >
-            <span className='relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-[rgba(44,58,77,0.52)] rounded-md group-hover:bg-opacity-0'>
-              Read More
-            </span>
+            <span>Read More</span>
           </button>
         </div>
       </div>

@@ -4,15 +4,17 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useCart } from '../lib/CartContext';
 import styles from '../styles/buttonStyles3.module.scss';
-import { createCartItem } from '../lib/cartUtils'; // ✅ Central logic
+import { createCartItem } from '../lib/cartUtils';
 
 interface Product {
   id: string;
   title: string;
   features?: string[];
   description?: string;
+  stripeOneTimePriceId?: string;
   stripePriceMonthlyId?: string;
   stripePriceYearlyId?: string;
+  oneTime?: string;
   priceMonthly?: string;
   priceYearly?: string;
 }
@@ -28,7 +30,7 @@ const formatPrice = (raw: string | number | undefined): string => {
 };
 
 const PricingPlans: React.FC<Props> = ({ products }) => {
-  const [billingCycle, setBillingCycle] = useState<'yearly' | 'monthly'>(
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>(
     'yearly'
   );
   const { addProduct } = useCart();
@@ -43,7 +45,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
       <div className='max-w-2xl mx-auto text-center mb-12 bg-[rgba(31,41,55,0.45)] backdrop-blur-xl rounded-3xl p-4'>
         <h2 className='text-3xl font-bold text-white'>Plans built to scale</h2>
         <p className='text-gray-300 mt-2 text-sm'>
-          Choose a monthly or yearly plan and grow your online presence.
+          One-time setup + ongoing service (monthly or yearly)
         </p>
 
         <div className='mt-4 flex justify-center items-center gap-4'>
@@ -68,10 +70,13 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center max-w-screen-xl mx-auto'>
         {sorted.map((product) => {
-          const price =
+          const oneTime = product.oneTime || '0.00';
+          const ongoing =
             billingCycle === 'monthly'
               ? product.priceMonthly || '0.00'
               : product.priceYearly || '0.00';
+          const suffix =
+            billingCycle === 'monthly' ? '/ monthly' : '/ Per month*';
 
           return (
             <div
@@ -105,26 +110,39 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                 </ul>
               </div>
 
-              <div className='text-center mt-auto'>
-                <p className='text-sm text-gray-200'>From</p>
-                <p className='text-3xl font-bold text-pink-400 mb-4'>
-                  € {formatPrice(price)}
+              <div className='text-center mt-auto space-y-3'>
+                <p className='text-sm text-gray-300'>One-time setup:</p>
+                <p className='text-2xl font-bold text-white'>
+                  € {formatPrice(oneTime)}
+                </p>
+                <p className='text-sm text-gray-300'>Ongoing service:</p>
+                <p className='text-2xl font-bold text-pink-400'>
+                  € {formatPrice(ongoing)}{' '}
+                  <span className='text-sm text-gray-400'>{suffix}</span>
                 </p>
                 <button
                   onClick={() => {
-                    addProduct(createCartItem(product, billingCycle)); // ✅ fixed
-                    toast.success('Plan added to cart!');
+                    addProduct(
+                      createCartItem(product, billingCycle, 'payment')
+                    );
+                    addProduct(
+                      createCartItem(product, billingCycle, 'subscription')
+                    );
+                    toast.success('Plan added to cart');
                   }}
-                  type='button'
                   className={`${styles['draw-border']} w-full text-center py-2.5`}
                 >
-                  Select
+                  Choose Plan
                 </button>
               </div>
             </div>
           );
         })}
       </div>
+
+      <p className='text-center text-sm text-gray-400 mt-6'>
+        * billed once annually
+      </p>
     </section>
   );
 };

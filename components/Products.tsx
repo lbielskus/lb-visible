@@ -29,7 +29,7 @@ export default function Products({ products }: Props) {
             src={product.gallery?.[0] || ''}
             alt={product.title}
             fill
-            sizes='(max-width: 640px) 100vw, 50vw' // ✅ Prevents warning
+            sizes='(max-width: 640px) 100vw, 50vw'
             className='object-cover'
           />
         </div>
@@ -41,7 +41,7 @@ export default function Products({ products }: Props) {
           <p className='text-lg text-gray-400'>
             From only{' '}
             <span className='text-primary font-semibold text-xl'>
-              €{formatPrice(Number(product.priceYearly))}
+              €{formatPrice(Number(product.priceYearly))} / monthly*
             </span>
           </p>
 
@@ -61,6 +61,9 @@ export default function Products({ products }: Props) {
               Add to Cart
             </button>
           </div>
+          <p className='text-left text-sm text-gray-400 '>
+            * billed yearly for best value
+          </p>
         </div>
       </div>
     </section>

@@ -180,7 +180,7 @@ export default function AuditForm() {
   );
 
   return (
-    <div className='max-w-xl mx-auto mt-12 p-6 bg-white/40 backdrop-blur-xl rounded-xl shadow-xl'>
+    <div className='max-w-xl mx-auto mt-12 p-6 bg-white/40 backdrop-blur-xl rounded-3xl shadow-xl'>
       <h2 className='text-xl font-bold mb-4 text-center text-gray-600'>
         Already have a website?
       </h2>
@@ -196,16 +196,16 @@ export default function AuditForm() {
             placeholder='Enter your website URL (https://...)'
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className='w-full p-3 rounded-lg bg-white text-black mb-4 border border-gray-300 text-center'
+            className='w-full p-3 rounded-3xl bg-white text-black mb-4 border border-gray-300 text-center'
           />
           {loading && (
             <>
               <p className='text-center text-sm text-primary font-medium mb-2'>
                 Analysing. Please wait{dots}
               </p>
-              <div className='w-full h-2 bg-white/20 rounded overflow-hidden mb-3'>
+              <div className='w-full h-2 bg-white/20 rounded-3xl overflow-hidden mb-3'>
                 <div
-                  className='h-2 bg-primary rounded transition-all duration-100 ease-linear'
+                  className='h-2 bg-primary rounded-3xl transition-all duration-100 ease-linear'
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -215,7 +215,7 @@ export default function AuditForm() {
             type='button'
             onClick={handleSubmit}
             disabled={loading || !url.trim()}
-            className='bg-primary text-white px-6 py-2 rounded-lg w-full'
+            className='bg-primary text-white px-6 py-2 rounded-3xl w-full'
           >
             Run Audit
           </button>
@@ -236,7 +236,7 @@ export default function AuditForm() {
           />
           <button
             onClick={handleEmailSubmit}
-            className='bg-primary text-white px-6 py-2 rounded-lg w-full'
+            className='bg-primary text-white px-6 py-2 rounded-3xl w-full'
           >
             See Results
           </button>
@@ -290,7 +290,7 @@ export default function AuditForm() {
 
           <button
             onClick={handleRetry}
-            className='flex items-center gap-2 bg-primary text-white font-medium px-4 py-2 rounded-lg mt-6 hover:bg-primary/70 transition-all mx-auto'
+            className='flex items-center gap-2 bg-primary text-white font-medium px-4 py-2 rounded-3xl mt-6 hover:bg-primary/70 transition-all mx-auto'
           >
             <Repeat className='w-4 h-4' />
             Retry

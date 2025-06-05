@@ -223,6 +223,7 @@ export default function Cart() {
                               price: product.price,
                               title: product.title,
                               imageUrl: product.imageUrl,
+                              mode: product.mode, // ✅ This fixes the TypeScript error
                             })
                           }
                           className='w-10 h-10 leading-10 text-text transition hover:opacity-75 border'

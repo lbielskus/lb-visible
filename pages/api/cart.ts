@@ -35,7 +35,22 @@ export default async function handler(
       const snap = await getDoc(ref);
 
       if (snap.exists()) {
-        enriched.push({ ...snap.data(), _id: snap.id, ...item });
+        const productData = snap.data();
+
+        // fallback price to 0.00 to avoid crash
+        const price =
+          item.mode === 'payment'
+            ? productData.oneTime || '0.00'
+            : item.billingCycle === 'yearly'
+            ? productData.priceYearly || '0.00'
+            : productData.priceMonthly || '0.00';
+
+        enriched.push({
+          ...productData,
+          _id: snap.id,
+          ...item,
+          price,
+        });
       } else {
         console.warn(`⚠️ Product not found for ID: ${item.id}`);
       }

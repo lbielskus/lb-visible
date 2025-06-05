@@ -2,21 +2,26 @@
 
 import { createContext, useContext, useState, useEffect } from 'react';
 
-type BillingCycle = 'monthly' | 'yearly';
+export type BillingCycle = 'monthly' | 'yearly';
+export type Mode = 'payment' | 'subscription';
 
-export interface CartProduct {
+export interface CartProductBase {
   id: string;
-  quantity: number;
+  billingCycle?: BillingCycle;
   stripePriceId: string;
-  billingCycle: BillingCycle;
   price: string;
   title?: string;
   imageUrl?: string;
+  mode: Mode;
+}
+
+export interface CartProduct extends CartProductBase {
+  quantity: number;
 }
 
 interface CartContextType {
   cartProducts: CartProduct[];
-  addProduct: (product: Omit<CartProduct, 'quantity'>) => void;
+  addProduct: (product: CartProductBase) => void;
   removeProduct: (id: string, billingCycle?: BillingCycle) => void;
   clearCart: () => void;
   hydrated: boolean;
@@ -52,14 +57,19 @@ export const CartContextProvider = ({
     }
   }, [cartProducts, hydrated]);
 
-  const addProduct = (product: Omit<CartProduct, 'quantity'>) => {
+  const addProduct = (product: CartProductBase) => {
     setCartProducts((prev) => {
       const existing = prev.find(
-        (p) => p.id === product.id && p.billingCycle === product.billingCycle
+        (p) =>
+          p.id === product.id &&
+          p.billingCycle === product.billingCycle &&
+          p.mode === product.mode
       );
       if (existing) {
         return prev.map((p) =>
-          p.id === product.id && p.billingCycle === product.billingCycle
+          p.id === product.id &&
+          p.billingCycle === product.billingCycle &&
+          p.mode === product.mode
             ? { ...p, quantity: p.quantity + 1 }
             : p
         );

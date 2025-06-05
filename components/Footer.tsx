@@ -122,7 +122,7 @@ const Footer: React.FC = () => {
 
         <div className='mt-8'>
           <small className='website-rights text-gray-200'>
-            Created by LB Visible © 2024
+            Created by Let’s Be Visible © 2024
           </small>
         </div>
       </div>
