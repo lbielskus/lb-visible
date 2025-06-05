@@ -101,15 +101,38 @@ export default function Cart() {
   })();
 
   const stripeCheckout = async () => {
-    if (hasMixedSessionTypes) {
-      toast.error(
-        'Checkout cannot contain both subscriptions and one-time purchases. Please separate them.'
-      );
+    const hasSubscription = cartProducts.some((p) => p.mode === 'subscription');
+    const hasPayment = cartProducts.some((p) => p.mode === 'payment');
+
+    if (!hasSubscription || !hasPayment) {
+      // If only one type, do normal single checkout
+      try {
+        const response = await axios.post('/api/checkout', {
+          email,
+          name,
+          address,
+          city,
+          country,
+          zip,
+          cartProducts,
+        });
+
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        } else {
+          toast.error('Checkout error: No redirect URL');
+        }
+      } catch (err) {
+        console.error(err);
+        toast.error('An error occurred during checkout');
+      }
+
       return;
     }
 
+    // === Mixed cart: first step ===
     try {
-      const response = await axios.post('/api/checkout', {
+      const response = await axios.post('/api/checkout-split', {
         email,
         name,
         address,
@@ -120,11 +143,11 @@ export default function Cart() {
       });
 
       if (response.data.url) {
-        window.location.href = response.data.url;
+        window.location.href = response.data.url; // will redirect to payment session first
       } else {
         toast.error('Checkout error: No redirect URL');
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error(err);
       toast.error('An error occurred during checkout');
     }

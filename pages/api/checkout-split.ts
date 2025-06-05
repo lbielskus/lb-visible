@@ -1,3 +1,5 @@
+// File: pages/api/checkout-split.ts
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { getDoc, doc } from 'firebase/firestore';
@@ -35,64 +37,57 @@ export default async function handler(
   }
 
   try {
-    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
-    let mode: 'payment' | 'subscription' | null = null;
+    const lineItemsPayment = [];
+    const subscriptionItems = [];
 
     for (const item of cartProducts) {
-      if (
-        !item.id ||
-        !item.stripePriceId ||
-        !item.quantity ||
-        !item.mode ||
-        (item.mode !== 'payment' && item.mode !== 'subscription')
-      ) {
+      if (!item.id || !item.stripePriceId || !item.quantity || !item.mode) {
         console.warn('⚠️ Skipping invalid item:', item);
         continue;
       }
-
-      if (mode && item.mode !== mode) {
-        return res.status(400).json({
-          message:
-            'Cannot mix subscriptions and one-time purchases in the same checkout.',
-        });
-      }
-
-      mode = item.mode;
 
       const ref = doc(db, 'clients', clientId, 'products', item.id);
       const snap = await getDoc(ref);
       if (!snap.exists()) continue;
 
-      lineItems.push({
+      const lineItem = {
         price: item.stripePriceId,
         quantity: item.quantity,
-      });
+      };
+
+      if (item.mode === 'payment') {
+        lineItemsPayment.push(lineItem);
+      } else if (item.mode === 'subscription') {
+        subscriptionItems.push(item); // we store entire subscription products here
+      }
     }
 
-    if (!lineItems.length || !mode) {
-      return res.status(400).json({ message: 'No valid items for checkout.' });
+    if (!lineItemsPayment.length || !subscriptionItems.length) {
+      return res
+        .status(400)
+        .json({
+          message: 'Cart must include both setup fee and subscription.',
+        });
     }
+
+    // Encode subscription items as base64 for sessionStorage use
+    const subEncoded = Buffer.from(JSON.stringify(subscriptionItems)).toString(
+      'base64'
+    );
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      mode,
-      line_items: lineItems,
+      mode: 'payment',
+      line_items: lineItemsPayment,
       customer_email: email,
-      success_url: `${req.headers.origin}/cart?success=true`,
+      success_url: `${req.headers.origin}/checkout-step2?data=${subEncoded}`,
       cancel_url: `${req.headers.origin}/cart?cancelled=true`,
-      metadata: {
-        name,
-        address,
-        city,
-        country,
-        zip,
-        clientId,
-      },
+      metadata: { name, address, city, country, zip, clientId },
     });
 
     return res.status(200).json({ url: session.url });
   } catch (error: any) {
-    console.error('🔥 Checkout error:', error.message || error);
+    console.error('🔥 Checkout-split error:', error.message || error);
     return res
       .status(500)
       .json({ message: 'Stripe error', error: error.message });
