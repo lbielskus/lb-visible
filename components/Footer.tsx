@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { poppins } from '../lib/fonts';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
 
 const logoUrl =
@@ -79,15 +80,19 @@ const Footer: React.FC = () => {
         </div>
 
         <div className='mt-8'>
-          <div className='footer-logo mb-4'>
-            <Link href='/' className='social-logo flex items-center'>
+          <div className='footer-logo mb-4 '>
+            <Link href='/' className='social-logo flex items-center '>
               <Image
                 src={logoUrl}
                 alt='logo-lbvisible'
                 width={42}
                 height={42}
               />
-              <span className='text-2xl mt-2 ml-2 text-gray-200'>Visible</span>
+              <span
+                className={`text-xs mt-2 ml-2 text-gray-200 ${poppins.className}`}
+              >
+                Let&apos;s Be Visible
+              </span>
             </Link>
           </div>
 

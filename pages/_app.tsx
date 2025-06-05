@@ -85,6 +85,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <CartContextProvider>
         <Head>
+          <title>LB Visible | Web Development & SEO</title>
+          <meta
+            name='description'
+            content='Custom websites with CMS, SEO, and growth tools. Built with Next.js, powered by Firebase.'
+          />
           <meta property='fb:app_id' content='1223293146253930' />
           <meta property='og:title' content='LB Visible' />
           <meta

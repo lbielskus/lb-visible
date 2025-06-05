@@ -8,6 +8,7 @@ import { signOut } from 'firebase/auth';
 import { useAuth } from '../lib/AuthContext';
 import { auth } from '../lib/firebaseAuth';
 import { FiChevronDown } from 'react-icons/fi';
+import { poppins } from '../lib/fonts';
 import Image from 'next/image';
 
 const Header = () => {
@@ -45,7 +46,9 @@ const Header = () => {
             width={38}
             height={38}
           />
-          <span className='mt-2 hidden lg:inline ml-4'>
+          <span
+            className={`hidden lg:inline ml-2 text-xs mt-2 ${poppins.className}`}
+          >
             Let&apos;s Be Visible
           </span>
         </div>
