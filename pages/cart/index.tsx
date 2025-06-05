@@ -217,6 +217,56 @@ export default function Cart() {
                               : ''}
                           </span>
                         </p>
+
+                        {/* Toggle plan button */}
+                        {product.mode === 'subscription' && (
+                          <button
+                            onClick={() => {
+                              const newBilling =
+                                product.billingCycle === 'monthly'
+                                  ? 'yearly'
+                                  : 'monthly';
+                              const newPrice =
+                                newBilling === 'monthly'
+                                  ? product.priceMonthly
+                                  : product.priceYearly;
+
+                              const newStripeId =
+                                newBilling === 'monthly'
+                                  ? product.stripePriceMonthlyId
+                                  : product.stripePriceYearlyId;
+
+                              addProduct({
+                                id: product.id,
+                                billingCycle: newBilling,
+                                stripePriceId: newStripeId,
+                                price: newPrice,
+                                title: product.title,
+                                imageUrl: product.imageUrl,
+                                mode: 'subscription',
+                              });
+                              removeProduct(product.id, product.billingCycle);
+                              toast.success(
+                                newBilling === 'yearly'
+                                  ? `Upgraded to yearly plan and saved €${formatPrice(
+                                      (Number(product.priceMonthly || 0) -
+                                        Number(product.priceYearly || 0)) *
+                                        12
+                                    )}`
+                                  : `Switched to monthly plan`
+                              );
+                            }}
+                            className='text-xs text-blue-500 underline mt-2 hover:text-blue-700'
+                          >
+                            {product.billingCycle === 'monthly'
+                              ? `Upgrade to yearly and save €${formatPrice(
+                                  (Number(product.priceMonthly || 0) -
+                                    Number(product.priceYearly || 0)) *
+                                    12
+                                )}`
+                              : 'Switch to monthly plan'}
+                          </button>
+                        )}
                       </div>
                       <div className='flex items-center gap-1'>
                         <button
