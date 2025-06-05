@@ -218,7 +218,7 @@ export default function Cart() {
                   {products.map((product) => (
                     <li
                       key={`${product._id}-${product.billingCycle}`}
-                      className='grid grid-cols-[auto_1fr_auto] gap-4 items-center'
+                      className='flex flex-col sm:grid sm:grid-cols-[auto_1fr_auto] gap-4 items-center sm:items-start bg-white/5 p-3 rounded-2xl'
                     >
                       <Image
                         src={product.imageUrl || '/no-image.png'}

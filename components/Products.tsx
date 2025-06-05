@@ -11,8 +11,10 @@ type Props = {
   products: Product[];
 };
 
-const formatPrice = (price: number) =>
-  price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const formatPrice = (price: number | string) => {
+  const parsed = typeof price === 'string' ? parseFloat(price) : price;
+  return parsed.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
 
 export default function Products({ products }: Props) {
   const { addProduct } = useCart();
