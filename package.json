@@ -43,7 +43,8 @@
     "sanitize-html": "^2.13.0",
     "stripe": "^14.2.0",
     "styled-components": "^6.1.8",
-    "supertokens-node": "^16.7.4"
+    "supertokens-node": "^16.7.4",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
