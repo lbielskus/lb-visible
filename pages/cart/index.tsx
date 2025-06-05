@@ -192,7 +192,9 @@ export default function Cart() {
                           {product.title}
                         </h3>
                         <p className='text-sm text-primary'>
-                          {product.billingCycle === 'yearly'
+                          {product.mode === 'payment'
+                            ? 'One-time Setup Fee'
+                            : product.billingCycle === 'yearly'
                             ? 'Yearly Plan'
                             : 'Monthly Plan'}
                         </p>
