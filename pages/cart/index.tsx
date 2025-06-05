@@ -181,7 +181,7 @@ export default function Cart() {
                   {products.map((product) => (
                     <li
                       key={`${product._id}-${product.billingCycle}`}
-                      className='flex items-center gap-4 justify-between'
+                      className='grid grid-cols-[auto_1fr_auto] gap-4 items-center'
                     >
                       <Image
                         src={product.imageUrl || '/no-image.png'}
@@ -196,7 +196,7 @@ export default function Cart() {
                         </h3>
                         <p className='text-sm text-primary'>
                           {product.mode === 'payment'
-                            ? 'One-time'
+                            ? 'One-time setup fee'
                             : product.billingCycle === 'yearly'
                             ? 'Yearly Plan'
                             : 'Monthly Plan'}
