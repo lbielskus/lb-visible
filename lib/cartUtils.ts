@@ -42,8 +42,8 @@ export function createCartItem(
   return {
     id: product.id,
     billingCycle: mode === 'subscription' ? billingCycle : undefined,
-    stripePriceId,
-    price,
+    stripePriceId: stripePriceId || '',
+    price: price?.toString() || '0.00',
     title: product.title,
     imageUrl: product.imageUrl || product.gallery?.[0] || '',
     mode,

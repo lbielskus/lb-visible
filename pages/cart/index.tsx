@@ -35,6 +35,7 @@ export default function Cart() {
   const [zip, setZip] = useState('');
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [hasBillingConflict, setHasBillingConflict] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -66,6 +67,14 @@ export default function Cart() {
   }, [cartProducts]);
 
   useEffect(() => {
+    const subscriptionBilling = cartProducts
+      .filter((p) => p.mode === 'subscription' && p.billingCycle)
+      .map((p) => p.billingCycle);
+    const unique = new Set(subscriptionBilling);
+    setHasBillingConflict(unique.size > 1);
+  }, [cartProducts]);
+
+  useEffect(() => {
     if (
       typeof window !== 'undefined' &&
       window.location.href.includes('success')
@@ -86,13 +95,7 @@ export default function Cart() {
   const total = subTotal;
 
   const stripeCheckout = async () => {
-    const billingCycles = new Set(
-      cartProducts
-        .filter((p) => p.mode === 'subscription' && !!p.billingCycle)
-        .map((p) => p.billingCycle)
-    );
-
-    if (billingCycles.size > 1) {
+    if (hasBillingConflict) {
       toast.error(
         'Only one billing type (monthly or yearly) is allowed per checkout. Please remove one of the items.'
       );
