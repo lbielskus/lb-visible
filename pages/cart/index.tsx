@@ -94,10 +94,16 @@ export default function Cart() {
   const vatAmount = subTotal - subTotal / (1 + VAT_RATE);
   const total = subTotal;
 
+  const hasMixedSessionTypes = (() => {
+    const hasSubscription = cartProducts.some((p) => p.mode === 'subscription');
+    const hasPayment = cartProducts.some((p) => p.mode === 'payment');
+    return hasSubscription && hasPayment;
+  })();
+
   const stripeCheckout = async () => {
-    if (hasBillingConflict) {
+    if (hasMixedSessionTypes) {
       toast.error(
-        'Only one billing type (monthly or yearly) is allowed per checkout. Please remove one of the items.'
+        'Checkout cannot contain both subscriptions and one-time purchases. Please separate them.'
       );
       return;
     }
@@ -118,7 +124,7 @@ export default function Cart() {
       } else {
         toast.error('Checkout error: No redirect URL');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
       toast.error('An error occurred during checkout');
     }
@@ -217,7 +223,7 @@ export default function Cart() {
                               ? Number(product.price) * 12 * product.quantity
                               : Number(product.price) * product.quantity
                           )}
-                          <span className='text-xs text-gray-500 ml-1'>
+                          <span className='text-md text-gray-500 ml-1'>
                             {product.mode === 'subscription'
                               ? product.billingCycle === 'yearly'
                                 ? ' (per year)'
@@ -264,7 +270,7 @@ export default function Cart() {
                                   : `Switched to monthly plan`
                               );
                             }}
-                            className='text-xs text-blue-500 underline mt-2 hover:text-blue-700'
+                            className='text-md text-blue-500 underline mt-2 hover:text-blue-700'
                           >
                             {product.billingCycle === 'monthly'
                               ? `Upgrade to yearly and save €${formatPrice(
