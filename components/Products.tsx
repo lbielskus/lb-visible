@@ -53,14 +53,21 @@ export default function Products({ products }: Props) {
             </Link>
             <button
               onClick={() => {
-                addProduct(createCartItem(product, 'yearly'));
-                toast.success('Added to cart!');
+                const billingCycle: 'monthly' | 'yearly' = 'yearly';
+
+                addProduct(createCartItem(product, billingCycle, 'payment'));
+                addProduct(
+                  createCartItem(product, billingCycle, 'subscription')
+                );
+
+                toast.success('Plan added to cart!');
               }}
               className='border border-white/20 bg-white/20 hover:bg-white/20 px-5 py-2 rounded-lg text-gray-500 transition'
             >
               Add to Cart
             </button>
           </div>
+
           <p className='text-left text-sm text-gray-400 '>
             * billed yearly for best value
           </p>
