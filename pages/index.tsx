@@ -98,10 +98,9 @@ export default function Home({
         <PricingPlans products={pricingProducts} />
         <hr className='my-3 h-px border-0 bg-gray-300' />
         <BlogSlide posts={blogPosts} />
-        <hr className='my-3 h-px border-0 bg-gray-300 mb-6' />
+        <hr className='my-3 h-px border-0 bg-gray-300 mb-10' />
         <Banner />
         <ContactDiv />
-        <hr className='my-3 h-px border-0 bg-gray-300' />
       </main>
     </>
   );

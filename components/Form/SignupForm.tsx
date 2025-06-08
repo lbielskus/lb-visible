@@ -101,7 +101,7 @@ const SignupForm = () => {
           className='mb-6 flex justify-center gap-2 items-center text-xl font-semibold hover:opacity-75'
         >
           <Image src='/favicon-32x32.png' alt='Logo' width={28} height={28} />
-          <span className='text-purple-400'>Websites</span>
+          <span className='text-purple-400'>Visible</span>
         </Link>
 
         <h1 className='text-3xl font-bold text-center mb-6 text-gray-700'>

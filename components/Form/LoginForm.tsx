@@ -53,13 +53,8 @@ const LoginForm = () => {
           href='/'
           className='mb-6 flex justify-center gap-2 items-center text-xl font-semibold hover:opacity-75'
         >
-          <Image
-            src='https://res.cloudinary.com/dcknlnne1/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1709827936/favicon-32x32_rllh9h.jpg?_s=public-apps'
-            alt='Logo'
-            width={28}
-            height={28}
-          />
-          <span className='text-purple-400'>Websites</span>
+          <Image src='/favicon-32x32.png' alt='Logo' width={28} height={28} />
+          <span className='text-purple-400'>Visible</span>
         </Link>
 
         <h1 className='text-3xl font-bold text-center mb-6 text-gray-700'>
