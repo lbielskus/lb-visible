@@ -49,6 +49,7 @@ export default function Home({
     <>
       <Head>
         <meta property='og:title' content='Home | LB Visible' />
+        <meta name='robots' content='index, follow' />
         <meta
           property='og:description'
           content='Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.'
