@@ -34,7 +34,7 @@ export default function Banner() {
   if (!banner) return null;
 
   return (
-    <section className='relative w-full h-[200px] sm:h-[300px] rounded-xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-md'>
+    <section className='relative w-full h-[200px] sm:h-[300px] rounded-t-xl shadow-2xl overflow-hidden bg-white/10 backdrop-blur-md'>
       {/* Background image */}
       <Image
         src={banner.url}
@@ -46,15 +46,15 @@ export default function Banner() {
       />
 
       {/* Glass overlay */}
-      <div className='absolute inset-0 border border-white/20 rounded-xl z-0' />
+      <div className='absolute inset-0 border border-b-0 border-white/20 rounded-t-xl z-0' />
 
       {/* Foreground text */}
       <div className='absolute inset-0 z-10 flex items-center justify-start px-6 sm:px-8'>
-        <div className='text-third pl-4 sm:pl-48'>
+        <div className='text-gray-400 pl-4 sm:pl-48'>
           <h1 className='text-2xl sm:text-5xl font-extrabold leading-snug drop-shadow-md'>
             Confused?
             <br />
-            <span className='text-third/90'>Let us help!</span>
+            <span className='text-gray-300'>Let us help!</span>
           </h1>
         </div>
       </div>

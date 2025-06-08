@@ -1,10 +1,11 @@
 import { GetServerSideProps } from 'next';
-import Banner from '../components/Banner';
+import BannerHero from '../components/BannerHero';
 import AuditForm from '../components/AuditForm';
 import Products from '../components/Products';
 import ContactDiv from '../components/ContactDiv';
 import BlogSlide from '../components/BlogSlide';
 import PricingPlans from '../components/PricingPlans';
+import Banner from '../components/Banner';
 import { db } from '../lib/firebase';
 import {
   collection,
@@ -88,17 +89,19 @@ export default function Home({
       />
 
       <main className='h-full p-4'>
-        <Banner />
-        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <BannerHero />
+        <hr className='my-3 h-px border-0 bg-gray-200 mt-6' />
         <AuditForm />
-        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <hr className='my-3 h-px border-0 bg-gray-200 mt-10' />
         <Products products={newProducts} />
         <hr className='my-3 h-px border-0 bg-gray-200' />
         <PricingPlans products={pricingProducts} />
         <hr className='my-3 h-px border-0 bg-gray-300' />
         <BlogSlide posts={blogPosts} />
         <hr className='my-3 h-px border-0 bg-gray-300 mb-6' />
+        <Banner />
         <ContactDiv />
+        <hr className='my-3 h-px border-0 bg-gray-300' />
       </main>
     </>
   );

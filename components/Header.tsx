@@ -55,7 +55,7 @@ const Header = () => {
 
         <div className='lg:hidden flex items-center'>
           <button
-            className='text-primary flex items-center focus:outline-none'
+            className='text-primary flex items-center focus:outline-none bg-gray-700 border-opacity-50 rounded-xl  py-2 px-2'
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
           >
             <span className='text-base'>
