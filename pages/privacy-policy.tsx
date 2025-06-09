@@ -15,30 +15,30 @@ export default function PrivacyPolicy() {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Privacy & Cookie Policy
         </h1>
 
-        <p className='text-base text-gray-300 mb-6'>
+        <p className='text-sm text-gray-300 mb-6'>
           At LB Websites, we respect your privacy and are committed to
           protecting your personal information. This policy explains how we
           collect, use, and safeguard your data—especially in relation to cookie
           usage and GDPR compliance.
         </p>
 
-        <h2 className='text-xl font-semibold text-white mb-3'>
+        <h2 className='text-lg font-semibold text-white mb-3'>
           What Are Cookies?
         </h2>
-        <p className='text-base text-gray-300 mb-6'>
+        <p className='text-sm text-gray-300 mb-6'>
           Cookies are small text files stored on your device. They help us
           improve your experience by remembering preferences and providing usage
           analytics.
         </p>
 
-        <h2 className='text-xl font-semibold text-white mb-3'>
+        <h2 className='text-lg font-semibold text-white mb-3'>
           Types of Cookies We Use
         </h2>
-        <ul className='list-disc pl-6 space-y-3 text-base text-gray-300 mb-6'>
+        <ul className='list-disc pl-6 space-y-3 text-sm text-gray-300 mb-6'>
           <li>
             <strong className='text-white'>Essential Cookies:</strong> Required
             for basic site functionality and authentication.
@@ -54,10 +54,10 @@ export default function PrivacyPolicy() {
           </li>
         </ul>
 
-        <h2 className='text-xl font-semibold text-white mb-3'>
+        <h2 className='text-lg font-semibold text-white mb-3'>
           How You Can Manage Cookies
         </h2>
-        <p className='text-base text-gray-300 mb-6'>
+        <p className='text-sm text-gray-300 mb-6'>
           You can manage or withdraw your cookie consent anytime using our
           cookie banner or your browser settings. Refusing cookies may limit
           some functionality.

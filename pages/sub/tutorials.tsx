@@ -16,17 +16,17 @@ const Tutorials = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Tutorials
         </h1>
-        <p className='text-lg text-center mb-10 text-gray-300'>
+        <p className='text-md text-center mb-10 text-gray-300'>
           New to LB Websites? Here&apos;s how to get started with ordering your
           service and managing your site with ease.
         </p>
 
-        <div className='space-y-10 text-base sm:text-md text-gray-300'>
+        <div className='space-y-10 text-sm  text-gray-300'>
           <div>
-            <h2 className='text-xl font-semibold text-white mb-2'>
+            <h2 className='text-lg font-semibold text-white mb-2'>
               🛒 How to Order a Website
             </h2>
             <ol className='list-decimal list-inside space-y-3'>
@@ -56,7 +56,7 @@ const Tutorials = () => {
           </div>
 
           <div>
-            <h2 className='text-xl font-semibold text-white mb-2'>
+            <h2 className='text-lg font-semibold text-white mb-2'>
               ⚙️ How to Manage Your Site (CMS Access)
             </h2>
             <ol className='list-decimal list-inside space-y-3'>

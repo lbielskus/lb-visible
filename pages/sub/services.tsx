@@ -15,15 +15,15 @@ const Services = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Services
         </h1>
-        <p className='text-lg text-center mb-10 text-gray-300'>
+        <p className='text-md text-center mb-10 text-gray-300'>
           We deliver full-stack website solutions with everything your business
           needs — from development to launch, and beyond.
         </p>
 
-        <ul className='list-disc pl-6 space-y-5 text-base sm:text-md text-gray-300'>
+        <ul className='list-disc pl-6 space-y-5 text-sm sm:text-sm text-gray-300'>
           <li>
             <span className='font-semibold text-white'>
               Custom website development:

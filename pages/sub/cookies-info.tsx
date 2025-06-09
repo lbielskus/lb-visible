@@ -17,16 +17,16 @@ const Cookies = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Cookie Usage
         </h1>
-        <p className='text-lg mb-6 text-gray-300 text-center'>
+        <p className='text-md mb-6 text-gray-300 text-center'>
           Our website uses cookies to ensure functionality, improve your
           experience, and support optional analytics—only after your consent.
           This ensures compliance with GDPR and EU ePrivacy standards.
         </p>
 
-        <ul className='list-disc pl-6 space-y-4 text-base text-gray-300'>
+        <ul className='list-disc pl-6 space-y-4 text-sm text-gray-300'>
           <li>
             <span className='text-white font-semibold'>Essential Cookies:</span>{' '}
             Required for site functionality like navigation, forms, and login.

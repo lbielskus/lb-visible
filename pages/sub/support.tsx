@@ -16,17 +16,17 @@ const Support = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Support
         </h1>
 
-        <p className='text-base text-gray-300 mb-6 text-center'>
+        <p className='text-sm text-gray-300 mb-6 text-center'>
           Our commitment doesn’t end at launch. We provide ongoing support to
           ensure your website continues performing at its best—and you feel
           confident every step of the way.
         </p>
 
-        <ul className='list-disc pl-6 space-y-4 text-base text-gray-300'>
+        <ul className='list-disc pl-6 space-y-4 text-sm text-gray-300'>
           <li>
             <span className='font-semibold text-white'>Dedicated support:</span>{' '}
             Reach out anytime for technical assistance or questions related to

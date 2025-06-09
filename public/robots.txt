@@ -7,10 +7,5 @@ Disallow: /forgot-password
 Disallow: /verify-email
 Disallow: /login
 Disallow: /signup
-Disallow: /cart
-Disallow: /profile
-Disallow: /orders
-
-Allow: /
 
 Sitemap: https://www.lbvisible.com/sitemap.xml

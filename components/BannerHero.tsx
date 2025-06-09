@@ -17,7 +17,7 @@ export default function HeroBanner() {
         className='flex flex-col items-center text-center max-w-xl w-full ml-0 md:ml-10'
       >
         <div className='relative w-full '>
-          <h2 className='text-3xl sm:text-5xl font-extrabold text-gray-600'>
+          <h2 className='text-3xl sm:text-5xl font-extrabold text-gray-600/80'>
             This isn’t your average website.
           </h2>
           <span className='absolute -bottom-2 left-1/2 -translate-x-1/2 w-full h-[3px] bg-gradient-to-r from-pink-500 to-blue-400 rounded-full animate-pulse' />

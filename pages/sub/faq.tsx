@@ -16,11 +16,11 @@ const FAQ = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
-          Frequently Asked Questions
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
+          Frequently Asked Questions:
         </h1>
 
-        <div className='space-y-8 text-base sm:text-md text-gray-300'>
+        <div className='space-y-8 text-sm sm:text-md text-gray-300'>
           <div>
             <h2 className='font-semibold text-white'>
               How long does it take to launch my website?

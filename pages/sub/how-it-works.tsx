@@ -16,16 +16,16 @@ const HowItWorks = () => {
       </Head>
 
       <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
-        <h1 className='text-3xl font-bold text-center text-gray-200 mb-6'>
+        <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           How It Works
         </h1>
-        <p className='text-lg text-center mb-10 text-gray-300'>
+        <p className='text-md text-center mb-10 text-gray-300'>
           Launching a custom website with LB Visible is seamless, fast, and
           optimized for your success. Here’s how we work from idea to live
           product:
         </p>
 
-        <ol className='space-y-6 list-decimal list-inside text-base sm:text-md'>
+        <ol className='space-y-6 list-decimal list-inside text-sm  sm:text-sm'>
           <li>
             <span className='font-semibold text-white'>Choose a plan:</span>{' '}
             Select a service package (Beginner, Advanced, or Business) that fits
