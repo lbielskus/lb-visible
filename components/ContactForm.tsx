@@ -58,16 +58,22 @@ const ContactForm: React.FC = () => {
       });
 
       if (response.ok) {
+        // ✅ Clear fields
         setName('');
         setPhoneNumber('');
         setSubject('');
         setMessage('');
         setClientEmail('');
+
         toast.success('Message sent successfully!', {
-          duration: 3000,
+          duration: 1500,
           position: 'top-center',
         });
-        setFormSubmitted(true);
+
+        // ✅ Redirect to success page for Google Ads tracking
+        setTimeout(() => {
+          window.location.href = '/contact-success';
+        }, 1500);
       } else {
         toast.error('Failed to send message.');
       }

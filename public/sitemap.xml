@@ -111,6 +111,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+  <loc>https://www.lbvisible.com/contact-success</loc>
+  <priority>0.5</priority>
+  <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://www.lbvisible.com/sub/hosting</loc>
     <priority>0.4</priority>
     <lastmod>2025-06-02</lastmod>
