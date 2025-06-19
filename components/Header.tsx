@@ -37,7 +37,7 @@ const Header = () => {
     <header className='sticky top-0 z-40 w-full rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
       <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10'>
         <div
-          className='flex gap-1 items-center text-gray-200 font-medium text-lg hover:text-gray-300 cursor-pointer'
+          className='flex gap-1 items-center text-gray-200 font-medium text-sm hover:text-gray-300 cursor-pointer'
           onClick={handleLogoClick}
         >
           <Image
@@ -47,7 +47,7 @@ const Header = () => {
             height={38}
           />
           <span
-            className={`hidden lg:inline ml-2 text-xs mt-2 ${poppins.className}`}
+            className={`hidden lg:inline ml-2 text-sm mt-2 ${poppins.className}`}
           >
             Let&apos;s Be Visible
           </span>
@@ -58,9 +58,7 @@ const Header = () => {
             className='text-primary flex items-center focus:outline-none bg-gray-700 border-opacity-50 rounded-xl  py-2 px-2'
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
           >
-            <span className='text-base'>
-              {isMobileNavOpen ? 'Menu' : 'Menu'}
-            </span>
+            <span className='text-md'>{isMobileNavOpen ? 'Menu' : 'Menu'}</span>
             {isMobileNavOpen ? (
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -108,7 +106,7 @@ const Header = () => {
         </div>
 
         <nav aria-label='Global' className='hidden lg:block'>
-          <ul className='flex items-center gap-6 text-lg'>
+          <ul className='flex items-center gap-6 text-md'>
             {['/', '/projects', '/contact', '/pricing', '/blog'].map(
               (path, i) => (
                 <li key={i}>
@@ -146,7 +144,7 @@ const Header = () => {
                 />
               </svg>
               <div className='hidden lg:flex'>
-                <span className='ml-2 text-lg text-white font-bold group-hover:text-green-600'>
+                <span className='ml-2 text-md text-white font-bold group-hover:text-green-600'>
                   {cartProducts.length}
                 </span>
                 <span className='sr-only'>items in cart, view bag</span>

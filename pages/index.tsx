@@ -1,4 +1,7 @@
+// ✅ FILE: pages/index.tsx
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 import BannerHero from '../components/BannerHero';
 import AuditForm from '../components/AuditForm';
 import Products from '../components/Products';
@@ -6,18 +9,8 @@ import ContactDiv from '../components/ContactDiv';
 import BlogSlide from '../components/BlogSlide';
 import PricingPlans from '../components/PricingPlans';
 import Banner from '../components/Banner';
-import { db } from '../lib/firebase';
-import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  limit,
-  Timestamp,
-} from 'firebase/firestore';
-import { DefaultSeo } from 'next-seo';
+import { db } from '../lib/firebaseAdmin';
 import { Product, BlogPost } from '../types';
-import Head from 'next/head';
 
 interface Props {
   newProducts: Product[];
@@ -26,7 +19,7 @@ interface Props {
 }
 
 function serializeFirestore(data: any): any {
-  if (data instanceof Timestamp) return data.toDate().toISOString();
+  if (data._seconds) return new Date(data._seconds * 1000).toISOString();
   if (Array.isArray(data)) return data.map(serializeFirestore);
   if (typeof data === 'object' && data !== null) {
     const result: any = {};
@@ -109,26 +102,36 @@ export default function Home({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const clientId = process.env.NEXT_PUBLIC_CLIENT_ID!;
-  const productRef = collection(db, 'clients', clientId, 'products');
-  const blogRef = collection(db, 'clients', clientId, 'blogPosts');
 
-  const newSnapshot = await getDocs(
-    query(productRef, orderBy('createdAt', 'desc'), limit(2))
-  );
-  const newProducts = newSnapshot.docs.map((doc) =>
+  const productSnapshot = await db
+    .collection('clients')
+    .doc(clientId)
+    .collection('products')
+    .orderBy('createdAt', 'desc')
+    .limit(2)
+    .get();
+  const newProducts = productSnapshot.docs.map((doc) =>
     serializeFirestore({ id: doc.id, ...doc.data() })
   );
 
-  const blogSnapshot = await getDocs(
-    query(blogRef, orderBy('createdAt', 'desc'), limit(5))
-  );
+  const blogSnapshot = await db
+    .collection('clients')
+    .doc(clientId)
+    .collection('blogPosts')
+    .orderBy('createdAt', 'desc')
+    .limit(5)
+    .get();
   const blogPosts = blogSnapshot.docs.map((doc) =>
     serializeFirestore({ id: doc.id, ...doc.data() })
   );
 
-  const pricingSnapshot = await getDocs(
-    query(productRef, orderBy('createdAt', 'desc'), limit(4))
-  );
+  const pricingSnapshot = await db
+    .collection('clients')
+    .doc(clientId)
+    .collection('products')
+    .orderBy('createdAt', 'desc')
+    .limit(4)
+    .get();
   const pricingProducts = pricingSnapshot.docs.map((doc) =>
     serializeFirestore({ id: doc.id, ...doc.data() })
   );
