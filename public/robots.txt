@@ -1,3 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /api/
 Disallow: /404
@@ -7,5 +8,12 @@ Disallow: /forgot-password
 Disallow: /verify-email
 Disallow: /login
 Disallow: /signup
+Allow: /
 
 Sitemap: https://www.lbvisible.com/sitemap.xml
+
+User-Agent: Googlebot
+Allow: /sitemap.xml
+Allow: .js
+Allow: .css
+Allow: /
