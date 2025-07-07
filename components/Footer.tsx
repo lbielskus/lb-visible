@@ -12,8 +12,8 @@ const Footer: React.FC = () => {
   const socialLinks: Record<string, string> = {
     facebook: 'https://www.facebook.com/',
     instagram: 'https://www.instagram.com/',
-    linkedin: 'https://www.linkedin.com/',
-    tiktok: 'https://www.tiktok.com/explore',
+    linkedin: 'https://www.linkedin.com/in/lbielskus/',
+    tiktok: 'https://www.tiktok.com/@letsbevisible',
   };
 
   const handleIconClick = (link: string) => {
@@ -73,7 +73,9 @@ const Footer: React.FC = () => {
                 <Link href='/'>Facebook</Link>
                 <Link href='/'>Youtube</Link>
                 <Link href='/'>LinkedIn</Link>
-                <Link href='/'>TikTok</Link>
+                <Link href='https://www.tiktok.com/@letsbevisible?is_from_webapp=1&sender_device=pc'>
+                  TikTok
+                </Link>
               </div>
             </div>
           </div>
