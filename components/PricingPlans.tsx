@@ -107,9 +107,25 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
   });
 
   const handleAddToCart = (product: Product) => {
-    addProduct(createCartItem(product, billingCycle, 'payment'));
-    addProduct(createCartItem(product, billingCycle, 'subscription'));
-    toast.success('Plan added to cart');
+    try {
+      console.log('Adding product to cart:', product.title);
+      const paymentItem = createCartItem(product, billingCycle, 'payment');
+      const subscriptionItem = createCartItem(
+        product,
+        billingCycle,
+        'subscription'
+      );
+
+      console.log('Payment item:', paymentItem);
+      console.log('Subscription item:', subscriptionItem);
+
+      addProduct(paymentItem);
+      addProduct(subscriptionItem);
+      toast.success('Plan added to cart');
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast.error('Failed to add plan to cart');
+    }
   };
 
   return (
@@ -297,10 +313,10 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                           </li>
                         ))}
                       </ul>
-                      <div className='mt-auto w-full'>
+                      <div className='mt-auto w-full relative z-20'>
                         <Button
                           onClick={() => handleAddToCart(product)}
-                          className={`w-full h-9 text-xs font-semibold transition-all duration-300 mt-2 sm:h-10 sm:text-sm bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg`}
+                          className={`w-full h-9 text-xs font-semibold transition-all duration-300 mt-2 sm:h-10 sm:text-sm bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg relative z-10 cursor-pointer`}
                         >
                           Choose Plan
                         </Button>
@@ -462,17 +478,17 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         </li>
                       ))}
                     </ul>
-                    <div className='w-full mt-auto'>
+                    <div className='w-full mt-auto relative z-20'>
                       <Button
                         onClick={() => handleAddToCart(product)}
-                        className={`w-full h-10 text-sm font-semibold transition-all duration-300 mt-2 bg-gradient-to-r from-primary to-pink-500/70 hover:from-pink-900 hover:to-pink-900 text-white shadow-md hover:shadow-lg`}
+                        className={`w-full h-10 text-sm font-semibold transition-all duration-300 mt-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg relative z-10 cursor-pointer`}
                       >
                         Choose Plan
                       </Button>
                       <div className='text-center mt-2'>
-                        <p className='text-[10px] text-gray-500'>
+                        <div className='text-[10px] text-gray-500'>
                           Free consultation included • No setup fees
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </CardContent>

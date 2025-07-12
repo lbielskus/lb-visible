@@ -4,8 +4,10 @@ import Link from 'next/link';
 const ContactDiv: React.FC = () => {
   return (
     <div className='p-4 bg-[rgba(31,41,55,0.25)] backdrop-blur-xl rounded-b-xl text-center shadow-2xl border border-white/20 border-t-0'>
-      <h2 className='text-xl font-bold mb-2 text-gray-300'>Contact Us</h2>
-      <p className='text-gray-300 mb-4'>
+      <h2 className='text-xl font-bold mb-2 text-gray-500 sm:text-white'>
+        Contact Us
+      </h2>
+      <p className='text-gray-300 sm:text-white mb-4'>
         Have questions or need assistance? Feel free to contact us.
       </p>
       <Link href='/contact'>
