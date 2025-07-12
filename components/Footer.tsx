@@ -21,8 +21,8 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <div className='footer-container py-16 mt-3'>
-      <div className='container mx-auto flex flex-col items-center bg-[rgba(31,41,55,0.52)] backdrop-blur-sm rounded-3xl py-10'>
+    <div className='footer-container py-16 mt-3 sm:py-16 sm:mt-3 py-8 mt-0'>
+      <div className='container mx-auto flex flex-col items-center bg-[rgba(31,41,55,0.52)] backdrop-blur-sm rounded-3xl py-10 sm:bg-[rgba(31,41,55,0.52)] bg-[rgba(31,41,55,0.92)]'>
         <div className='flex flex-wrap w-full justify-center mb-2 text-center'>
           <div className='w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0'>
             <div className='footer-link-items'>

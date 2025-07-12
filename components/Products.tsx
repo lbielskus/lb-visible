@@ -37,12 +37,12 @@ export default function Products({ products }: Props) {
         </div>
 
         <div className='p-6 sm:p-10 flex flex-col justify-center gap-4 text-gray-500 w-full sm:w-1/2'>
-          <h2 className='text-2xl sm:text-4xl font-semibold leading-tight'>
+          <h2 className='text-2xl sm:text-4xl font-semibold leading-tight text-gray-500 sm:text-white'>
             {product.title} Plan
           </h2>
-          <p className='text-lg text-gray-400'>
+          <p className='text-lg text-gray-400 sm:text-white'>
             From only{' '}
-            <span className='text-primary font-semibold text-xl'>
+            <span className='text-primary font-semibold text-xl sm:text-white'>
               €{formatPrice(Number(product.priceYearly))} / monthly*
             </span>
           </p>
@@ -64,13 +64,13 @@ export default function Products({ products }: Props) {
 
                 toast.success('Plan added to cart!');
               }}
-              className='border border-white/20 bg-white/20 hover:bg-white/20 px-5 py-2 rounded-lg text-gray-500 transition'
+              className='border border-white/20 bg-white/20 hover:bg-white/20 px-5 py-2 rounded-lg text-gray-500 transition sm:text-white'
             >
               Add to Cart
             </button>
           </div>
 
-          <p className='text-left text-sm text-gray-400 '>
+          <p className='text-left text-sm text-gray-400 sm:text-white '>
             * billed yearly for best value
           </p>
         </div>

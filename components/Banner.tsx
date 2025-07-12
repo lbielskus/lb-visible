@@ -50,11 +50,11 @@ export default function Banner() {
 
       {/* Foreground text */}
       <div className='absolute inset-0 z-10 flex items-center justify-start px-6 sm:px-8'>
-        <div className='text-gray-500 pl-4 sm:pl-48'>
+        <div className='text-gray-600 pl-4 sm:pl-48'>
           <h1 className='text-2xl sm:text-5xl font-extrabold leading-snug drop-shadow-md text-gray-500 sm:text-white'>
             Confused?
             <br />
-            <span className='text-gray-500 sm:text-white'>Let us help!</span>
+            <span className='text-gray-600 sm:text-white'>Let us help!</span>
           </h1>
         </div>
       </div>

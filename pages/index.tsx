@@ -93,7 +93,7 @@ export default function Home({
         >
           <BannerHero />
         </motion.div>
-        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <hr className='my-3 h-px border-0 bg-gray-200 hidden sm:block' />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -7,7 +7,14 @@ import { useRouter } from 'next/router';
 import { signOut } from 'firebase/auth';
 import { useAuth } from '../lib/AuthContext';
 import { auth } from '../lib/firebaseAuth';
-import { FiChevronDown } from 'react-icons/fi';
+import {
+  FiChevronDown,
+  FiHome,
+  FiFolder,
+  FiMail,
+  FiTag,
+  FiBookOpen,
+} from 'react-icons/fi';
 import { poppins } from '../lib/fonts';
 import Image from 'next/image';
 
@@ -35,7 +42,7 @@ const Header = () => {
 
   return (
     <header className='sticky top-0 z-40 w-full rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
-      <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10'>
+      <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10 relative'>
         <div
           className='flex gap-1 items-center text-gray-200 font-medium text-sm hover:text-gray-300 cursor-pointer'
           onClick={handleLogoClick}
@@ -55,17 +62,18 @@ const Header = () => {
 
         <div className='lg:hidden flex items-center'>
           <button
-            className='text-primary flex items-center focus:outline-none bg-gray-700 border-opacity-50 rounded-xl  py-2 px-2'
+            className='text-primary flex items-center focus:outline-none bg-gray-700 border-opacity-50 rounded-xl py-2 px-3 shadow-md hover:bg-gray-800 transition-all duration-200'
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+            aria-label={isMobileNavOpen ? 'Close menu' : 'Open menu'}
+            type='button'
           >
-            <span className='text-md'>{isMobileNavOpen ? 'Menu' : 'Menu'}</span>
             {isMobileNavOpen ? (
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                className='w-5 h-5 ml-1 mt-[2px]'
+                className='w-7 h-7 text-pink-500 hover:text-pink-600 transition-colors duration-200'
               >
                 <path
                   strokeLinecap='round'
@@ -75,31 +83,69 @@ const Header = () => {
                 />
               </svg>
             ) : (
-              <FiChevronDown className='ml-1 mt-[2px]' />
+              <>
+                <span className='text-md font-semibold'>Menu</span>
+                <FiChevronDown className='ml-2 mt-[2px] text-xl' />
+              </>
             )}
           </button>
 
           {isMobileNavOpen && (
-            <div className='absolute top-[73px] left-1/2 transform -translate-x-1/2 w-[90%] max-w-xs bg-[rgba(31,41,55,0.85)] backdrop-blur-md p-4 rounded-xl border border-white/10 z-30'>
-              <ul className='flex flex-col gap-2 text-center'>
-                {['/', '/projects', '/contact', '/pricing', '/blog'].map(
-                  (path, i) => (
-                    <li key={i}>
-                      <Link
-                        className={`${
-                          pathname === path ? 'text-primary' : 'text-white'
-                        } transition hover:text-primary`}
-                        href={path}
-                        onClick={handleLinkClick}
-                      >
-                        {path === '/'
-                          ? 'Home'
-                          : path.slice(1).charAt(0).toUpperCase() +
-                            path.slice(2)}
-                      </Link>
-                    </li>
-                  )
-                )}
+            <div className='absolute top-[73px] left-0 right-0 mx-auto w-full max-w-xs bg-white/80 backdrop-blur-xl p-4 rounded-2xl border border-gray-200 shadow-2xl z-30 animate-slideDown'>
+              <ul className='flex flex-col gap-2 text-center mt-2'>
+                {[
+                  {
+                    path: '/',
+                    label: 'Home',
+                    icon: (
+                      <FiHome className='inline-block mr-2 text-pink-500 text-lg' />
+                    ),
+                  },
+                  {
+                    path: '/projects',
+                    label: 'Projects',
+                    icon: (
+                      <FiFolder className='inline-block mr-2 text-pink-500 text-lg' />
+                    ),
+                  },
+                  {
+                    path: '/contact',
+                    label: 'Contact',
+                    icon: (
+                      <FiMail className='inline-block mr-2 text-pink-500 text-lg' />
+                    ),
+                  },
+                  {
+                    path: '/pricing',
+                    label: 'Pricing',
+                    icon: (
+                      <FiTag className='inline-block mr-2 text-pink-500 text-lg' />
+                    ),
+                  },
+                  {
+                    path: '/blog',
+                    label: 'Blog',
+                    icon: (
+                      <FiBookOpen className='inline-block mr-2 text-pink-500 text-lg' />
+                    ),
+                  },
+                ].map(({ path, label, icon }, i) => (
+                  <li key={i}>
+                    <Link
+                      className={`block py-3 px-4 rounded-xl text-lg font-medium transition-all duration-150 cursor-pointer hover:bg-pink-50 hover:text-pink-700 focus:bg-pink-100 focus:text-pink-800 outline-none ${
+                        pathname === path
+                          ? 'text-pink-700 font-bold bg-pink-100 border-l-4 border-pink-400'
+                          : 'text-gray-800'
+                      }`}
+                      href={path}
+                      onClick={handleLinkClick}
+                      tabIndex={0}
+                    >
+                      {icon}
+                      {label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           )}
@@ -182,6 +228,29 @@ const Header = () => {
           )}
         </div>
       </div>
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes slideDown {
+          from {
+            transform: translateY(-24px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      `}</style>
     </header>
   );
 };

@@ -129,7 +129,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <section className='py-12 px-1 sm:px-6 flex justify-center items-center min-h-[80vh] bg-transparent'>
+    <section className='py-6 px-1 sm:px-6 flex justify-center items-center min-h-[80vh] bg-transparent'>
       <div className='glass-bg container mx-auto max-w-7xl bg-white/10 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-1 sm:p-6 lg:p-10'>
         <div className='text-center mb-5 sm:mb-14'>
           <h2 className='text-3xl sm:text-5xl font-bold text-gray-700 mb-4 sm:mb-6 mt-6'>
