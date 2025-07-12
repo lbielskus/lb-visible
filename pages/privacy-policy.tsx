@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import Layout from '../components/Layout';
+import { motion } from 'framer-motion';
 
 export default function PrivacyPolicy() {
   return (
@@ -14,7 +15,13 @@ export default function PrivacyPolicy() {
         />
       </Head>
 
-      <section className='w-full px-4 sm:px-6 py-12 text-gray-200 max-w-3xl mx-auto rounded-3xl mt-12 shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.82)]'>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className='max-w-3xl mx-auto px-4 py-12'
+      >
         <h1 className='text-xl font-bold text-center text-gray-200 mb-6'>
           Privacy & Cookie Policy
         </h1>
@@ -66,7 +73,7 @@ export default function PrivacyPolicy() {
         <p className='mt-8 text-sm text-gray-400 text-right'>
           Last updated: {new Date().toLocaleDateString()}
         </p>
-      </section>
+      </motion.div>
     </Layout>
   );
 }

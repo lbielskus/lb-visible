@@ -7,7 +7,7 @@ import { HiArrowNarrowRight } from 'react-icons/hi';
 
 export default function HeroBanner() {
   return (
-    <section className=' relative w-full max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-4 flex flex-col sm:flex-row items-center justify-between gap-10 bg-white/20 backdrop-blur-md rounded-3xl overflow-hidden'>
+    <section className='hidden sm:flex relative w-full max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-4 flex-col sm:flex-row items-center justify-between gap-10 bg-white/20 backdrop-blur-md rounded-3xl overflow-hidden'>
       {/* Left: Text Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -17,7 +17,7 @@ export default function HeroBanner() {
         className='flex flex-col items-center text-center max-w-xl w-full ml-0 md:ml-10'
       >
         <div className='relative w-full '>
-          <h2 className='text-3xl sm:text-5xl font-extrabold text-gray-600/80'>
+          <h2 className='text-3xl sm:text-5xl font-extrabold text-gray-700/80'>
             This isn’t your average website.
           </h2>
           <span className='absolute -bottom-2 left-1/2 -translate-x-1/2 w-full h-[3px] bg-gradient-to-r from-pink-500 to-blue-400 rounded-full animate-pulse' />

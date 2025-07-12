@@ -11,7 +11,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import ContactButton from '../components/ContactButton';
 import LayeredBackground from '../components/LayeredBackground';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import * as gtag from '../lib/gtag';
@@ -58,6 +58,8 @@ function AuthGate({ children }: { children: React.ReactNode }) {
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [hasConsent, setHasConsent] = useState(false);
+  const [showBlur, setShowBlur] = useState(true);
+  const blurRef = useRef<HTMLDivElement>(null);
 
   const showNavbar = !['/login', '/signup', '/forgot-password'].includes(
     router.pathname
@@ -68,9 +70,18 @@ export default function App({ Component, pageProps }: AppProps) {
       const consent = localStorage.getItem('cookieConsent');
       if (consent === 'true') {
         setHasConsent(true);
+        setShowBlur(false);
       }
     }
   }, []);
+
+  // Remove blur when required cookies are accepted
+  const handleRequiredConsent = (accepted: boolean) => {
+    if (accepted) {
+      setShowBlur(false);
+      localStorage.setItem('cookieConsent', 'true');
+    }
+  };
 
   useEffect(() => {
     if (!hasConsent) return;
@@ -125,14 +136,22 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className={`${inter.className} relative z-10`}>
             {showNavbar && <Header />}
             <Toaster position='top-center' />
-            <main className='min-h-screen max-w-screen-2xl mx-auto sm:px-6'>
+            <main className='min-h-screen max-w-screen-2xl mx-auto sm:px-6 relative'>
+              {/* Blurred overlay only on main content */}
+              {showBlur && (
+                <div
+                  ref={blurRef}
+                  className='absolute inset-0 z-30 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-500 pointer-events-auto rounded-xl'
+                  aria-hidden='true'
+                />
+              )}
               <AuthGate>
                 <Component {...pageProps} />
               </AuthGate>
             </main>
             {showNavbar && <Footer />}
             {showNavbar && <ContactButton />}
-            <CookieConsentBanner />
+            <CookieConsentBanner onRequiredConsent={handleRequiredConsent} />
           </div>
 
           <ScrollToTopButton />

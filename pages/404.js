@@ -1,25 +1,25 @@
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function ErrorPage() {
   return (
     <>
       <div className='grid h-screen px-4  place-content-center'>
-        <div className='text-center'>
-          <h1 className='font-black text-primary text-9xl'>404</h1>
-
-          <p className='text-2xl font-bold tracking-tight text-gray-600 sm:text-4xl'>
-            Damn! 😔
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className='min-h-screen flex flex-col items-center justify-center px-6 text-center'
+        >
+          <h1 className='text-6xl font-bold text-primary mb-4'>404</h1>
+          <h2 className='text-2xl font-semibold text-gray-700 mb-2'>
+            Page Not Found
+          </h2>
+          <p className='text-md text-gray-600'>
+            Sorry, the page you are looking for does not exist.
           </p>
-
-          <p className='mt-4 text-gray-500'>We can&apos;t find that page.</p>
-
-          <Link
-            href='/'
-            className='inline-block px-5 py-3 mt-6 text-sm font-medium text-gray-200 bg-primary rounded hover:bg-primary focus:outline-none focus:ring'
-          >
-            Go Back Home
-          </Link>
-        </div>
+        </motion.div>
       </div>
     </>
   );

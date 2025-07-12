@@ -2,6 +2,7 @@ import React from 'react';
 import UserProfile from '../components/profile';
 
 import { DefaultSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 
 type Props = {};
 
@@ -28,7 +29,15 @@ const profile = (props: Props) => {
           ],
         }}
       />
-      <UserProfile />
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className='min-h-screen flex flex-col justify-center items-center px-4'
+      >
+        <UserProfile />
+      </motion.div>
     </>
   );
 };

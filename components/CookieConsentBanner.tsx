@@ -4,16 +4,44 @@ import CookieConsent, { Cookies } from 'react-cookie-consent';
 import Link from 'next/link';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
+import { Switch } from '@headlessui/react';
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 
-const CookieConsentBanner = () => {
+interface CookieConsentBannerProps {
+  onRequiredConsent: (accepted: boolean) => void;
+}
+
+const CookieConsentBanner = ({
+  onRequiredConsent,
+}: CookieConsentBannerProps) => {
   const [gaAllowed, setGaAllowed] = useState(false);
+  const [requiredAccepted, setRequiredAccepted] = useState(false);
+  const [analyticsOptIn, setAnalyticsOptIn] = useState(false);
 
   useEffect(() => {
-    const accepted = Cookies.get('userCookieConsent');
-    if (accepted === 'true') setGaAllowed(true);
-  }, []);
+    const accepted = Cookies.get('userCookieConsentRequired');
+    const analytics = Cookies.get('userCookieConsentAnalytics');
+    if (accepted === 'true') {
+      setRequiredAccepted(true);
+      onRequiredConsent(true);
+    }
+    if (analytics === 'true') setGaAllowed(true);
+  }, [onRequiredConsent]);
+
+  useEffect(() => {
+    if (requiredAccepted) {
+      Cookies.set('userCookieConsentRequired', 'true', { expires: 365 });
+      onRequiredConsent(true);
+    }
+    if (analyticsOptIn) {
+      Cookies.set('userCookieConsentAnalytics', 'true', { expires: 365 });
+      setGaAllowed(true);
+    } else {
+      Cookies.set('userCookieConsentAnalytics', 'false', { expires: 365 });
+      setGaAllowed(false);
+    }
+  }, [requiredAccepted, analyticsOptIn, onRequiredConsent]);
 
   return (
     <>
@@ -36,29 +64,48 @@ const CookieConsentBanner = () => {
         </>
       )}
 
-      <CookieConsent
-        location='bottom'
-        cookieName='userCookieConsent'
-        buttonText='Accept All'
-        declineButtonText='Decline'
-        enableDeclineButton
-        disableStyles={true}
-        onAccept={() => setGaAllowed(true)}
-        onDecline={() => console.log('User declined cookies')}
-        containerClasses='fixed bottom-4 left-2 right-2 max-w-4xl mx-auto z-50 bg-[rgba(15,23,42,0.8)] backdrop-blur-md border border-white/10 text-white rounded-xl shadow-xl px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4'
-        contentClasses='text-sm leading-5 text-center sm:text-left'
-        buttonWrapperClasses='flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center sm:justify-start'
-        buttonClasses='bg-green-600/80 hover:bg-green-700/80 text-white text-sm font-medium px-5 py-2 rounded-xl transition'
-        declineButtonClasses='bg-red-600/70 hover:bg-red-700/80 text-white text-sm font-medium px-5 py-2 rounded-xl transition border border-white/10'
-      >
-        We use cookies to improve your experience.
-        <Link
-          href='/privacy-policy'
-          className='underline text-sm text-gray-300 ml-1 hover:text-gray-200'
-        >
-          Learn more
-        </Link>
-      </CookieConsent>
+      {!requiredAccepted && (
+        <div className='fixed bottom-4 left-1/2 -translate-x-1/2 w-[95vw] max-w-xl bg-white/90 shadow-xl rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-4 border border-gray-200 z-50 backdrop-blur-md'>
+          <div className='flex-1 text-gray-700 text-sm text-center sm:text-left font-normal'>
+            We use cookies to improve your experience. Required cookies are
+            necessary for the website to function. You can also opt in to
+            analytics cookies.
+            <Link
+              href='/privacy-policy'
+              className='underline text-purple-600 hover:text-purple-700 ml-1 transition-colors duration-150'
+            >
+              Learn more
+            </Link>
+          </div>
+          <div className='flex flex-col items-center gap-3 w-full sm:w-auto'>
+            <button
+              className='px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold shadow hover:bg-purple-700 transition focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 w-full sm:w-auto text-base'
+              onClick={() => setRequiredAccepted(true)}
+            >
+              Accept Required
+            </button>
+            <div className='flex items-center gap-3 mt-1'>
+              <Switch
+                checked={analyticsOptIn}
+                onChange={setAnalyticsOptIn}
+                className={`${
+                  analyticsOptIn ? 'bg-purple-600' : 'bg-gray-300'
+                } relative inline-flex h-7 w-14 items-center rounded-full transition-colors`}
+              >
+                <span className='sr-only'>Enable analytics cookies</span>
+                <span
+                  className={`inline-block h-5 w-5 transform rounded-full bg-white transition-transform ${
+                    analyticsOptIn ? 'translate-x-7' : 'translate-x-1'
+                  }`}
+                />
+              </Switch>
+              <span className='text-sm text-gray-600'>
+                Enable analytics cookies
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

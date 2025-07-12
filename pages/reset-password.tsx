@@ -5,6 +5,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function ResetPasswordPage() {
   const [email, setEmail] = useState('');
@@ -23,7 +24,13 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <div className='min-h-screen flex justify-center items-center'>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+      className='min-h-screen flex flex-col justify-center items-center px-4'
+    >
       <div className='bg-[rgba(31,41,55,0.52)] backdrop-blur-sm rounded-3xl p-8  shadow-lg w-full max-w-md'>
         <h2 className='text-2xl font-bold text-center mb-6 text-gray-100'>
           Reset your password
@@ -49,6 +56,6 @@ export default function ResetPasswordPage() {
           </Link>
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { sendEmailVerification } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import { motion } from 'framer-motion';
 
 export default function VerifyEmail() {
   const { user, loading } = useAuth();
@@ -78,23 +79,31 @@ export default function VerifyEmail() {
   }
 
   return (
-    <div className='max-w-lg mx-auto mt-20 text-center bg-[rgba(31,41,55,0.52)] border border-white/10 p-8 rounded-xl backdrop-blur-md shadow-xl'>
-      <h1 className='text-2xl font-semibold text-gray-100 mb-4'>
-        Verify your email
-      </h1>
-      <p className='text-gray-200 mb-6'>
-        We’ve sent a verification link to{' '}
-        <strong className='text-primary'>{user.email}</strong>.<br />
-        Please check your inbox and click the link to activate your account.
-      </p>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, delay: 0.1 }}
+      className='min-h-screen flex flex-col justify-center items-center px-4'
+    >
+      <div className='max-w-lg mx-auto mt-20 text-center bg-[rgba(31,41,55,0.52)] border border-white/10 p-8 rounded-xl backdrop-blur-md shadow-xl'>
+        <h1 className='text-2xl font-semibold text-gray-100 mb-4'>
+          Verify your email
+        </h1>
+        <p className='text-gray-200 mb-6'>
+          We’ve sent a verification link to{' '}
+          <strong className='text-primary'>{user.email}</strong>.<br />
+          Please check your inbox and click the link to activate your account.
+        </p>
 
-      <button
-        onClick={handleResend}
-        disabled={cooldown > 0}
-        className='bg-primary text-white px-5 py-2 rounded-xl hover:bg-opacity-90 transition disabled:opacity-50'
-      >
-        {cooldown > 0 ? `Resend in ${cooldown}s` : 'Resend Email'}
-      </button>
-    </div>
+        <button
+          onClick={handleResend}
+          disabled={cooldown > 0}
+          className='bg-primary text-white px-5 py-2 rounded-xl hover:bg-opacity-90 transition disabled:opacity-50'
+        >
+          {cooldown > 0 ? `Resend in ${cooldown}s` : 'Resend Email'}
+        </button>
+      </div>
+    </motion.div>
   );
 }

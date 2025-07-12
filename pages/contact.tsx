@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Spinner from '../components/Spinner';
 import ContactForm from '../components/ContactForm';
 import { DefaultSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 
 const ContactPage = () => {
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,13 @@ const ContactPage = () => {
         }}
       />
 
-      <div className='w-full pt-24 pb-20 px-4 flex justify-center'>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className='w-full pt-24 pb-20 px-4 flex justify-center'
+      >
         {loading ? (
           <div className='flex justify-center items-center min-h-[50vh]'>
             <Spinner />
@@ -44,7 +51,7 @@ const ContactPage = () => {
         ) : (
           <ContactForm />
         )}
-      </div>
+      </motion.div>
     </>
   );
 };

@@ -9,8 +9,10 @@ import ContactDiv from '../components/ContactDiv';
 import BlogSlide from '../components/BlogSlide';
 import PricingPlans from '../components/PricingPlans';
 import Banner from '../components/Banner';
+import WhatMakesUsDifferent from '../components/WhatMakesUsDifferent';
 import { db } from '../lib/firebaseAdmin';
 import { Product, BlogPost } from '../types';
+import { motion } from 'framer-motion';
 
 interface Props {
   newProducts: Product[];
@@ -83,18 +85,69 @@ export default function Home({
       />
 
       <main className='h-full p-4'>
-        <BannerHero />
-        <hr className='my-3 h-px border-0 bg-gray-200 mt-6' />
-        <AuditForm />
-        <hr className='my-3 h-px border-0 bg-gray-200 mt-10' />
-        <Products products={newProducts} />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+        >
+          <BannerHero />
+        </motion.div>
         <hr className='my-3 h-px border-0 bg-gray-200' />
-        <PricingPlans products={pricingProducts} />
-        <hr className='my-3 h-px border-0 bg-gray-300' />
-        <BlogSlide posts={blogPosts} />
-        <hr className='my-3 h-px border-0 bg-gray-300 mb-10' />
-        <Banner />
-        <ContactDiv />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
+        >
+          <PricingPlans products={pricingProducts} />
+        </motion.div>
+
+        <hr className='my-3 h-px border-0 bg-gray-200 mt-10 hidden lg:block' />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
+        >
+          <Products products={newProducts} />
+        </motion.div>
+
+        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+        >
+          <BlogSlide posts={blogPosts} />
+        </motion.div>
+        <hr className='my-3 h-px border-0 bg-gray-200 mt-6 mb-6' />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.35 }}
+        >
+          <AuditForm />
+        </motion.div>
+        <hr className='my-3 h-px border-0 bg-gray-200 mb-10 mt-10' />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.4 }}
+        >
+          <Banner />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.45 }}
+        >
+          <ContactDiv />
+        </motion.div>
       </main>
     </>
   );

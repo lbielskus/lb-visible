@@ -11,6 +11,7 @@ import {
 import { DefaultSeo } from 'next-seo';
 import PricingPlans from '../components/PricingPlans';
 import { Product } from '../types';
+import { motion } from 'framer-motion';
 
 function serializeFirestore(data: any): any {
   if (data instanceof Timestamp) return data.toDate().toISOString();
@@ -53,9 +54,15 @@ const Pricing = ({ allProducts }: Props) => {
         }}
       />
 
-      <div className='px-4 py-8 max-w-screen-xl mx-auto'>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className='px-4 py-8 max-w-screen-xl mx-auto'
+      >
         <PricingPlans products={allProducts} />
-      </div>
+      </motion.div>
     </>
   );
 };

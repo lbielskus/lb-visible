@@ -73,9 +73,7 @@ const Footer: React.FC = () => {
                 <Link href='/'>Facebook</Link>
                 <Link href='/'>Youtube</Link>
                 <Link href='/'>LinkedIn</Link>
-                <Link href='https://www.tiktok.com/@letsbevisible?is_from_webapp=1&sender_device=pc'>
-                  TikTok
-                </Link>
+                <Link href='https://www.tiktok.com/@letsbevisible'>TikTok</Link>
               </div>
             </div>
           </div>

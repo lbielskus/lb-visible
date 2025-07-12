@@ -53,7 +53,7 @@ export default function BlogSlide({ posts }: Props) {
   return (
     <div className='w-full px-4 py-8 flex justify-center'>
       <div className='w-full sm:max-w-4xl backdrop-blur-md bg-white/10 border border-primary border-opacity-40 rounded-3xl shadow-xl p-8 text-center'>
-        <h3 className='text-xl sm:text-2xl font-bold text-gray-300 mb-2'>
+        <h3 className='text-xl sm:text-2xl font-bold text-gray-500 mb-2'>
           {post.title}
         </h3>
 
