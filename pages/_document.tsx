@@ -16,6 +16,26 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
           rel='stylesheet'
         />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Audiowide&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Michroma&display=swap'
+          rel='stylesheet'
+        />
+        <link
+          href='https://fonts.googleapis.com/css2?family=Epilogue:wght@700&display=swap'
+          rel='stylesheet'
+        />
 
         {/* ✅ Static Open Graph Meta Tags */}
         <meta property='fb:app_id' content='1223293146253930' />

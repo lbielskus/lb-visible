@@ -130,9 +130,9 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
   return (
     <section className='py-6 px-1 sm:px-6 flex justify-center items-center min-h-[80vh] bg-transparent'>
-      <div className='glass-bg container mx-auto max-w-7xl bg-white/10 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-1 sm:p-6 lg:p-10'>
+      <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl container mx-auto max-w-7xl p-1 sm:p-6 lg:p-10'>
         <div className='text-center mb-5 sm:mb-14'>
-          <h2 className='text-3xl sm:text-5xl font-bold text-gray-700 mb-4 sm:mb-6 mt-6'>
+          <h2 className='text-2xl sm:text-4xl font-bold text-gray-600 mb-4 sm:mb-6 mt-6 px-2'>
             Choose Your Perfect
             <span className='bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>
               {' '}
@@ -140,7 +140,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
             </span>
           </h2>
 
-          <p className='text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto'>
+          <p className='text-base sm:text-md text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto'>
             From initial consultation to ongoing maintenance, we handle
             everything. One-time setup fee plus affordable monthly maintenance.
           </p>
@@ -239,16 +239,8 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                   className='flex justify-center w-full px-2 h-[500px]'
                 >
                   <Card
-                    className={`max-w-xs w-full mx-auto relative flex flex-col justify-between h-[500px] rounded-2xl border border-white/60 ${
-                      isPopular
-                        ? 'ring-2 ring-inset ring-purple-500 shadow-xl shadow-purple-500/15'
-                        : 'shadow-md hover:shadow-lg'
-                    } transition-all duration-500 bg-white/50 p-3 sm:p-4`}
+                    className={`max-w-xs w-full mx-auto relative flex flex-col justify-between h-[500px] bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl ring-2 ring-inset ring-purple-500 shadow-xl shadow-purple-500/15 transition-all duration-500 p-3 sm:p-4`}
                   >
-                    {/* Background Gradient */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${planColor} opacity-10 group-hover:opacity-15 transition-opacity duration-500 rounded-2xl`}
-                    />
                     <CardHeader className='text-center pb-3 pt-3 relative'>
                       {/* Icon */}
                       <div
@@ -272,7 +264,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                           <div className='text-xs text-gray-500 mb-1'>
                             One-time setup
                           </div>
-                          <div className='text-2xl font-bold text-gray-700 mb-1 sm:text-3xl'>
+                          <div className='text-2xl font-bold text-gray-600 mb-1 sm:text-3xl'>
                             € {formatPrice(oneTime)}
                           </div>
                         </div>
@@ -280,7 +272,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                           <div className='text-xs text-gray-500 mb-1'>
                             Then ongoing maintenance
                           </div>
-                          <div className='text-lg font-semibold text-blue-600'>
+                          <div className='text-lg font-semibold text-purple-600'>
                             € {formatPrice(ongoing)}
                             <span className='text-xs text-gray-500 font-normal'>
                               {suffix}
@@ -354,17 +346,8 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                 className='relative group flex flex-col h-[600px]'
               >
                 <Card
-                  className={`h-full relative flex flex-col justify-between rounded-2xl border border-white/60 ${
-                    isPopular
-                      ? 'ring-2 ring-inset ring-purple-500 shadow-xl shadow-purple-500/15'
-                      : 'shadow-md hover:shadow-lg'
-                  } transition-all duration-500 bg-white/50 p-0`}
+                  className={`h-full relative flex flex-col justify-between bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl ring-2 ring-inset ring-purple-500 shadow-xl shadow-purple-500/15 transition-all duration-500 p-0`}
                 >
-                  {/* Background Gradient */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${planColor} opacity-10 group-hover:opacity-15 transition-opacity duration-500 rounded-2xl`}
-                  />
-
                   <CardHeader className='text-center pb-3 pt-6 px-6 relative flex flex-col items-center'>
                     {/* Icon */}
                     <div
@@ -398,7 +381,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         <div className='text-xs text-gray-500 mb-1'>
                           One-time setup
                         </div>
-                        <div className='text-3xl font-bold text-gray-700 mb-1'>
+                        <div className='text-3xl font-bold text-gray-600 mb-1'>
                           € {formatPrice(oneTime)}
                         </div>
                       </div>
@@ -407,7 +390,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         <div className='text-xs text-gray-500 mb-1'>
                           Then ongoing maintenance
                         </div>
-                        <div className='text-xl font-semibold text-blue-600'>
+                        <div className='text-xl font-semibold text-purple-600'>
                           € {formatPrice(ongoing)}
                           <span className='text-xs text-gray-500 font-normal'>
                             {suffix}
@@ -423,24 +406,24 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         <div className='text-[10px] text-gray-500'>
                           Timeline
                         </div>
-                        <div className='text-xs font-medium'>
+                        <div className='text-xs font-medium text-purple-600'>
                           {product.title === 'Beginner' && '2-3 weeks'}
                           {product.title === 'Advanced' && '3-4 weeks'}
                           {product.title === 'Business' && '4-6 weeks'}
                         </div>
                       </div>
-                      <div className='text-center'>
+                      <div className='text-center text-purple-600'>
                         <span className='text-gray-400 text-base'>👥</span>
                         <div className='text-[10px] text-gray-500'>
                           Revisions
                         </div>
-                        <div className='text-xs font-medium'>
+                        <div className='text-xs font-medium text-purple-600'>
                           {product.title === 'Beginner' && '3 rounds'}
                           {product.title === 'Advanced' && '5 rounds'}
                           {product.title === 'Business' && 'Unlimited'}
                         </div>
                       </div>
-                      <div className='text-center'>
+                      <div className='text-center text-purple-600'>
                         <span className='text-gray-400 text-base'>🎧</span>
                         <div className='text-[10px] text-gray-500'>Support</div>
                         <div className='text-xs font-medium'>
@@ -500,28 +483,27 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
         {/* Additional Info */}
         <div className='mt-10 sm:mt-14 text-center'>
-          <div className='relative bg-white/30 shadow rounded-2xl p-6 sm:p-8 overflow-hidden'>
-            <div className='absolute inset-0 bg-primary/50 opacity-10 rounded-2xl pointer-events-none'></div>
-            <h3 className='relative text-lg sm:text-2xl font-bold text-gray-700 mb-2 sm:mb-4 z-10'>
+          <div className='relative  rounded-2xl p-6 sm:p-8 overflow-hidden'>
+            <h3 className='relative text-lg sm:text-xl font-semibold text-gray-600 mb-2 sm:mb-4 z-10'>
               What&apos;s Included in Every Plan
             </h3>
             <div className='relative grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-xs sm:text-sm z-10'>
-              <div className='flex items-center gap-2'>
-                <span className='text-red-500'>🛡️</span>
+              <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
+                <span className='text-red-500 text-xl mb-1'>🛡️</span>
                 <span className='text-gray-700'>
                   SSL Certificate & Security
                 </span>
               </div>
-              <div className='flex items-center gap-2'>
-                <span className='text-yellow-500'>⚡</span>
+              <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
+                <span className='text-yellow-500 text-xl mb-1'>⚡</span>
                 <span className='text-gray-700'>Performance Optimization</span>
               </div>
-              <div className='flex items-center gap-2'>
-                <span className='text-blue-500'>👥</span>
+              <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
+                <span className='text-blue-500 text-xl mb-1'>👥</span>
                 <span className='text-gray-700'>SEO & Analytics Setup</span>
               </div>
-              <div className='flex items-center gap-2'>
-                <span className='text-black'>🎧</span>
+              <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
+                <span className='text-black text-xl mb-1'>🎧</span>
                 <span className='text-gray-700'>Ongoing Support</span>
               </div>
             </div>

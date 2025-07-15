@@ -262,158 +262,112 @@ const uniqueDifferentiators = [
 
 export default function ServiceBanner() {
   return (
-    <section className='py-10 bg-transparent text-white'>
-      <div className='container mx-auto px-4 relative scale-[.8]'>
-        {/* What Makes Us Different */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='text-4xl font-bold text-center mb-12'
-        >
-          What Makes Us Different
-        </motion.h1>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20'>
+    <section className='py-16 bg-transparent text-gray-600'>
+      <div className='max-w-screen-lg mx-auto px-4'>
+        {/* Section Title */}
+        <div className='mb-12 text-center'>
+          <h2 className='text-3xl font-bold text-gray-600 text-center mt-4 mb-2'>
+            What Makes Us Different
+          </h2>
+          <div className='w-16 h-1 bg-blue-500 mx-auto rounded'></div>
+        </div>
+        {/* Cards Grid */}
+        <div className='grid md:grid-cols-3 gap-8 mb-16'>
           {uniqueServices.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className='group'
+              className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-8 flex flex-col items-start h-full'
             >
-              <Card className='bg-gradient-to-br from-purple-700/80 to-pink-700/80 border-none text-white h-full rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300'>
-                <CardHeader>
-                  <div className='w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300'>
-                    <service.icon className='w-8 h-8 text-white' />
-                  </div>
-                  <CardTitle className='text-xl mb-2'>
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className='text-blue-100'>
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className='space-y-2 mb-4'>
-                    {service.details.map((detail, detailIndex) => (
-                      <li
-                        key={detailIndex}
-                        className='flex items-start gap-2 text-sm'
-                      >
-                        <FiCheckCircle className='w-4 h-4 text-green-400 mt-0.5 flex-shrink-0' />
-                        <span className='text-blue-100'>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className='bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg p-3 border border-purple-400/30'>
-                    <div className='flex items-center gap-2 mb-1'>
-                      <FiStar className='w-4 h-4 text-yellow-400' />
-                      <span className='text-sm font-medium text-yellow-400'>
-                        Why This Matters
-                      </span>
-                    </div>
-                    <p className='text-sm text-blue-100'>{service.highlight}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className='w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 mb-4'>
+                <service.icon className='w-7 h-7 text-blue-500' />
+              </div>
+              <h3 className='text-lg font-bold mb-1'>{service.title}</h3>
+              <p className='text-sm text-gray-600 mb-4'>
+                {service.description}
+              </p>
+              <ul className='mb-4 space-y-1'>
+                {service.details.map((detail, detailIndex) => (
+                  <li
+                    key={detailIndex}
+                    className='flex items-start gap-2 text-sm'
+                  >
+                    <FiCheckCircle className='w-4 h-4 text-green-500 mt-0.5 flex-shrink-0' />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className='mt-auto pt-2 border-t border-gray-100 w-full'>
+                <span className='text-xs text-blue-600 font-semibold'>
+                  {service.highlight}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* Built with Modern Technology */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='text-3xl font-bold text-center mb-12'
-        >
-          Built with Modern Technology
-        </motion.h3>
-        <div className='grid md:grid-cols-2 gap-8 mb-20'>
+        {/* Section Title 2 */}
+        <div className='mb-12 text-center'>
+          <h2 className='text-3xl font-bold text-gray-600 md:text-gray-300 text-center mb-6 mt-4'>
+            Built with Modern Technology
+          </h2>
+          <div className='w-12 h-1 bg-blue-400 mx-auto rounded'></div>
+        </div>
+        <div className='grid md:grid-cols-2 gap-8 mb-16'>
           {modernApproach.map((approach, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-8 flex flex-col items-start h-full'
             >
-              <Card className='bg-gradient-to-br from-purple-700/80 to-pink-700/80 border-none text-white h-full rounded-2xl shadow-lg'>
-                <CardHeader>
-                  <div className='flex items-center gap-4 mb-4'>
-                    <div className='w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-2xl flex items-center justify-center'>
-                      <approach.icon className='w-6 h-6 text-white' />
-                    </div>
-                    <div>
-                      <CardTitle className='text-xl'>
-                        {approach.title}
-                      </CardTitle>
-                      <CardDescription className='text-blue-100'>
-                        {approach.description}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className='space-y-3'>
-                    {approach.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className='flex items-start gap-3'>
-                        <div className='w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0'></div>
-                        <span className='text-sm text-blue-100'>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className='w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 mb-4'>
+                <approach.icon className='w-6 h-6 text-blue-500' />
+              </div>
+              <h3 className='text-base font-bold mb-1'>{approach.title}</h3>
+              <p className='text-sm text-gray-600 mb-4'>
+                {approach.description}
+              </p>
+              <ul className='mb-2 space-y-1'>
+                {approach.benefits.map((benefit, benefitIndex) => (
+                  <li
+                    key={benefitIndex}
+                    className='flex items-start gap-2 text-sm'
+                  >
+                    <span className='w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-
-        {/* Why Choose Us Over Everyone Else */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='text-3xl font-bold text-center mb-12'
-        >
-          Why Choose Us Over Everyone Else
-        </motion.h3>
+        {/* Section Title 3 */}
+        <div className='mb-12 text-center'>
+          <h2 className='text-3xl font-bold text-gray-600 md:text-gray-300 text-center mb-6 mt-4'>
+            Why Choose Us Over Everyone Else
+          </h2>
+          <div className='w-12 h-1 bg-blue-400 mx-auto rounded'></div>
+        </div>
         <div className='grid md:grid-cols-2 gap-8'>
           {uniqueDifferentiators.map((diff, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
+              className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-8 flex flex-col items-start h-full'
             >
-              <Card className='bg-gradient-to-br from-purple-700/80 to-pink-700/80 border-none text-white h-full rounded-2xl shadow-lg'>
-                <CardHeader>
-                  <div className='flex items-center gap-4 mb-4'>
-                    <div className='w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center'>
-                      <diff.icon className='w-7 h-7 text-white' />
-                    </div>
-                    <div>
-                      <CardTitle className='text-xl'>{diff.title}</CardTitle>
-                      <CardDescription className='text-blue-100'>
-                        {diff.description}
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className='space-y-3'>
-                    {diff.proof.map((item, itemIndex) => (
-                      <li key={itemIndex} className='flex items-start gap-3'>
-                        <FiCheckCircle className='w-5 h-5 text-green-400 mt-0.5 flex-shrink-0' />
-                        <span className='text-sm text-blue-100'>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className='w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 mb-4'>
+                <diff.icon className='w-7 h-7 text-blue-500' />
+              </div>
+              <h3 className='text-lg font-bold mb-1'>{diff.title}</h3>
+              <p className='text-sm text-gray-600 mb-4'>{diff.description}</p>
+              <ul className='mb-2 space-y-1'>
+                {diff.proof.map((item, itemIndex) => (
+                  <li
+                    key={itemIndex}
+                    className='flex items-start gap-2 text-sm'
+                  >
+                    <FiCheckCircle className='w-4 h-4 text-green-500 mt-0.5 flex-shrink-0' />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </div>

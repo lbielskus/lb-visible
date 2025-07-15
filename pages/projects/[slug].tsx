@@ -128,7 +128,7 @@ export default function ProductPage({ product }: { product: ProductType }) {
         title={`LB | ${product.title}`}
         description={product.shortDescription || ''}
       />
-      <section className='mt-20 md:mt-6 p-4 rounded-xl'>
+      <section className=' md:mt-6 p-4 rounded-xl'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
           <div className='flex flex-col gap-4 w-full max-w-[700px]'>
             <div className='relative rounded-xl p-2 backdrop-blur-md bg-white/10'>
@@ -242,11 +242,11 @@ export default function ProductPage({ product }: { product: ProductType }) {
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600 mb-4 pt-4'>
               {details.map(([label, value, Icon], index) => (
                 <div key={index}>
-                  <label className='block text-sm font-semibold text-gray-600 max-md:text-gray-300 mb-1'>
+                  <label className='block text-sm font-semibold text-gray-600 max-md:text-gray-600 mb-1'>
                     <Icon className='inline mr-2 text-pink-500' />
                     {label}:
                   </label>
-                  <div className='backdrop-blur-md bg-white/10 p-3 rounded-xl'>
+                  <div className='backdrop-blur-md bg-white/50 sm:bg-white/10 p-3 rounded-xl'>
                     {value}
                   </div>
                 </div>

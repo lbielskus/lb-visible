@@ -37,19 +37,19 @@ export default function Products({ products }: Props) {
         </div>
 
         <div className='p-6 sm:p-10 flex flex-col justify-center gap-4 text-gray-500 w-full sm:w-1/2'>
-          <h2 className='text-2xl sm:text-4xl font-semibold leading-tight text-gray-500 sm:text-white'>
+          <h2 className='text-2xl sm:text-4xl font-semibold leading-tight text-gray-500 sm:text-gray-500'>
             {product.title} Plan
           </h2>
-          <p className='text-lg text-gray-400 sm:text-white'>
+          <p className='text-lg text-gray-400 sm:text-gray-500'>
             From only{' '}
-            <span className='text-primary font-semibold text-xl sm:text-white'>
+            <span className='text-primary font-semibold text-xl sm:text-gray-500'>
               €{formatPrice(Number(product.priceYearly))} / monthly*
             </span>
           </p>
 
-          <div className='flex flex-wrap gap-3 mt-4'>
+          <div className='flex flex-row gap-2 mt-4 sm:flex-wrap sm:gap-3'>
             <Link href={`/projects/${product.slug}`}>
-              <button className='bg-primary text-white px-5 py-2 rounded-lg shadow hover:bg-opacity-90 transition'>
+              <button className='bg-primary text-white px-3 py-2 sm:px-5 sm:py-2 rounded-lg shadow hover:bg-opacity-90 transition text-sm sm:text-base'>
                 View Project
               </button>
             </Link>
@@ -64,13 +64,13 @@ export default function Products({ products }: Props) {
 
                 toast.success('Plan added to cart!');
               }}
-              className='border border-white/20 bg-white/20 hover:bg-white/20 px-5 py-2 rounded-lg text-gray-500 transition sm:text-white'
+              className='border border-white/20 bg-white/20 hover:bg-white/20 px-3 py-2 sm:px-5 sm:py-2 rounded-lg text-gray-500 transition text-sm sm:text-base'
             >
               Add to Cart
             </button>
           </div>
 
-          <p className='text-left text-sm text-gray-400 sm:text-white '>
+          <p className='text-left text-sm text-gray-400 sm:text-gray-500 '>
             * billed yearly for best value
           </p>
         </div>

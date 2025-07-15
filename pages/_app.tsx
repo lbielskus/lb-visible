@@ -1,6 +1,5 @@
 // pages/_app.tsx
 import '../styles/globals.css';
-import { Inter } from 'next/font/google';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ScrollToTopButton } from '../components/ScrollToTopButton';
@@ -21,12 +20,6 @@ const CookieConsentBanner = dynamic(
   () => import('../components/CookieConsentBanner'),
   { ssr: false }
 );
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
 
 const protectedPaths = ['/cart', '/profile'];
 
@@ -133,7 +126,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <LayeredBackground />
           </div>
 
-          <div className={`${inter.className} relative z-10`}>
+          <div className='relative z-10'>
             {showNavbar && <Header />}
             <Toaster position='top-center' />
             <main className='min-h-screen max-w-screen-2xl mx-auto sm:px-6 relative'>

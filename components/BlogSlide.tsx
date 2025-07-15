@@ -70,7 +70,7 @@ export default function BlogSlide({ posts }: Props) {
 
         <div className='mt-6'>
           <button
-            className='bg-primary hover:bg-primary/70 text-white px-5 py-2 rounded-2xl shadow hover:bg-opacity-90 transition'
+            className='bg-primary hover:bg-primary/70 text-white px-5 py-2 rounded-lg shadow hover:bg-opacity-90 transition'
             onClick={() => redirectToPost(post.slug)}
           >
             <span>Read More</span>

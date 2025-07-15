@@ -16,8 +16,8 @@ const HowItWorks = () => {
         />
       </Head>
 
-      <section className='w-full px-4 sm:px-6 py-6 mt-0 mb-0 text-gray-700 max-w-3xl mx-auto rounded-2xl shadow-md backdrop-blur-md bg-white/30 border border-white/30'>
-        <h1 className='text-3xl font-bold text-center mb-6 mt-4 text-gray-700'>
+      <section className='min-h-0 w-full px-4 sm:px-6 mt-4 py-4  mb-0 text-gray-700 max-w-3xl mx-auto rounded-2xl shadow-md backdrop-blur-md  border border-white/30'>
+        <h1 className='text-3xl font-bold text-gray-600 text-center mb-6 mt-4 '>
           How It Works
         </h1>
         <p className='text-md text-center mb-6 text-gray-600'>
@@ -71,9 +71,8 @@ const HowItWorks = () => {
           </li>
         </ol>
       </section>
-      <div className='-mt-8'>
-        <ServiceBanner />
-      </div>
+
+      <ServiceBanner />
     </Layout>
   );
 };

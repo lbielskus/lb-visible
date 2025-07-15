@@ -10,6 +10,7 @@ import BlogSlide from '../components/BlogSlide';
 import PricingPlans from '../components/PricingPlans';
 import Banner from '../components/Banner';
 import WhatMakesUsDifferent from '../components/WhatMakesUsDifferent';
+import HomeHowItWorksBanner from '../components/HomeHowItWorksBanner';
 import { db } from '../lib/firebaseAdmin';
 import { Product, BlogPost } from '../types';
 import { motion } from 'framer-motion';
@@ -89,9 +90,29 @@ export default function Home({
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
+        >
+          <Products products={newProducts} />
+        </motion.div>
+
+        <hr className='my-3 h-px border-0 bg-gray-200' />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <BannerHero />
+        </motion.div>
+        <hr className='my-10 h-px border-0 bg-gray-200 hidden sm:block' />
+        {/* Home How It Works Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
+        >
+          <HomeHowItWorksBanner />
         </motion.div>
         <hr className='my-3 h-px border-0 bg-gray-200 hidden sm:block' />
         <motion.div
@@ -103,17 +124,6 @@ export default function Home({
           <PricingPlans products={pricingProducts} />
         </motion.div>
 
-        <hr className='my-3 h-px border-0 bg-gray-200 mt-10 hidden lg:block' />
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.25 }}
-        >
-          <Products products={newProducts} />
-        </motion.div>
-
-        <hr className='my-3 h-px border-0 bg-gray-200' />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

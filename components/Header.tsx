@@ -41,10 +41,11 @@ const Header = () => {
   };
 
   return (
-    <header className='sticky top-0 z-40 w-full rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
+    <header className='sticky top-0 z-40 w-full lg:rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
       <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10 relative'>
+        {/* Desktop: Logo and text */}
         <div
-          className='flex gap-1 items-center text-gray-200 font-medium text-sm hover:text-gray-300 cursor-pointer'
+          className='hidden lg:flex gap-1 items-end text-gray-200 font-medium text-sm hover:text-gray-300 cursor-pointer'
           onClick={handleLogoClick}
         >
           <Image
@@ -53,16 +54,26 @@ const Header = () => {
             width={38}
             height={38}
           />
-          <span
-            className={`hidden lg:inline ml-2 text-sm mt-2 ${poppins.className}`}
-          >
-            Let&apos;s Be Visible
+          <span className='opacity-90 ml-2 text-sm tracking-normal drop-shadow-sm'>
+            <span className='text-gray-300'>Let&apos;s Be </span>
+            <span className='text-white'>Visible</span>
           </span>
         </div>
-
-        <div className='lg:hidden flex items-center'>
+        {/* Mobile: Logo and Burger grouped left */}
+        <div className='flex items-center lg:hidden'>
+          <div
+            className='flex items-end text-gray-200 font-medium text-sm hover:text-gray-300 cursor-pointer'
+            onClick={handleLogoClick}
+          >
+            <Image
+              src='https://ik.imagekit.io/tooos2eo5/42px.png?updatedAt=1749149087723'
+              alt='Logo'
+              width={38}
+              height={38}
+            />
+          </div>
           <button
-            className='text-primary flex items-center focus:outline-none bg-gray-700 border-opacity-50 rounded-xl py-2 px-3 shadow-md hover:bg-gray-800 transition-all duration-200'
+            className='ml-1 text-primary flex items-center focus:outline-none border-opacity-50 rounded-xl py-2 px-3 shadow-md hover:bg-gray-800 transition-all duration-200'
             onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
             aria-label={isMobileNavOpen ? 'Close menu' : 'Open menu'}
             type='button'
@@ -83,15 +94,45 @@ const Header = () => {
                 />
               </svg>
             ) : (
-              <>
-                <span className='text-md font-semibold'>Menu</span>
-                <FiChevronDown className='ml-2 mt-[2px] text-xl' />
-              </>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+                className='w-7 h-7 text-pink-500 hover:text-pink-600 transition-colors duration-200'
+              >
+                <line
+                  x1='4'
+                  y1='7'
+                  x2='20'
+                  y2='7'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                />
+                <line
+                  x1='4'
+                  y1='12'
+                  x2='20'
+                  y2='12'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                />
+                <line
+                  x1='4'
+                  y1='17'
+                  x2='20'
+                  y2='17'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                />
+              </svg>
             )}
           </button>
-
           {isMobileNavOpen && (
-            <div className='absolute top-[73px] left-0 right-0 mx-auto w-full max-w-xs bg-white/80 backdrop-blur-xl p-4 rounded-2xl border border-gray-200 shadow-2xl z-30 animate-slideDown'>
+            <div className='absolute left-0 right-0 top-full w-full bg-white p-4 rounded-b-2xl border border-gray-200 shadow-2xl z-30 animate-slideDown'>
               <ul className='flex flex-col gap-2 text-center mt-2'>
                 {[
                   {
@@ -134,7 +175,7 @@ const Header = () => {
                     <Link
                       className={`block py-3 px-4 rounded-xl text-lg font-medium transition-all duration-150 cursor-pointer hover:bg-pink-50 hover:text-pink-700 focus:bg-pink-100 focus:text-pink-800 outline-none ${
                         pathname === path
-                          ? 'text-pink-700 font-bold bg-pink-100 border-l-4 border-pink-400'
+                          ? 'text-pink-700 font-bold bg-pink-100'
                           : 'text-gray-800'
                       }`}
                       href={path}
@@ -239,16 +280,19 @@ const Header = () => {
         }
         @keyframes slideDown {
           from {
-            transform: translateY(-24px);
+            transform: scaleY(0.7);
             opacity: 0;
+            transform-origin: top;
           }
           to {
-            transform: translateY(0);
+            transform: scaleY(1);
             opacity: 1;
+            transform-origin: top;
           }
         }
         .animate-slideDown {
-          animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          animation: slideDown 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+          transform-origin: top;
         }
       `}</style>
     </header>
