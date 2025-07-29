@@ -11,6 +11,7 @@ import { DefaultSeo } from 'next-seo';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { app } from '../../lib/firebase';
 import { createCartItem } from '../../lib/cartUtils';
+import useTranslation from 'next-translate/useTranslation';
 
 const db = getFirestore(app);
 
@@ -31,6 +32,7 @@ const formatPrice = (price: number | string) => {
 
 export default function Products() {
   const { addProduct } = useCart();
+  const { t, lang } = useTranslation('common');
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +69,12 @@ export default function Products() {
       products.filter((p) => p.title.toLowerCase().includes(q))
     );
   }, [searchQuery, products]);
+
+  const productNameMap = {
+    Beginner: t('projects.beginner'),
+    Advanced: t('projects.advanced'),
+    Business: t('projects.business'),
+  };
 
   return (
     <>
@@ -106,7 +114,7 @@ export default function Products() {
           <div className='w-full px-4 md:px-10'>
             <input
               type='text'
-              placeholder='Search products'
+              placeholder={t('projects.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className='mb-6 px-4 py-2 rounded-xl border border-gray-300 w-full text-gray-700 backdrop-blur-md bg-white/20 placeholder:text-gray-500'
@@ -136,7 +144,9 @@ export default function Products() {
                     <div className='p-4'>
                       <Link href={`/projects/${product.slug}`}>
                         <h3 className='text-lg  text-gray-600 text-center hover:text-primary transition duration-200 cursor-pointer truncate'>
-                          {product.title}
+                          {productNameMap[
+                            product.title as keyof typeof productNameMap
+                          ] || product.title}
                         </h3>
                       </Link>
 
@@ -161,12 +171,38 @@ export default function Products() {
                               )
                             );
 
-                            toast.success('Plan added to cart!');
+                            toast.custom((toastObj) => (
+                              <div
+                                className={`${
+                                  toastObj.visible
+                                    ? 'animate-enter'
+                                    : 'animate-leave'
+                                } max-w-xs w-full bg-white/30 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 flex items-center px-4 py-3 pointer-events-auto`}
+                                style={{ color: '#36454F' }}
+                              >
+                                <svg
+                                  className='w-6 h-6 text-primary mr-3'
+                                  fill='none'
+                                  stroke='currentColor'
+                                  strokeWidth='2'
+                                  viewBox='0 0 24 24'
+                                >
+                                  <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M5 13l4 4L19 7'
+                                  />
+                                </svg>
+                                <span className='font-semibold text-md text-white'>
+                                  {t('projects.planAdded')}
+                                </span>
+                              </div>
+                            ));
                           }}
                           className='flex items-center gap-1 px-3 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 transition-all text-sm'
                         >
                           <FiShoppingCart className='text-lg' />
-                          Add
+                          {t('projects.add')}
                         </button>
                       </div>
                     </div>

@@ -219,7 +219,31 @@ export default function ProductPage({ product }: { product: ProductType }) {
                 addProduct(
                   createCartItem(product, billingCycle, 'subscription')
                 );
-                toast.success('Plan added to cart');
+                toast.custom((t) => (
+                  <div
+                    className={`${
+                      t.visible ? 'animate-enter' : 'animate-leave'
+                    } max-w-xs w-full bg-white/30 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 flex items-center px-4 py-3 pointer-events-auto`}
+                    style={{ color: '#36454F' }}
+                  >
+                    <svg
+                      className='w-6 h-6 text-primary mr-3'
+                      fill='none'
+                      stroke='currentColor'
+                      strokeWidth='2'
+                      viewBox='0 0 24 24'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M5 13l4 4L19 7'
+                      />
+                    </svg>
+                    <span className='font-semibold text-md text-white'>
+                      Plan added to cart
+                    </span>
+                  </div>
+                ));
               }}
             >
               Add to Cart

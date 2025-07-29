@@ -14,6 +14,7 @@ import HomeHowItWorksBanner from '../components/HomeHowItWorksBanner';
 import { db } from '../lib/firebaseAdmin';
 import { Product, BlogPost } from '../types';
 import { motion } from 'framer-motion';
+import useTranslation from 'next-translate/useTranslation';
 
 interface Props {
   newProducts: Product[];
@@ -40,40 +41,131 @@ export default function Home({
   pricingProducts,
 }: Props) {
   const ogImageUrl = `${process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT}/ogbanner.png`;
+  const { t } = useTranslation('common');
+
+  // Structured data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'LB Visible',
+    url: 'https://www.lbvisible.com',
+    description: t('home.description'),
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://www.lbvisible.com/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+    sameAs: [
+      'https://www.facebook.com/lbvisible',
+      'https://www.instagram.com/lbvisible',
+      'https://www.linkedin.com/company/lbvisible',
+    ],
+  };
+
+  const organizationStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'LB Visible',
+    url: 'https://www.lbvisible.com',
+    logo: 'https://www.lbvisible.com/logo.png',
+    description: t('home.description'),
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'LT',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      availableLanguage: ['English', 'Lithuanian'],
+    },
+  };
 
   return (
     <>
       <Head>
-        <meta property='og:title' content='Home | LB Visible' />
-        <meta name='robots' content='index, follow' />
+        <title>{t('home.title')}</title>
+        <meta name='description' content={t('home.description')} />
         <meta
-          property='og:description'
-          content='Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.'
+          name='keywords'
+          content='website development, web design, SEO, digital marketing, Lithuania, custom websites, e-commerce, CMS, Next.js, React'
         />
+        <meta name='author' content='LB Visible' />
+        <meta
+          name='robots'
+          content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        />
+        <meta name='googlebot' content='index, follow' />
+        <meta name='bingbot' content='index, follow' />
+
+        {/* Open Graph */}
+        <meta property='og:title' content={t('home.title')} />
+        <meta property='og:description' content={t('home.description')} />
         <meta property='og:url' content='https://www.lbvisible.com' />
         <meta property='og:image' content={ogImageUrl} />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
         <meta property='og:image:type' content='image/png' />
+        <meta property='og:type' content='website' />
+        <meta property='og:site_name' content='LB Visible' />
+        <meta property='og:locale' content='en_US' />
+        <meta property='og:locale:alternate' content='lt_LT' />
+
+        {/* Twitter Card */}
+        <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:site' content='@lbvisible' />
+        <meta name='twitter:creator' content='@lbvisible' />
+        <meta name='twitter:title' content={t('home.title')} />
+        <meta name='twitter:description' content={t('home.description')} />
+        <meta name='twitter:image' content={ogImageUrl} />
+
+        {/* Additional SEO */}
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='theme-color' content='#1f2937' />
+        <meta name='msapplication-TileColor' content='#1f2937' />
+        <link rel='canonical' href='https://www.lbvisible.com' />
+        <link rel='alternate' hrefLang='en' href='https://www.lbvisible.com' />
+        <link
+          rel='alternate'
+          hrefLang='lt'
+          href='https://www.lbvisible.com/lt'
+        />
+        <link
+          rel='alternate'
+          hrefLang='x-default'
+          href='https://www.lbvisible.com'
+        />
+
+        {/* Structured Data */}
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationStructuredData),
+          }}
+        />
       </Head>
 
       <DefaultSeo
-        title='Home | LB Visible'
-        description='Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.'
+        title={t('home.title')}
+        description={t('home.description')}
         openGraph={{
           type: 'website',
           locale: 'en_US',
           url: 'https://lbvisible.com',
           site_name: 'LB Visible',
-          title: 'Home | LB Visible',
-          description:
-            'Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.',
+          title: t('home.title'),
+          description: t('home.description'),
           images: [
             {
               url: ogImageUrl,
               width: 1200,
               height: 630,
-              alt: 'LB Visible Website & CMS Preview',
+              alt: t('home.ogImageAlt'),
               type: 'image/png',
             },
           ],
@@ -83,6 +175,38 @@ export default function Home({
           site: '@lbvisible',
           cardType: 'summary_large_image',
         }}
+        additionalMetaTags={[
+          {
+            name: 'keywords',
+            content:
+              'website development, web design, SEO, digital marketing, Lithuania, custom websites, e-commerce, CMS, Next.js, React',
+          },
+          {
+            name: 'author',
+            content: 'LB Visible',
+          },
+        ]}
+        additionalLinkTags={[
+          {
+            rel: 'canonical',
+            href: 'https://www.lbvisible.com',
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'en',
+            href: 'https://www.lbvisible.com',
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'lt',
+            href: 'https://www.lbvisible.com/lt',
+          },
+          {
+            rel: 'alternate',
+            hrefLang: 'x-default',
+            href: 'https://www.lbvisible.com',
+          },
+        ]}
       />
 
       <main className='h-full p-4'>

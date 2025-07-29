@@ -15,6 +15,9 @@ import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import * as gtag from '../lib/gtag';
 import Head from 'next/head';
+import appWithI18n from 'next-translate/appWithI18n';
+import i18nConfig from '../i18n.json';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const CookieConsentBanner = dynamic(
   () => import('../components/CookieConsentBanner'),
@@ -48,7 +51,8 @@ function AuthGate({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-export default function App({ Component, pageProps }: AppProps) {
+function App(props: any) {
+  const { Component, pageProps } = props;
   const router = useRouter();
   const [hasConsent, setHasConsent] = useState(false);
   const [showBlur, setShowBlur] = useState(true);
@@ -151,26 +155,14 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
 
         {hasConsent && process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
-              strategy='afterInteractive'
-            />
-            <Script
-              id='gtag-init'
-              strategy='afterInteractive'
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}');
-                `,
-              }}
-            />
-          </>
+          <GoogleAnalytics
+            measurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}
+            measurementIdLt={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID_LT}
+          />
         )}
       </CartContextProvider>
     </AuthProvider>
   );
 }
+
+export default appWithI18n(App, i18nConfig);

@@ -2,19 +2,23 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import toast from 'react-hot-toast';
 import Spinner from './Spinner';
 import { AiOutlineArrowRight } from 'react-icons/ai';
+import useTranslation from 'next-translate/useTranslation';
 
-const CongratulationTable = () => (
-  <div className='max-w-md mx-auto mt-8 p-6 bg-green-700 rounded-2xl shadow-xl text-white text-center'>
-    <h2 className='text-3xl font-semibold mb-6'>Congratulations!</h2>
-    <p>Your form has been submitted successfully.</p>
-    <p className='mt-2'>
-      Soon we will contact you and will answer to all your questions.
-    </p>
-    <p className='mt-2'>Thank you for reaching us out!</p>
-  </div>
-);
+const CongratulationTable = () => {
+  const { t } = useTranslation('common');
+  return (
+    <div className='max-w-md mx-auto mt-8 p-6 bg-green-700 rounded-2xl shadow-xl text-white text-center'>
+      <h2 className='text-3xl font-semibold mb-6'>
+        {t('contactForm.success')}
+      </h2>
+      <p>{t('contactForm.successDesc')}</p>
+      <p className='mt-2'>{t('contactForm.successThanks')}</p>
+    </div>
+  );
+};
 
 const ContactForm: React.FC = () => {
+  const { t } = useTranslation('common');
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [subject, setSubject] = useState('');
@@ -40,7 +44,7 @@ const ContactForm: React.FC = () => {
 
     const phoneRegex = /^[+]?[0-9]*$/;
     if (!phoneRegex.test(phoneNumber)) {
-      toast.error('Enter a valid phone number.', {
+      toast.error(t('contactForm.invalidPhone'), {
         duration: 3000,
         position: 'top-center',
       });
@@ -65,7 +69,7 @@ const ContactForm: React.FC = () => {
         setMessage('');
         setClientEmail('');
 
-        toast.success('Message sent successfully!', {
+        toast.success(t('contactForm.success'), {
           duration: 1500,
           position: 'top-center',
         });
@@ -75,11 +79,11 @@ const ContactForm: React.FC = () => {
           window.location.href = '/contact-success';
         }, 1500);
       } else {
-        toast.error('Failed to send message.');
+        toast.error(t('contactForm.fail'));
       }
     } catch (error) {
       console.error('Send error:', error);
-      toast.error('An error occurred.');
+      toast.error(t('contactForm.error'));
     } finally {
       setLoading(false);
     }
@@ -90,10 +94,10 @@ const ContactForm: React.FC = () => {
   return (
     <div className='shadow-2xl max-w-3xl mx-auto  p-8 backdrop-blur-md bg-white/20  rounded-2xl'>
       <h2 className='text-2xl font-semibold text-center text-gray-600 mb-2'>
-        Get in Touch
+        {t('contactForm.getInTouch')}
       </h2>
       <p className='text-center text-gray-500 mb-6'>
-        Have a question? Feel free to contact us!
+        {t('contactForm.haveQuestion')}
       </p>
       {loading && (
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40'>
@@ -106,7 +110,7 @@ const ContactForm: React.FC = () => {
       >
         <input
           type='text'
-          placeholder='Name*'
+          placeholder={t('contactForm.name')}
           value={name}
           onChange={handleChange(setName)}
           required
@@ -114,7 +118,7 @@ const ContactForm: React.FC = () => {
         />
         <input
           type='text'
-          placeholder='Phone number*'
+          placeholder={t('contactForm.phone')}
           value={phoneNumber}
           onChange={handleChange(setPhoneNumber)}
           required
@@ -122,7 +126,7 @@ const ContactForm: React.FC = () => {
         />
         <input
           type='text'
-          placeholder='Subject*'
+          placeholder={t('contactForm.subject')}
           value={subject}
           onChange={handleChange(setSubject)}
           required
@@ -130,14 +134,14 @@ const ContactForm: React.FC = () => {
         />
         <input
           type='email'
-          placeholder='Email*'
+          placeholder={t('contactForm.email')}
           value={clientEmail}
           onChange={handleChange(setClientEmail)}
           required
           className='p-2 rounded-xl bg-white/70 text-gray-800 border border-gray-300'
         />
         <textarea
-          placeholder='Message*'
+          placeholder={t('contactForm.message')}
           value={message}
           onChange={handleChange(setMessage)}
           required
@@ -145,14 +149,14 @@ const ContactForm: React.FC = () => {
           className='md:col-span-2 p-2 rounded-xl bg-white/70 text-gray-800 border border-gray-300'
         ></textarea>
         <p className='md:col-span-2 text-center text-sm text-gray-600'>
-          * All fields are required
+          {t('contactForm.allFields')}
         </p>
         <div className='md:col-span-2 flex justify-center'>
           <button
             type='submit'
             className='flex items-center gap-2 px-6 py-2 bg-green-700 text-white rounded-xl hover:bg-green-600 transition'
           >
-            Send <AiOutlineArrowRight />
+            {t('contactForm.send')} <AiOutlineArrowRight />
           </button>
         </div>
       </form>

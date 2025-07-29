@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import useTranslation from 'next-translate/useTranslation';
 
 type BannerData = {
   url: string;
@@ -12,6 +13,7 @@ type BannerData = {
 
 export default function Banner() {
   const [banner, setBanner] = useState<BannerData | null>(null);
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     const fetchBanner = async () => {
@@ -52,9 +54,11 @@ export default function Banner() {
       <div className='absolute inset-0 z-10 flex items-center justify-start px-6 sm:px-8'>
         <div className='text-gray-600 pl-4 sm:pl-48'>
           <h1 className='text-2xl sm:text-5xl font-extrabold leading-snug drop-shadow-md text-gray-500 sm:text-white'>
-            Confused?
+            {t('banner.confused')}
             <br />
-            <span className='text-gray-600 sm:text-white'>Let us help!</span>
+            <span className='text-gray-600 sm:text-white'>
+              {t('banner.help')}
+            </span>
           </h1>
         </div>
       </div>

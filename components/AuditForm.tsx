@@ -11,6 +11,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import useTranslation from 'next-translate/useTranslation';
 
 interface AuditResult {
   performance: number;
@@ -32,6 +33,7 @@ export default function AuditForm() {
   } | null>(null);
   const [dots, setDots] = useState('.');
   const [view, setView] = useState<'desktop' | 'mobile'>('desktop');
+  const { t } = useTranslation('common');
 
   useEffect(() => {
     if (!loading) return;
@@ -58,7 +60,7 @@ export default function AuditForm() {
   const handleSubmit = async () => {
     const targetUrl = url.trim();
     if (!targetUrl || !/^https?:\/\//.test(targetUrl)) {
-      toast.error('Please enter full URL including https://');
+      toast.error(t('auditForm.errorFullUrl'));
       return;
     }
     setLoading(true);
@@ -87,7 +89,7 @@ export default function AuditForm() {
       setResult(data);
       setStep('email');
     } catch (err: any) {
-      toast.error(err.message || 'Audit failed');
+      toast.error(err.message || t('auditForm.errorAuditFailed'));
     } finally {
       setLoading(false);
       clearInterval(interval);
@@ -97,7 +99,7 @@ export default function AuditForm() {
   const handleEmailSubmit = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      toast.error('Enter a valid email');
+      toast.error(t('auditForm.errorValidEmail'));
       return;
     }
     try {
@@ -120,7 +122,7 @@ export default function AuditForm() {
       );
       const snapshot = await getDocs(q);
       if (snapshot.size >= 2) {
-        toast.error('Limit reached: Only 2 audits per day allowed per email.');
+        toast.error(t('auditForm.errorLimit'));
         return;
       }
       await fetch('/api/save-lead', {
@@ -130,7 +132,7 @@ export default function AuditForm() {
       });
       setStep('results');
     } catch (err: any) {
-      toast.error('Failed to save email or check limit');
+      toast.error(t('auditForm.errorSaveEmail'));
     }
   };
 
@@ -182,18 +184,17 @@ export default function AuditForm() {
   return (
     <div className='max-w-xl mx-auto mt-12 p-6 bg-white/40 backdrop-blur-xl rounded-3xl shadow-xl'>
       <h2 className='text-xl font-bold mb-4 text-center text-gray-600'>
-        Already have a website?
+        {t('auditForm.alreadyHaveWebsite')}
       </h2>
       <p className='text-center pb-4 text-gray-500'>
-        For your existing website, an audit could help identify areas for
-        improvement.
+        {t('auditForm.auditHelp')}
       </p>
 
       {step === 'form' && (
         <>
           <input
             type='text'
-            placeholder='Enter your website URL (https://...)'
+            placeholder={t('auditForm.enterUrl')}
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             className='w-full p-3 rounded-3xl bg-white text-black mb-4 border border-gray-300 text-center'
@@ -201,7 +202,8 @@ export default function AuditForm() {
           {loading && (
             <>
               <p className='text-center text-sm text-primary font-medium mb-2'>
-                Analysing. Please wait{dots}
+                {t('auditForm.analysing')}
+                {dots}
               </p>
               <div className='w-full h-2 bg-white/20 rounded-3xl overflow-hidden mb-3'>
                 <div
@@ -217,7 +219,7 @@ export default function AuditForm() {
             disabled={loading || !url.trim()}
             className='bg-primary text-white px-6 py-2 rounded-3xl w-full'
           >
-            Run Audit
+            {t('auditForm.runAudit')}
           </button>
         </>
       )}
@@ -225,11 +227,11 @@ export default function AuditForm() {
       {step === 'email' && (
         <>
           <p className='text-primary mb-2 text-sm text-center'>
-            Enter your email to view full audit and receive future updates:
+            {t('auditForm.enterEmail')}
           </p>
           <input
             type='email'
-            placeholder='Your email'
+            placeholder={t('auditForm.yourEmail')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className='w-full p-3 rounded-lg bg-white text-black mb-4 border border-gray-300 text-center'
@@ -238,7 +240,7 @@ export default function AuditForm() {
             onClick={handleEmailSubmit}
             className='bg-primary text-white px-6 py-2 rounded-3xl w-full'
           >
-            See Results
+            {t('auditForm.seeResults')}
           </button>
         </>
       )}
@@ -246,7 +248,7 @@ export default function AuditForm() {
       {step === 'results' && result && (
         <div className='text-gray-500 mt-6 space-y-6'>
           <h3 className='font-bold text-lg mb-2 text-center'>
-            Audit Results for {url}
+            {t('auditForm.resultsFor')} {url}
           </h3>
 
           <div className='flex justify-center gap-4'>
@@ -273,14 +275,25 @@ export default function AuditForm() {
           </div>
 
           <div className='grid grid-cols-2 gap-4'>
-            {renderScoreCircle('Performance', result[view].performance)}
-            {renderScoreCircle('Accessibility', result[view].accessibility)}
-            {renderScoreCircle('Best Practices', result[view].bestPractices)}
-            {renderScoreCircle('SEO', result[view].seo)}
+            {renderScoreCircle(
+              t('auditForm.performance'),
+              result[view].performance
+            )}
+            {renderScoreCircle(
+              t('auditForm.accessibility'),
+              result[view].accessibility
+            )}
+            {renderScoreCircle(
+              t('auditForm.bestPractices'),
+              result[view].bestPractices
+            )}
+            {renderScoreCircle(t('auditForm.seo'), result[view].seo)}
           </div>
 
           <div className='mt-6 text-center'>
-            <h4 className='text-lg font-semibold mb-2'>Optimization Tips</h4>
+            <h4 className='text-lg font-semibold mb-2'>
+              {t('auditForm.optimizationTips')}
+            </h4>
             <ul className='list-disc pl-5 text-sm text-gray-500/90 space-y-1 text-left'>
               {result[view].tips?.map((tip, idx) => (
                 <li key={idx}>{tip}</li>
@@ -293,7 +306,7 @@ export default function AuditForm() {
             className='flex items-center gap-2 bg-primary text-white font-medium px-4 py-2 rounded-3xl mt-6 hover:bg-primary/70 transition-all mx-auto'
           >
             <Repeat className='w-4 h-4' />
-            Retry
+            {t('auditForm.retry')}
           </button>
         </div>
       )}

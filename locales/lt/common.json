@@ -1,0 +1,800 @@
+{
+  "welcome": "Sveiki atvykę į LB Visible!",
+  "navbar": {
+    "home": "Pagrindinis",
+    "projects": "Projektai",
+    "contact": "Kontaktai",
+    "pricing": "Kainos",
+    "blog": "Straipsniai",
+    "register": "Registracija",
+    "login": "Prisijungti",
+    "logout": "Atsijungti",
+    "brand": "Let's Be Visible"
+  },
+  "footer": {
+    "about": "Apie mus",
+    "howItWorks": "Kaip tai veikia",
+    "mobileResponsive": "Mobiliųjų įrenginių atitikimas",
+    "developerTools": "Programinės įrangos",
+    "cookies": "Slapukai",
+    "privacyPolicy": "Privatumo politika",
+    "contact": "Susisiekite",
+    "contactLink": "Susisiekite",
+    "support": "Pagalba",
+    "faq": "D.U.K.",
+    "tutorials": "Instrukcijos",
+    "terms": "Sąlygos",
+    "websites": "Svetainės",
+    "examples": "Pavyzdžiai",
+    "domains": "Domenai",
+    "hosting": "Hostingas",
+    "services": "Paslaugos",
+    "pricing": "Kainos",
+    "social": "Socialinė Media",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "youtube": "Youtube",
+    "linkedin": "LinkedIn",
+    "tiktok": "TikTok",
+    "createdBy": "Sukurta Let's Be Visible © 2024"
+  },
+  "home": {
+    "title": "Pagrindinis | LB Visible",
+    "description": "Individualios svetainės, Turinio valdymo sistemos, SEO ir marketingo įrankiai – vienoje vietoje. LBVisible užtikrina, kad jūsų svetainės būtų profesionalios ir modernios.",
+    "ogImageAlt": "LB Visible svetainės, aplikacijos ir priežiūra"
+  },
+  "bannerHero": {
+    "headline": "Tai nėra eilinė svetainė.",
+    "parallaxDemo": "Peržiūrėkite mūsų Parallax demonstraciją"
+  },
+  "auditForm": {
+    "alreadyHaveWebsite": "Jau turite svetainę?",
+    "auditHelp": "Jūsų esamai svetainei auditas gali padėti nustatyti tobulintinas sritis.",
+    "enterUrl": "Įveskite savo svetainės adresą (https://...)",
+    "analysing": "Analizuojama. Palaukite",
+    "runAudit": "Vykdyti auditą",
+    "errorFullUrl": "Įveskite pilną adresą su https://",
+    "errorAuditFailed": "Auditas nepavyko",
+    "enterEmail": "Įveskite el. paštą, kad matytumėte pilną auditą ir gautumėte naujienas:",
+    "yourEmail": "Jūsų el. paštas",
+    "seeResults": "Rodyti rezultatus",
+    "errorValidEmail": "Įveskite galiojantį el. paštą",
+    "errorLimit": "Limitas pasiektas: Vienam el. paštui leidžiami tik 2 auditai per dieną.",
+    "errorSaveEmail": "Nepavyko išsaugoti el. pašto arba patikrinti limito",
+    "resultsFor": "Audito rezultatai:",
+    "performance": "Veikimas",
+    "accessibility": "Prieinamumas",
+    "bestPractices": "Geriausios praktikos",
+    "seo": "SEO",
+    "optimizationTips": "Optimizavimo patarimai",
+    "retry": "Kartoti"
+  },
+  "blogSlide": {
+    "noPosts": "Nėra tinklaraščio įrašų.",
+    "publishedOn": "Publikuota",
+    "readMore": "Skaityti daugiau"
+  },
+  "products": {
+    "plan": "Planas",
+    "fromOnly": "Tik nuo",
+    "monthly": "mėn.",
+    "viewProject": "Peržiūrėti projektą",
+    "addToCart": "Įdėti į krepšelį",
+    "planAdded": "Planas pridėtas į krepšelį!",
+    "billedYearly": "apmokestinama kasmet geriausiai kainai"
+  },
+  "projects": {
+    "searchPlaceholder": "Ieškoti produktų",
+    "planAdded": "Planas pridėtas į krepšelį!",
+    "beginner": "Pradedantiesiems",
+    "advanced": "Pažengusiems",
+    "business": "Verslui",
+    "add": "Pridėti"
+  },
+  "pricingPlans": {
+    "planAcc": "Planą",
+    "choosePlanTitle": "Pasirinkite tobulą",
+    "subtitle": "Nuo pradinės konsultacijos iki nuolatinės priežiūros – pasirūpinsime viskuo. Vienkartinis įdiegimo mokestis ir prieinama mėnesinė priežiūra.",
+    "monthly": "Mėnesinis",
+    "yearly": "Metinis",
+    "saveUpTo": "Sutaupykite iki",
+    "planAdded": "Planas pridėtas į krepšelį",
+    "planAddFailed": "Nepavyko pridėti plano į krepšelį",
+    "beginner": "Pradedantiesiems",
+    "advanced": "Pažengusiems",
+    "business": "Verslui",
+    "beginnerSubtitle": "Puikiai tinka mažoms įmonėms",
+    "advancedSubtitle": "Populiariausias pasirinkimas",
+    "businessSubtitle": "Aukščiausias verslo sprendimas",
+    "beginnerDesc": "Profesionali pradžia jūsų verslui internete",
+    "advancedDesc": "Pilnas sprendimas augančiam verslui",
+    "businessDesc": "Individualios web aplikacijos ir pažangios funkcijos",
+    "beginnerSub": "Profesionali pradžia jūsų verslui internete",
+    "advancedSub": "Pilnas sprendimas augančiam verslui",
+    "businessSub": "Individualios web aplikacijos ir pažangios funkcijos",
+    "oneTimeSetup": "Vienkartinis įdiegimas",
+    "ongoingMaintenance": "Vėliau nuolatinė priežiūra",
+    "thenOngoingMaintenance": "Vėliau nuolatinė priežiūra",
+    "perMonth": " Mėn.",
+    "perMonthStar": "/ mėn.*",
+    "timeline": "Trukmė",
+    "revisions": "Pataisymai",
+    "support": "Pagalba",
+    "weeks23": "2-3 savaitės",
+    "weeks34": "3-4 savaitės",
+    "weeks46": "4-6 savaitės",
+    "rounds3": "3 pataisymai",
+    "rounds5": "5 pataisymai",
+    "unlimited": "Neribota",
+    "month1": "1 mėn.",
+    "months3": "3 mėn.",
+    "months6": "6 mėn.",
+    "choosePlan": "Pasirinkti planą",
+    "freeConsult": "Nemokama konsultacija • Nėra įdiegimo mokesčio",
+    "includedTitle": "Kiekviename plane įskaičiuota",
+    "ssl": "SSL sertifikatas ir saugumas",
+    "performance": "Veikimo optimizavimas",
+    "seo": "SEO ir analitikos diegimas",
+    "ongoingSupport": "Nuolatinė pagalba",
+    "billedAnnually": "* apmokestinama kartą per metus",
+    "pages3": "3 puslapiai",
+    "designColors": "Dizaino spalvos",
+    "mobileResponsive": "Prisitaikantis prie mobiliųjų įrenginių",
+    "fastCustomizable": "Greitas ir pritaikomas",
+    "customDesign": "Individualus dizainas",
+    "forms": "Formos",
+    "productsBlogPosts": "Produktai, tinklaraščio įrašai (kurti, trinti, redaguoti)",
+    "design": "Dizainas",
+    "loginRegister": "Prisijungimas / Vartotojų registracija",
+    "stripePayments": "Stripe mokėjimų integracija"
+  },
+  "howItWorks": {
+    "title": "Kaip kuriame jūsų svetainę",
+    "subtitle": "Nuo idėjos iki paleidimo – pasirūpiname viskuo. Planavimas, dizainas, kūrimas ir palaikymas. Jūs galite susitelkti į savo verslą.",
+    "consultation": "Asmeninė verslo konsultacija",
+    "brand": "Pilnas prekės ženklo ekosistemos kūrimas",
+    "content": "Turinio valdymas ir migracija",
+    "design": "Nuolatinė dizaino evoliucija",
+    "hosting": "Pilnas hostingo ir domenų valdymas",
+    "analytics": "Išplėstinė analitika ir SEO ekosistema",
+    "readMore": "Skaityti daugiau"
+  },
+  "howItWorksCards": {
+    "sectionTitle": "Kuo mes išsiskiriame",
+    "personalBusinessConsultation.title": "Asmeninė verslo konsultacija",
+    "personalBusinessConsultation.subtitle": "Išsamūs vaizdo skambučiai jūsų vizijai, tikslams ir iššūkiams suprasti",
+    "personalBusinessConsultation.1": "1:1 strateginės sesijos su verslo analize",
+    "personalBusinessConsultation.2": "Rinkos tyrimas ir konkurentų analizė",
+    "personalBusinessConsultation.3": "Vartotojo kelio žemėlapis ir konversijų optimizavimas",
+    "personalBusinessConsultation.4": "Prekės ženklo pozicionavimo ir žinučių strategija",
+    "personalBusinessConsultation.5": "Augimo planavimas ir skaitmeninis veiksmų planas",
+    "personalBusinessConsultation.link": "Tampame jūsų skaitmeniniais verslo partneriais, o ne tik programuotojais",
+
+    "completeBrandEcosystem.title": "Pilna prekės ženklo ekosistema",
+    "completeBrandEcosystem.subtitle": "Logotipas, baneriai, prekės ženklo gairės ir vizualinis identitetas",
+    "completeBrandEcosystem.1": "Individualus logotipas su keliais variantais",
+    "completeBrandEcosystem.2": "Prekės ženklo spalvų paletė ir tipografija",
+    "completeBrandEcosystem.3": "Marketingo medžiaga (baneriai, socialiniai tinklai)",
+    "completeBrandEcosystem.4": "Prekės ženklo gairės ir stiliaus dokumentacija",
+    "completeBrandEcosystem.5": "Spaudos ir skaitmeninių priemonių kūrimas",
+    "completeBrandEcosystem.link": "Nuosekli prekės ženklo patirtis visuose taškuose",
+
+    "contentManagement.title": "Turinio valdymas ir migracija",
+    "contentManagement.subtitle": "Rūpinamės visais jūsų turinio įkėlimais, organizavimu ir optimizavimu",
+    "contentManagement.1": "Produktų katalogo diegimas su SEO optimizavimu",
+    "contentManagement.2": "Tinklaraščio turinio migracija ir formatavimas",
+    "contentManagement.3": "Vaizdų optimizavimas ir alt tekstų kūrimas",
+    "contentManagement.4": "Kategorijų ir žymų organizavimas",
+    "contentManagement.5": "Turinio kalendorius ir publikavimo strategija",
+    "contentManagement.link": "Jūsų turinys – tvarkingai organizuotas ir optimizuotas",
+
+    "continuousDesignEvolution.title": "Nuolatinė dizaino evoliucija",
+    "continuousDesignEvolution.subtitle": "Nuolatiniai dizaino patobulinimai ir naujų funkcijų diegimas",
+    "continuousDesignEvolution.1": "Mėnesiniai dizaino peržiūros ir atnaujinimai",
+    "continuousDesignEvolution.2": "A/B testavimas konversijų optimizavimui",
+    "continuousDesignEvolution.3": "Vartotojų atsiliepimų įgyvendinimas",
+    "continuousDesignEvolution.4": "Sezoniniai dizaino atnaujinimai",
+    "continuousDesignEvolution.5": "Naujų funkcijų kūrimas ir integracija",
+    "continuousDesignEvolution.link": "Jūsų svetainė auga kartu su jūsų verslu",
+
+    "completeHosting.title": "Pilnas hostingas ir domenų valdymas",
+    "completeHosting.subtitle": "Pilnas hostingo diegimas su jūsų pasirinktu domenu",
+    "completeHosting.1": "Domeno registracija ir DNS konfigūracija",
+    "completeHosting.2": "SSL sertifikato diegimas ir valdymas",
+    "completeHosting.3": "CDN diegimas pasauliniam našumui",
+    "completeHosting.4": "El. pašto hostingas ir profesionalūs adresai",
+    "completeHosting.5": "Atsarginių kopijų ir atkūrimo sistemos",
+    "completeHosting.link": "Viskas vienoje vietoje – techninė infrastruktūra",
+
+    "advancedAnalytics.title": "Išplėstinė analitika ir SEO ekosistema",
+    "advancedAnalytics.subtitle": "Išsamus stebėjimas, analizė ir paieškos optimizavimas",
+    "advancedAnalytics.1": "Google Analytics 4 ir Search Console diegimas",
+    "advancedAnalytics.2": "Konversijų stebėjimas ir tikslų konfigūracija",
+    "advancedAnalytics.3": "SEO auditas ir nuolatinė optimizacija",
+    "advancedAnalytics.4": "Lokalus SEO ir Google My Business optimizavimas",
+    "advancedAnalytics.5": "Našumo stebėjimas ir ataskaitos",
+    "advancedAnalytics.link": "Duomenimis grįsti sprendimai nuolatiniam augimui"
+  },
+  "contactDiv": {
+    "title": "Susisiekite",
+    "desc": "Turite klausimų ar reikia pagalbos? Drąsiai susisiekite su mumis.",
+    "button": "Susisiekti"
+  },
+  "banner": {
+    "confused": "Pasimetėte?",
+    "help": "Padėsime!"
+  },
+  "contactForm": {
+    "getInTouch": "Susisiekite",
+    "haveQuestion": "Turite klausimų? Drąsiai susisiekite su mumis!",
+    "name": "Vardas*",
+    "phone": "Telefono numeris*",
+    "subject": "Tema*",
+    "email": "El. paštas*",
+    "message": "Žinutė*",
+    "allFields": "* Visi laukai yra privalomi",
+    "send": "Siųsti",
+    "success": "Žinutė sėkmingai išsiųsta!",
+    "successDesc": "Netrukus su jumis susisieksime ir atsakysime į visus klausimus.",
+    "successThanks": "Ačiū, kad susisiekėte!",
+    "invalidPhone": "Įveskite galiojantį telefono numerį.",
+    "fail": "Nepavyko išsiųsti žinutės.",
+    "error": "Įvyko klaida."
+  },
+  "blog": {
+    "relatedPosts": "Susiję įrašai",
+    "publishedOn": "Publikuota",
+    "readMore": "Skaityti daugiau",
+    "noPosts": "Nėra tinklaraščio įrašų."
+  },
+  "howItWorksPage": {
+    "title": "Kaip tai veikia",
+    "desc": "Individualios svetainės paleidimas su LB Visible yra sklandus, greitas ir optimizuotas jūsų sėkmei. Štai kaip mes dirbame nuo idėjos iki gyvos svetainės:",
+    "choosePlan": "Pasirinkite planą:",
+    "choosePlanDesc": "Pasirinkite paslaugų paketą (Pradedantiesiems, Pažengusiems ar Verslui), kuris atitinka jūsų poreikius ir biudžetą.",
+    "fillDetails": "Užpildykite duomenis:",
+    "fillDetailsDesc": "Po apmokėjimo surinksime pagrindinę projekto informaciją – jūsų tikslus, turinį, prekės ženklo vizualus ir dizaino kryptį.",
+    "weBuild": "Kuriame jūsų svetainę:",
+    "weBuildDesc": "Mūsų komanda pradeda programuoti ir kurti svetainę naudodama modernius įrankius (Next.js, Firebase, Tailwind) su SEO ir mobiliųjų optimizavimu.",
+    "reviewApprove": "Peržiūrite ir patvirtinate:",
+    "reviewApproveDesc": "Gausite gyvos peržiūros nuorodą, kad galėtumėte įvertinti rezultatą ir pateikti paskutinius pataisymus.",
+    "goLive": "Paleidžiame svetainę:",
+    "goLiveDesc": "Patvirtinus, publikuojame svetainę jūsų domene su itin greitu hostingu ir, jei reikia, prijungiame Stripe ar ImageKit.",
+    "manageCMS": "Valdykite su TVS:",
+    "manageCMSDesc": "Jei jūsų plane įtraukta, prisijunkite bet kada ir atnaujinkite turinį – produktus, tinklaraščio įrašus, nuotraukas – be programavimo.",
+    "staySupported": "Nuolatinė pagalba:",
+    "staySupportedDesc": "Esame čia atnaujinimams, plėtrai ar našumo gerinimui. Jūs gaunate nuolatinę vertę, o ne tik paleidimą."
+  },
+  "howItWorksTech": {
+    "sectionTitle": "Sukurta naudojant moderniausias technologijas",
+    "builtFromScratch.title": "Kodas nuo nulio pagal jūsų poreikius",
+    "builtFromScratch.desc": "Kiekviena kodo eilutė rašoma individualiai jūsų verslui",
+    "builtFromScratch.1": "Jokių perteklinių temų ar nereikalingų įskiepių",
+    "builtFromScratch.2": "Pixel-perfect dizaino įgyvendinimas",
+    "builtFromScratch.3": "Optimizuota pagal jūsų specifinius poreikius",
+    "builtFromScratch.4": "Pilna funkcionalumo kontrolė",
+    "builtFromScratch.5": "Ateičiai pritaikyta ir lengvai plečiama architektūra",
+    "modernStack.title": "Next.js ir modernus technologijų rinkinys",
+    "modernStack.desc": "Pažangiausios technologijos neprilygstamam našumui",
+    "modernStack.1": "Žaibiškas įkėlimo greitis (iki 2 sek.)",
+    "modernStack.2": "Automatinė vaizdų optimizacija ir tingus įkėlimas",
+    "modernStack.3": "Server-side renderinimas geresniam SEO",
+    "modernStack.4": "Progresyvios web aplikacijos galimybės",
+    "modernStack.5": "Edge kompiuterija pasauliniam našumui",
+    "mobileFirst.title": "Mobile-First dizaino principas",
+    "mobileFirst.desc": "Pirmiausia mobiliesiems, vėliau pritaikoma kompiuteriams",
+    "mobileFirst.1": "Jutikliams pritaikytos sąsajos ir veiksmai",
+    "mobileFirst.2": "Prisitaikantis dizainas, veikiantis visuose įrenginiuose",
+    "mobileFirst.3": "Mobiliesiems skirti funkcionalumai ir optimizacijos",
+    "mobileFirst.4": "Programėlei artima patirtis",
+    "mobileFirst.5": "Užtikrintas suderinamumas su visomis naršyklėmis",
+    "enterpriseSecurity.title": "Verslo lygio saugumas",
+    "enterpriseSecurity.desc": "Bankinio lygio saugumas kiekviename projekte",
+    "enterpriseSecurity.1": "Headless architektūra sumažina rizikas",
+    "enterpriseSecurity.2": "Automatiniai saugumo atnaujinimai ir stebėjimas",
+    "enterpriseSecurity.3": "SSL/TLS šifravimas pagal nutylėjimą",
+    "enterpriseSecurity.4": "DDoS apsauga ir ugniasienė",
+    "enterpriseSecurity.5": "Reguliarūs saugumo auditai ir testavimas"
+  },
+  "howItWorksWhyUs": {
+    "sectionTitle": "Kodėl rinktis mus, o ne kitus?",
+    "careSuccess.title": "Iš tikrųjų rūpinamės jūsų sėkme",
+    "careSuccess.desc": "Jūsų augimas mums svarbiau nei tik projekto užbaigimas",
+    "careSuccess.1": "Kas mėnesį tikriname rezultatus ir aptariame progresą",
+    "careSuccess.2": "Proaktyviai siūlome tobulinimus",
+    "careSuccess.3": "Dalijamės rinkos naujovėmis ir rekomendacijomis",
+    "careSuccess.4": "Ilgalaikės partnerystės požiūris",
+
+    "humanCentered.title": "Žmogui orientuota plėtra",
+    "humanCentered.desc": "Tikri žmonės, tikri pokalbiai, tikri sprendimai",
+    "humanCentered.1": "Tiesioginis kontaktas su programuotojais (be tarpininkų)",
+    "humanCentered.2": "Vaizdo skambučiai dėl svarbiausių sprendimų",
+    "humanCentered.3": "Skaidrus kūrimo procesas",
+    "humanCentered.4": "Reguliarūs atnaujinimai ir demonstracijos",
+
+    "innovationFirst.title": "Inovacijų pirmumas",
+    "innovationFirst.desc": "Kuriame ne tik svetaines, bet ir skaitmenines patirtis",
+    "innovationFirst.1": "Naujausių technologijų diegimas ir pritaikymas",
+    "innovationFirst.2": "Kūrybiškas problemų sprendimas",
+    "innovationFirst.3": "Individualūs sprendimai unikaliems iššūkiams",
+    "innovationFirst.4": "Ateities planavimas ir architektūra",
+
+    "resultsDriven.title": "Rezultatais grįstas požiūris",
+    "resultsDriven.desc": "Kiekvienas sprendimas priimamas pagal jūsų verslo tikslus",
+    "resultsDriven.1": "Konversijų optimizavimas nuo pradžių",
+    "resultsDriven.2": "Našumo rodiklių ir KPI stebėjimas",
+    "resultsDriven.3": "Investicijų grąžą didinantys funkcionalumai",
+    "resultsDriven.4": "Sprendimai paremti duomenimis"
+  },
+  "mobileResponsive": {
+    "title": "Mobiliųjų įrenginių atitikimas",
+    "description": "LB svetainės yra visiškai pritaikytos mobiliems įrenginiams, užtikrindamos neprilygstamą našumą ir prieinamumą visuose ekrano dydžiuose.",
+    "pageTitle": "Mobiliųjų įrenginių atitikimas | LB Svetainės",
+    "heading": "Mobiliųjų įrenginių atitikimas",
+    "subtitle": "Šiandien vartotojai naršo iš telefonų, planšetų ir nešiojamų kompiuterių. Kuriame kiekvieną svetainę, kad ji prisitaikytų prie bet kokio ekrano, suteikdami jūsų lankytojams neprilygstamą patirtį, kur jie bebūtų.",
+    "benefits": {
+      "userExperience": {
+        "title": "Geresnė vartotojo patirtis:",
+        "desc": "Jūsų svetainė išlieka lengvai naudojama ir vizualiai patraukli visuose įrenginiuose."
+      },
+      "seoRankings": {
+        "title": "Gerinti SEO reitingai:",
+        "desc": "Google palankiai vertina mobiliems įrenginiams pritaikytas svetaines paieškos rezultatuose."
+      },
+      "accessibility": {
+        "title": "Didesnis prieinamumas:",
+        "desc": "Pasiekiame daugiau žmonių, įskaitant mobiliems įrenginiams orientuotus vartotojus ir tuos, kuriems reikia prieinamumo."
+      },
+      "brandReputation": {
+        "title": "Stipresnis prekės ženklo autoritetas:",
+        "desc": "Profesionalus, nuosekus dizainas kuria pasitikėjimą ir patikimumą."
+      },
+      "conversions": {
+        "title": "Didesnės konversijos:",
+        "desc": "Prisitaikantis dizainas padeda pritraukti daugiau potencialių klientų, pardavimų ir klientų įsitraukimo."
+      }
+    }
+  },
+  "developerTools": {
+    "title": "Programuotojų įrankiai",
+    "description": "Profesionalūs programuotojų įrankiai ir ištekliai moderniam interneto plėtros darbui.",
+    "pageTitle": "Programuotojų įrankiai | LB Svetainės",
+    "heading": "Programuotojų įrankiai",
+    "subtitle": "Prieiga prie profesionalaus plėtros įrankių ir išteklių, kad pagerintumėte savo interneto plėtros darbą.",
+    "tools": {
+      "codeEditor": {
+        "title": "Kodo redaktorius",
+        "desc": "Išplėstinis kodo redagavimas su sintaksės paryškinimu ir automatinio užpildymo funkcija."
+      },
+      "debugger": {
+        "title": "Derintuvas",
+        "desc": "Galingi derinimo įrankiai problemų nustatymui ir ištaisymui."
+      },
+      "versionControl": {
+        "title": "Versijų kontrolė",
+        "desc": "Git integracija pakeitimų stebėjimui ir bendradarbiavimui."
+      },
+      "testing": {
+        "title": "Testavimo įrankiai",
+        "desc": "Išsamus testavimo rinkinys kokybės užtikrinimui."
+      },
+      "deployment": {
+        "title": "Diegimo įrankiai",
+        "desc": "Optimizuoti diegimo procesai greitesniems išleidimams."
+      }
+    }
+  },
+  "cookiesInfo": {
+    "title": "Slapukų informacija",
+    "description": "Sužinokite, kaip naudojame slapukus ir valdykite savo nuostatas.",
+    "pageTitle": "Slapukų informacija | LB Svetainės",
+    "heading": "Slapukų informacija",
+    "subtitle": "Naudojame slapukus, kad pagerintumėte naršymo patirtį ir suteiktumėme individualizuotą turinį.",
+    "whatAreCookies": {
+      "title": "Kas yra slapukai?",
+      "desc": "Slapukai yra maži tekstiniai failai, saugomi jūsų įrenginyje, kurie padeda mums pagerinti jūsų patirtį."
+    },
+    "types": {
+      "essential": {
+        "title": "Būtini slapukai",
+        "desc": "Reikalingi pagrindiniam svetainės funkcionalumui ir saugumui."
+      },
+      "preference": {
+        "title": "Nuostatų slapukai",
+        "desc": "Prisimena jūsų kalbos ir išdėstymo nuostatas."
+      },
+      "analytics": {
+        "title": "Analitikos slapukai",
+        "desc": "Padeda mums suprasti, kaip vartotojai sąveikauja su mūsų svetaine."
+      }
+    },
+    "management": {
+      "title": "Slapukų valdymas",
+      "desc": "Galite valdyti arba atšaukti savo slapukų sutikimą bet kada naudodami mūsų slapukų banerį arba naršyklės nustatymus."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privatumo ir slapukų politika",
+    "description": "Sužinokite, kaip LB Svetainės tvarko jūsų duomenis ir slapukų nuostatas, laikydamasi GDPR reikalavimų.",
+    "pageTitle": "Privatumo politika | LB Svetainės",
+    "intro": "LB Svetainės gerbiame jūsų privatumą ir esame įsipareigoję apsaugoti jūsų asmeninę informaciją. Ši politika paaiškina, kaip renkame, naudojame ir saugome jūsų duomenis – ypač kalbant apie slapukų naudojimą ir GDPR atitiktį.",
+    "whatAreCookies": {
+      "title": "Kas yra slapukai?",
+      "desc": "Slapukai yra maži tekstiniai failai, saugomi jūsų įrenginyje. Jie padeda mums pagerinti jūsų patirtį, prisimindami nuostatas ir suteikdami naudojimo analitiką."
+    },
+    "typesOfCookies": {
+      "title": "Slapukų tipai, kuriuos naudojame",
+      "essential": {
+        "title": "Būtini slapukai:",
+        "desc": "Reikalingi pagrindiniam svetainės funkcionalumui ir autentifikacijai."
+      },
+      "preference": {
+        "title": "Nuostatų slapukai:",
+        "desc": "Prisimena jūsų kalbos ir išdėstymo nuostatas."
+      },
+      "analytics": {
+        "title": "Analitikos slapukai:",
+        "desc": "Padeda mums suprasti, kaip vartotojai sąveikauja su mūsų svetaine (Google Analytics, jei sutinkama)."
+      }
+    },
+    "manageCookies": {
+      "title": "Kaip galite valdyti slapukus",
+      "desc": "Galite valdyti arba atšaukti savo slapukų sutikimą bet kada naudodami mūsų slapukų banerį arba naršyklės nustatymus. Slapukų atsisakymas gali apriboti kai kuriuos funkcionalumus."
+    },
+    "lastUpdated": "Paskutinį kartą atnaujinta:"
+  },
+  "support": {
+    "title": "Pagalba",
+    "description": "Gaukite pagalbą ir palaikymą savo LB Svetainės paslaugoms.",
+    "pageTitle": "Pagalba | LB Svetainės",
+    "heading": "Pagalba",
+    "subtitle": "Esame čia, kad padėtumėme jums su bet kokiais klausimais ar problemomis.",
+    "contact": {
+      "title": "Susisiekite su pagalba",
+      "desc": "Susisiekite su mūsų pagalbos komanda, kad gautumėte nedelsiant pagalbos."
+    },
+    "faq": {
+      "title": "Dažnai užduodami klausimai",
+      "desc": "Raskite atsakymus į dažnus klausimus ir problemas."
+    },
+    "documentation": {
+      "title": "Dokumentacija",
+      "desc": "Prieiga prie išsamių vadovų ir instrukcijų."
+    },
+    "community": {
+      "title": "Bendruomenė",
+      "desc": "Susisiekite su kitais vartotojais ir dalinkitės patirtimi."
+    }
+  },
+  "faq": {
+    "title": "Dažnai užduodami klausimai",
+    "description": "Raskite atsakymus į dažnus klausimus apie mūsų paslaugas.",
+    "pageTitle": "D.U.K. | LB Svetainės",
+    "heading": "Dažnai užduodami klausimai",
+    "subtitle": "Raskite atsakymus į dažniausius klausimus apie mūsų paslaugas ir svetainės kūrimo procesą.",
+    "questions": {
+      "pricing": {
+        "question": "Kiek kainuoja svetainė?",
+        "answer": "Mūsų kainos prasideda nuo 299€ už pagrindines svetaines ir kyla priklausomai nuo jūsų specifinių poreikių. Siūlome tris pagrindinius planus: Pradedantiesiems, Pažengusiems ir Verslui."
+      },
+      "timeline": {
+        "question": "Kiek laiko užtrunka sukurti svetainę?",
+        "answer": "Paprastai svetainės užtrunka 2-6 savaites, priklausomai nuo sudėtingumo. Pateiksime konkretų laiko planą per pradinę konsultaciją."
+      },
+      "cms": {
+        "question": "Ar galiu pats atnaujinti savo svetainės turinį?",
+        "answer": "Taip! Suteikiame vartotojui draugišką turinio valdymo sistemą (TVS), kuri leidžia lengvai atnaujinti tekstą, nuotraukas ir kitą turinį be techninių žinių."
+      },
+      "hosting": {
+        "question": "Ar teikiate hostingo ir domenų paslaugas?",
+        "answer": "Taip, tvarkome visą hostingo ir domenų nustatymą. Naudojame patikimus, greitus hostingo tiekėjus ir galime registruoti domenus jums arba dirbti su jūsų esamu domenu."
+      },
+      "support": {
+        "question": "Kokią pagalbą teikiate?",
+        "answer": "Teikiame nuolatinę pagalbą, įskaitant atnaujinimus, priežiūrą ir techninę pagalbą. Pagalbos trukmė skiriasi priklausomai nuo plano, nuo 1 mėnesio iki 6 mėnesių."
+      },
+      "seo": {
+        "question": "Ar įtraukiate SEO optimizavimą?",
+        "answer": "Taip, visos mūsų svetainės įtraukia pagrindinį SEO optimizavimą. Taip pat siūlome pažangius SEO servisus geresniems paieškos variklių reitingams."
+      }
+    }
+  },
+  "tutorials": {
+    "title": "Instrukcijos",
+    "description": "Sužinokite, kaip efektyviai naudoti savo svetainę ir TVS.",
+    "pageTitle": "Instrukcijos | LB Svetainės",
+    "heading": "Instrukcijos",
+    "subtitle": "Sužinokite, kaip efektyviai naudoti savo svetainę ir turinio valdymo sistemą.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Pradžia",
+        "desc": "Pagrindinės instrukcijos naujiems vartotojams"
+      },
+      "contentManagement": {
+        "title": "Turinio valdymas",
+        "desc": "Kaip atnaujinti ir valdyti savo turinį"
+      },
+      "seo": {
+        "title": "SEO ir analitika",
+        "desc": "Optimizuokite savo svetainę paieškos varikliams"
+      },
+      "maintenance": {
+        "title": "Priežiūra",
+        "desc": "Laikykite savo svetainę sklandžiai veikiančią"
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Paslaugų sąlygos",
+    "description": "Mūsų sąlygos ir sąlygos svetainės kūrimo paslaugoms.",
+    "pageTitle": "Paslaugų sąlygos | LB Svetainės",
+    "heading": "Paslaugų sąlygos",
+    "subtitle": "Prašome atidžiai perskaityti šias sąlygas prieš naudodami mūsų paslaugas.",
+    "sections": {
+      "acceptance": {
+        "title": "Sąlygų priėmimas",
+        "content": "Pasinaudodami mūsų paslaugomis, priimate ir sutinkate laikytis šio susitarimo sąlygų ir nuostatų."
+      },
+      "services": {
+        "title": "Paslaugos",
+        "content": "Teikiame svetainės kūrimo, hostingo ir priežiūros paslaugas, kaip aprašyta mūsų paslaugų paketuose."
+      },
+      "payment": {
+        "title": "Mokėjimo sąlygos",
+        "content": "Mokėjimas reikalaujamas iš anksto už visas paslaugas. Priimame pagrindines kreditines korteles ir banko pavedimus."
+      },
+      "intellectualProperty": {
+        "title": "Intelektinė nuosavybė",
+        "content": "Po visiško mokėjimo jums priklauso jūsų svetainės dizaino ir turinio teisės, išskyrus trečiųjų šalių komponentus."
+      },
+      "limitation": {
+        "title": "Atsakomybės apribojimas",
+        "content": "Nesame atsakingi už bet kokius netiesioginius, atsitiktinius ar pasekmių nuostolius, kylančius naudojant mūsų paslaugas."
+      }
+    }
+  },
+  "domains": {
+    "title": "Domenai",
+    "description": "Profesionalūs domenų registracijos ir valdymo servisai.",
+    "pageTitle": "Domenai | LB Svetainės",
+    "heading": "Domenų servisai",
+    "subtitle": "Profesionalūs domenų registracijos ir valdymo servisai, kad įsitvirtintumėte internete.",
+    "services": {
+      "registration": {
+        "title": "Domenų registracija",
+        "desc": "Saugi ir patikima domenų registracija su konkurencingomis kainomis."
+      },
+      "management": {
+        "title": "Domenų valdymas",
+        "desc": "Lengvai naudojami įrankiai domenų nustatymų ir DNS valdymui."
+      },
+      "transfer": {
+        "title": "Domenų perkėlimas",
+        "desc": "Sklandus esamų domenų perkėlimas į mūsų platformą."
+      },
+      "protection": {
+        "title": "Domenų apsauga",
+        "desc": "Papildomi saugumo funkcionalumai, apsaugantys jūsų domeną nuo neautorizuoto prieigos."
+      }
+    }
+  },
+  "hosting": {
+    "title": "Hostingas",
+    "description": "Greiti, patikimi hostingo sprendimai jūsų svetainei.",
+    "pageTitle": "Hostingas | LB Svetainės",
+    "heading": "Hostingo servisai",
+    "subtitle": "Greiti, patikimi ir saugūs hostingo sprendimai, kad jūsų svetainė veiktų sklandžiai.",
+    "features": {
+      "speed": {
+        "title": "Žaibiškai greitas",
+        "desc": "Optimizuoti serveriai maksimaliam įkėlimo greičiui ir našumui."
+      },
+      "security": {
+        "title": "Verslo lygio saugumas",
+        "desc": "SSL sertifikatai, DDoS apsauga ir reguliarūs saugumo atnaujinimai."
+      },
+      "reliability": {
+        "title": "99,9% veikimo laikas",
+        "desc": "Garantuotas veikimo laikas su automatinėmis atsarginėmis kopijomis ir atkūrimo sistema."
+      },
+      "support": {
+        "title": "24/7 pagalba",
+        "desc": "Visą parą techninė pagalba bet kokiems hostingo klausimams."
+      }
+    }
+  },
+  "services": {
+    "title": "Paslaugos",
+    "description": "Išsamūs interneto plėtros ir skaitmeniniai servisai.",
+    "pageTitle": "Paslaugos | LB Svetainės",
+    "heading": "Mūsų paslaugos",
+    "subtitle": "Išsamūs interneto plėtros ir skaitmeniniai servisai, kad augtų jūsų verslas internete.",
+    "webDevelopment": {
+      "title": "Interneto plėtra",
+      "desc": "Individualios svetainės, sukurtos naudojant modernias technologijas ir geriausias praktikas."
+    },
+    "cms": {
+      "title": "Turinio valdymas",
+      "desc": "Vartotojui draugiška TVS lengvam turinio atnaujinimui ir valdymui."
+    },
+    "seo": {
+      "title": "SEO ir analitika",
+      "desc": "Paieškos variklių optimizavimas ir našumo stebėjimas."
+    },
+    "hosting": {
+      "title": "Hostingas ir domenai",
+      "desc": "Patikimi hostingo ir domenų valdymo servisai."
+    },
+    "maintenance": {
+      "title": "Nuolatinė pagalba",
+      "desc": "Nuolatinė priežiūra ir pagalba jūsų svetainei."
+    }
+  },
+  "serviceBanner": {
+    "whatMakesUsDifferent": "Kuo mes išsiskiriame",
+    "builtWithModernTechnology": "Sukurta naudojant moderniausias technologijas",
+    "whyChooseUs": "Kodėl rinktis mus, o ne kitus?",
+    "uniqueServices": {
+      "personalBusinessConsultation": {
+        "title": "Asmeninė verslo konsultacija",
+        "description": "Išsamūs vaizdo skambučiai jūsų vizijai, tikslams ir iššūkiams suprasti",
+        "details": [
+          "1:1 strateginės sesijos su verslo analize",
+          "Rinkos tyrimas ir konkurentų analizė",
+          "Vartotojo kelio žemėlapis ir konversijų optimizavimas",
+          "Prekės ženklo pozicionavimo ir žinučių strategija",
+          "Augimo planavimas ir skaitmeninis veiksmų planas"
+        ],
+        "highlight": "Tampame jūsų skaitmeniniais verslo partneriais, o ne tik programuotojais"
+      },
+      "completeBrandEcosystem": {
+        "title": "Pilna prekės ženklo ekosistema",
+        "description": "Logotipas, baneriai, prekės ženklo gairės ir vizualinis identitetas",
+        "details": [
+          "Individualus logotipas su keliais variantais",
+          "Prekės ženklo spalvų paletė ir tipografija",
+          "Marketingo medžiaga (baneriai, socialiniai tinklai)",
+          "Prekės ženklo gairės ir stiliaus dokumentacija",
+          "Spaudos ir skaitmeninių priemonių kūrimas"
+        ],
+        "highlight": "Nuosekli prekės ženklo patirtis visuose taškuose"
+      },
+      "contentManagement": {
+        "title": "Turinio valdymas ir migracija",
+        "description": "Rūpinamės visais jūsų turinio įkėlimais, organizavimu ir optimizavimu",
+        "details": [
+          "Produktų katalogo diegimas su SEO optimizavimu",
+          "Tinklaraščio turinio migracija ir formatavimas",
+          "Vaizdų optimizavimas ir alt tekstų kūrimas",
+          "Kategorijų ir žymų organizavimas",
+          "Turinio kalendorius ir publikavimo strategija"
+        ],
+        "highlight": "Jūsų turinys – tvarkingai organizuotas ir optimizuotas"
+      },
+      "continuousDesignEvolution": {
+        "title": "Nuolatinė dizaino evoliucija",
+        "description": "Nuolatiniai dizaino patobulinimai ir naujų funkcijų diegimas",
+        "details": [
+          "Mėnesiniai dizaino peržiūros ir atnaujinimai",
+          "A/B testavimas konversijų optimizavimui",
+          "Vartotojų atsiliepimų įgyvendinimas",
+          "Sezoniniai dizaino atnaujinimai",
+          "Naujų funkcijų kūrimas ir integracija"
+        ],
+        "highlight": "Jūsų svetainė auga kartu su jūsų verslu"
+      },
+      "completeHosting": {
+        "title": "Pilnas hostingas ir domenų valdymas",
+        "description": "Pilnas hostingo diegimas su jūsų pasirinktu domenu",
+        "details": [
+          "Domeno registracija ir DNS konfigūracija",
+          "SSL sertifikato diegimas ir valdymas",
+          "CDN diegimas pasauliniam našumui",
+          "El. pašto hostingas ir profesionalūs adresai",
+          "Atsarginių kopijų ir atkūrimo sistemos"
+        ],
+        "highlight": "Viskas vienoje vietoje – techninė infrastruktūra"
+      },
+      "advancedAnalytics": {
+        "title": "Išplėstinė analitika ir SEO ekosistema",
+        "description": "Išsamus stebėjimas, analizė ir paieškos optimizavimas",
+        "details": [
+          "Google Analytics 4 ir Search Console diegimas",
+          "Konversijų stebėjimas ir tikslų konfigūracija",
+          "SEO auditas ir nuolatinė optimizacija",
+          "Lokalus SEO ir Google My Business optimizavimas",
+          "Našumo stebėjimas ir ataskaitos"
+        ],
+        "highlight": "Duomenimis grįsti sprendimai nuolatiniam augimui"
+      }
+    },
+    "modernApproach": {
+      "builtFromScratch": {
+        "title": "Kodas nuo nulio pagal jūsų poreikius",
+        "description": "Kiekviena kodo eilutė rašoma individualiai jūsų verslui",
+        "benefits": [
+          "Jokių perteklinių temų ar nereikalingų įskiepių",
+          "Pixel-perfect dizaino įgyvendinimas",
+          "Optimizuota pagal jūsų specifinius poreikius",
+          "Pilna funkcionalumo kontrolė",
+          "Ateičiai pritaikyta ir lengvai plečiama architektūra"
+        ]
+      },
+      "nextJsModernStack": {
+        "title": "Next.js ir modernus technologijų rinkinys",
+        "description": "Pažangiausios technologijos neprilygstamam našumui",
+        "benefits": [
+          "Žaibiškas įkėlimo greitis (iki 2 sek.)",
+          "Automatinė vaizdų optimizacija ir tingus įkėlimas",
+          "Server-side renderinimas geresniam SEO",
+          "Progresyvios web aplikacijos galimybės",
+          "Edge kompiuterija pasauliniam našumui"
+        ]
+      },
+      "mobileFirstDesign": {
+        "title": "Mobile-First dizaino principas",
+        "description": "Pirmiausia mobiliesiems, vėliau pritaikoma kompiuteriams",
+        "benefits": [
+          "Jutikliams pritaikytos sąsajos ir veiksmai",
+          "Prisitaikantis dizainas, veikiantis visuose įrenginiuose",
+          "Mobiliesiems skirti funkcionalumai ir optimizacijos",
+          "Programėlei artima patirtis",
+          "Užtikrintas suderinamumas su visomis naršyklėmis"
+        ]
+      },
+      "enterpriseSecurity": {
+        "title": "Verslo lygio saugumas",
+        "description": "Bankinio lygio saugumas kiekviename projekte",
+        "benefits": [
+          "Headless architektūra sumažina rizikas",
+          "Automatiniai saugumo atnaujinimai ir stebėjimas",
+          "SSL/TLS šifravimas pagal nutylėjimą",
+          "DDoS apsauga ir ugniasienė",
+          "Reguliarūs saugumo auditai ir testavimas"
+        ]
+      }
+    },
+    "uniqueDifferentiators": {
+      "careAboutSuccess": {
+        "title": "Iš tikrųjų rūpinamės jūsų sėkme",
+        "description": "Jūsų augimas mums svarbiau nei tik projekto užbaigimas",
+        "proof": [
+          "Kas mėnesį tikriname rezultatus ir aptariame progresą",
+          "Proaktyviai siūlome tobulinimus",
+          "Dalijamės rinkos naujovėmis ir rekomendacijomis",
+          "Ilgalaikės partnerystės požiūris"
+        ]
+      },
+      "humanCenteredDevelopment": {
+        "title": "Žmogui orientuota plėtra",
+        "description": "Tikri žmonės, tikri pokalbiai, tikri sprendimai",
+        "proof": [
+          "Tiesioginis kontaktas su programuotojais (be tarpininkų)",
+          "Vaizdo skambučiai dėl svarbiausių sprendimų",
+          "Skaidrus kūrimo procesas",
+          "Reguliarūs atnaujinimai ir demonstracijos"
+        ]
+      },
+      "innovationFirst": {
+        "title": "Inovacijų pirmumas",
+        "description": "Kuriame ne tik svetaines, bet ir skaitmenines patirtis",
+        "proof": [
+          "Naujausių technologijų diegimas ir pritaikymas",
+          "Kūrybiškas problemų sprendimas",
+          "Individualūs sprendimai unikaliems iššūkiams",
+          "Ateities planavimas ir architektūra"
+        ]
+      },
+      "resultsDriven": {
+        "title": "Rezultatais grįstas požiūris",
+        "description": "Kiekvienas sprendimas priimamas pagal jūsų verslo tikslus",
+        "proof": [
+          "Konversijų optimizavimas nuo pradžių",
+          "Našumo rodiklių ir KPI stebėjimas",
+          "Investicijų grąžą didinantys funkcionalumai",
+          "Sprendimai paremti duomenimis"
+        ]
+      }
+    }
+  }
+}

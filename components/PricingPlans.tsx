@@ -17,6 +17,8 @@ import {
 } from './ui/card';
 import { Button } from './ui/button';
 import { FiCheck } from 'react-icons/fi';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 interface Product {
   id: string;
@@ -95,16 +97,65 @@ const getDiscountPercent = (
   return percent > 0 ? percent : null;
 };
 
+// Helper to get timeline, revisions, and support for each plan
+function getPlanStats(title: string) {
+  if (title === 'Beginner')
+    return {
+      timeline: '2-3 weeks',
+      revisions: '3 rounds',
+      support: '1 month',
+    };
+  if (title === 'Advanced')
+    return {
+      timeline: '3-4 weeks',
+      revisions: '5 rounds',
+      support: '3 months',
+    };
+  if (title === 'Business')
+    return {
+      timeline: '4-6 weeks',
+      revisions: 'Unlimited',
+      support: '6 months',
+    };
+  return { timeline: '', revisions: '', support: '' };
+}
+
+// Helper to get main description for each plan
+function getPlanDescription(title: string) {
+  if (title === 'Beginner')
+    return 'Get your business online with a professional presence';
+  if (title === 'Advanced') return 'Complete solution for growing businesses';
+  if (title === 'Business')
+    return 'Custom web applications and advanced features';
+  return '';
+}
+
 const PricingPlans: React.FC<Props> = ({ products }) => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>(
     'yearly'
   );
   const { addProduct } = useCart();
+  const { t, lang } = useTranslation('common');
+  const { locale } = useRouter();
+
+  // Helper to safely translate or fallback to English
+  function safeT(key: string, fallback: string) {
+    const translated = t(key);
+    return translated === key ? fallback : translated;
+  }
 
   const sorted = [...products].sort((a, b) => {
     const order = ['Beginner', 'Advanced', 'Business'];
     return order.indexOf(a.title) - order.indexOf(b.title);
   });
+
+  // Helper to get subtitle for each plan
+  const getPlanSubtitle = (title: string) => {
+    if (title === 'Beginner') return 'Perfect for Small Businesses';
+    if (title === 'Advanced') return 'Most Popular Choice';
+    if (title === 'Business') return 'Ultimate Business Solution';
+    return '';
+  };
 
   const handleAddToCart = (product: Product) => {
     try {
@@ -121,11 +172,91 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
       addProduct(paymentItem);
       addProduct(subscriptionItem);
-      toast.success('Plan added to cart');
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-xs w-full bg-white/30 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 flex items-center px-4 py-3 pointer-events-auto`}
+          style={{ color: '#36454F' }}
+        >
+          <svg
+            className='w-6 h-6 text-primary mr-3'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='2'
+            viewBox='0 0 24 24'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M5 13l4 4L19 7'
+            />
+          </svg>
+          <span className='font-semibold text-md text-white'>
+            {safeT(
+              'pricingPlans.planAdded',
+              locale === 'lt'
+                ? 'Planas pridėtas į krepšelį!'
+                : 'Plan added to cart'
+            )}
+          </span>
+        </div>
+      ));
     } catch (error) {
       console.error('Error adding to cart:', error);
-      toast.error('Failed to add plan to cart');
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } max-w-xs w-full bg-white/30 backdrop-blur-lg rounded-2xl shadow-2xl border border-red-200 flex items-center px-4 py-3 pointer-events-auto`}
+          style={{ color: '#b91c1c' }}
+        >
+          <svg
+            className='w-6 h-6 text-red-500 mr-3'
+            fill='none'
+            stroke='currentColor'
+            strokeWidth='2'
+            viewBox='0 0 24 24'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M6 18L18 6M6 6l12 12'
+            />
+          </svg>
+          <span className='font-semibold text-md text-white'>
+            Failed to add plan to cart
+          </span>
+        </div>
+      ));
     }
+  };
+
+  const featureKeyMap: Record<string, string> = {
+    '3 pages': 'pages3',
+    Seo: 'seo',
+    'Design colors': 'designColors',
+    'Mobile-responsive': 'mobileResponsive',
+    'Fast and customizable': 'fastCustomizable',
+    'Custom Design': 'customDesign',
+    Forms: 'forms',
+    'Products, Blog posts (Create, delete, edit).': 'productsBlogPosts',
+    Design: 'design',
+    'Login / Register users': 'loginRegister',
+    'Stripe payments integration': 'stripePayments',
+  };
+
+  // Add this mapping for stat values
+  const statKeyMap: Record<string, string> = {
+    '2-3 weeks': 'weeks23',
+    '3-4 weeks': 'weeks34',
+    '4-6 weeks': 'weeks46',
+    '3 rounds': 'rounds3',
+    '5 rounds': 'rounds5',
+    Unlimited: 'unlimited',
+    '1 month': 'month1',
+    '3 months': 'months3',
+    '6 months': 'months6',
   };
 
   return (
@@ -133,16 +264,15 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
       <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl container mx-auto max-w-7xl p-1 sm:p-6 lg:p-10'>
         <div className='text-center mb-5 sm:mb-14'>
           <h2 className='text-2xl sm:text-4xl font-bold text-gray-600 mb-4 sm:mb-6 mt-6 px-2'>
-            Choose Your Perfect
+            {t('pricingPlans.choosePlanTitle')}
             <span className='bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent'>
               {' '}
-              Plan
+              {t('pricingPlans.planAcc')}
             </span>
           </h2>
 
           <p className='text-base sm:text-md text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto'>
-            From initial consultation to ongoing maintenance, we handle
-            everything. One-time setup fee plus affordable monthly maintenance.
+            {t('pricingPlans.subtitle')}
           </p>
 
           {/* Enhanced Pricing Toggle */}
@@ -156,7 +286,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                       : 'text-gray-500'
                   }`}
                 >
-                  Monthly
+                  {t('pricingPlans.monthly')}
                 </span>
                 <button
                   onClick={() =>
@@ -185,7 +315,7 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                       : 'text-gray-500'
                   }`}
                 >
-                  Yearly
+                  {t('pricingPlans.yearly')}
                 </span>
               </div>
             </div>
@@ -202,7 +332,9 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                 }
                 return maxDiscount > 0 ? (
                   <div className='bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1'>
-                    <span>Save up to {maxDiscount}%</span>{' '}
+                    <span>
+                      {t('pricingPlans.saveUpTo')} {maxDiscount}%
+                    </span>{' '}
                     <span className='text-base'>🎉</span>
                   </div>
                 ) : null;
@@ -249,20 +381,18 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         {planIcon}
                       </div>
                       <CardTitle className='text-base font-bold mb-1 sm:text-lg text-gray-700'>
-                        {product.title}
+                        {t(`pricingPlans.${product.title.toLowerCase()}`)}
                       </CardTitle>
                       <CardDescription className='text-xs text-gray-600'>
-                        {product.title === 'Beginner' &&
-                          'Perfect for Small Businesses'}
-                        {product.title === 'Advanced' && 'Most Popular Choice'}
-                        {product.title === 'Business' &&
-                          'Ultimate Business Solution'}
+                        {t(
+                          `pricingPlans.${product.title.toLowerCase()}Subtitle`
+                        )}
                       </CardDescription>
                       {/* Pricing */}
                       <div className='mt-3'>
                         <div className='text-center'>
                           <div className='text-xs text-gray-500 mb-1'>
-                            One-time setup
+                            {t('pricingPlans.oneTimeSetup')}
                           </div>
                           <div className='text-2xl font-bold text-gray-600 mb-1 sm:text-3xl'>
                             € {formatPrice(oneTime)}
@@ -270,12 +400,22 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         </div>
                         <div className='mt-2 pt-2 border-t border-gray-200'>
                           <div className='text-xs text-gray-500 mb-1'>
-                            Then ongoing maintenance
+                            {safeT(
+                              'pricingPlans.thenOngoingMaintenance',
+                              lang === 'lt'
+                                ? 'Vėliau nuolatinė priežiūra'
+                                : 'Then ongoing maintenance'
+                            )}
                           </div>
                           <div className='text-lg font-semibold text-purple-600'>
                             € {formatPrice(ongoing)}
-                            <span className='text-xs text-gray-500 font-normal'>
-                              {suffix}
+                            <span className='text-xs text-gray-500 font-normal ml-1'>
+                              {locale === 'lt' ||
+                              lang === 'lt' ||
+                              (typeof window !== 'undefined' &&
+                                window.navigator.language.startsWith('lt'))
+                                ? 'Mėn.'
+                                : 'month'}
                             </span>
                           </div>
                         </div>
@@ -298,7 +438,12 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                                   <FiCheck className='text-pink-500 text-[13px]' />
                                 </div>
                                 <span className='text-gray-700 text-xs leading-relaxed'>
-                                  {feature}
+                                  {safeT(
+                                    `pricingPlans.${
+                                      featureKeyMap[feature] || feature
+                                    }`,
+                                    feature
+                                  )}
                                 </span>
                               </>
                             )}
@@ -310,13 +455,18 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                           onClick={() => handleAddToCart(product)}
                           className={`w-full h-9 text-xs font-semibold transition-all duration-300 mt-2 sm:h-10 sm:text-sm bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg relative z-10 cursor-pointer`}
                         >
-                          Choose Plan
+                          {t('pricingPlans.choosePlan')}
                         </Button>
-                        <div className='text-center mt-2'>
-                          <p className='text-[10px] text-gray-500'>
-                            Free consultation included • No setup fees
-                          </p>
-                        </div>
+                      </div>
+                      <div className='text-center mt-2'>
+                        <p className='text-[10px] text-gray-500'>
+                          {safeT(
+                            'pricingPlans.freeConsultShort',
+                            locale === 'lt'
+                              ? 'Nemokama konsultacija'
+                              : 'Free consultation'
+                          )}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -357,29 +507,26 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                     </div>
 
                     <CardTitle className='text-lg font-bold mb-1 text-gray-700'>
-                      {product.title}
+                      {t(`pricingPlans.${product.title.toLowerCase()}`)}
                     </CardTitle>
                     <div className='text-xs font-medium text-purple-600 mb-1'>
-                      {product.title === 'Beginner' &&
-                        'Perfect for Small Businesses'}
-                      {product.title === 'Advanced' && 'Most Popular Choice'}
-                      {product.title === 'Business' &&
-                        'Ultimate Business Solution'}
+                      {safeT(
+                        `pricingPlans.${product.title.toLowerCase()}Subtitle`,
+                        getPlanSubtitle(product.title)
+                      )}
                     </div>
-                    <CardDescription className='text-xs text-gray-600'>
-                      {product.title === 'Beginner' &&
-                        'Get your business online with a professional presence'}
-                      {product.title === 'Advanced' &&
-                        'Complete solution for growing businesses'}
-                      {product.title === 'Business' &&
-                        'Custom web applications and advanced features'}
-                    </CardDescription>
+                    <div className='text-xs text-gray-600 mb-2'>
+                      {safeT(
+                        `pricingPlans.${product.title.toLowerCase()}Desc`,
+                        getPlanDescription(product.title)
+                      )}
+                    </div>
 
                     {/* Pricing */}
                     <div className='mt-4'>
                       <div className='text-center'>
                         <div className='text-xs text-gray-500 mb-1'>
-                          One-time setup
+                          {t('pricingPlans.oneTimeSetup')}
                         </div>
                         <div className='text-3xl font-bold text-gray-600 mb-1'>
                           € {formatPrice(oneTime)}
@@ -388,12 +535,22 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
 
                       <div className='mt-3 pt-3 border-t border-gray-200'>
                         <div className='text-xs text-gray-500 mb-1'>
-                          Then ongoing maintenance
+                          {safeT(
+                            'pricingPlans.thenOngoingMaintenance',
+                            lang === 'lt'
+                              ? 'Vėliau nuolatinė priežiūra'
+                              : 'Then ongoing maintenance'
+                          )}
                         </div>
                         <div className='text-xl font-semibold text-purple-600'>
                           € {formatPrice(ongoing)}
-                          <span className='text-xs text-gray-500 font-normal'>
-                            {suffix}
+                          <span className='text-xs text-gray-500 font-normal ml-1'>
+                            {locale === 'lt' ||
+                            lang === 'lt' ||
+                            (typeof window !== 'undefined' &&
+                              window.navigator.language.startsWith('lt'))
+                              ? 'Mėn.'
+                              : 'month'}
                           </span>
                         </div>
                       </div>
@@ -404,32 +561,43 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                       <div className='text-center'>
                         <span className='text-gray-400 text-base'>⏱️</span>
                         <div className='text-[10px] text-gray-500'>
-                          Timeline
+                          {t('pricingPlans.timeline')}
                         </div>
                         <div className='text-xs font-medium text-purple-600'>
-                          {product.title === 'Beginner' && '2-3 weeks'}
-                          {product.title === 'Advanced' && '3-4 weeks'}
-                          {product.title === 'Business' && '4-6 weeks'}
+                          {safeT(
+                            `pricingPlans.${
+                              statKeyMap[getPlanStats(product.title).timeline]
+                            }`,
+                            getPlanStats(product.title).timeline
+                          )}
                         </div>
                       </div>
                       <div className='text-center text-purple-600'>
                         <span className='text-gray-400 text-base'>👥</span>
                         <div className='text-[10px] text-gray-500'>
-                          Revisions
+                          {t('pricingPlans.revisions')}
                         </div>
                         <div className='text-xs font-medium text-purple-600'>
-                          {product.title === 'Beginner' && '3 rounds'}
-                          {product.title === 'Advanced' && '5 rounds'}
-                          {product.title === 'Business' && 'Unlimited'}
+                          {safeT(
+                            `pricingPlans.${
+                              statKeyMap[getPlanStats(product.title).revisions]
+                            }`,
+                            getPlanStats(product.title).revisions
+                          )}
                         </div>
                       </div>
                       <div className='text-center text-purple-600'>
                         <span className='text-gray-400 text-base'>🎧</span>
-                        <div className='text-[10px] text-gray-500'>Support</div>
+                        <div className='text-[10px] text-gray-500'>
+                          {t('pricingPlans.support')}
+                        </div>
                         <div className='text-xs font-medium'>
-                          {product.title === 'Beginner' && '1 month'}
-                          {product.title === 'Advanced' && '3 months'}
-                          {product.title === 'Business' && '6 months'}
+                          {safeT(
+                            `pricingPlans.${
+                              statKeyMap[getPlanStats(product.title).support]
+                            }`,
+                            getPlanStats(product.title).support
+                          )}
                         </div>
                       </div>
                     </div>
@@ -454,7 +622,12 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                                 </span>
                               </div>
                               <span className='text-gray-700 text-xs leading-relaxed'>
-                                {feature}
+                                {safeT(
+                                  `pricingPlans.${
+                                    featureKeyMap[feature] || feature
+                                  }`,
+                                  feature
+                                )}
                               </span>
                             </>
                           )}
@@ -466,13 +639,18 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
                         onClick={() => handleAddToCart(product)}
                         className={`w-full h-10 text-sm font-semibold transition-all duration-300 mt-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-md hover:shadow-lg relative z-10 cursor-pointer`}
                       >
-                        Choose Plan
+                        {t('pricingPlans.choosePlan')}
                       </Button>
-                      <div className='text-center mt-2'>
-                        <div className='text-[10px] text-gray-500'>
-                          Free consultation included • No setup fees
-                        </div>
-                      </div>
+                    </div>
+                    <div className='text-center mt-2'>
+                      <p className='text-[10px] text-gray-500'>
+                        {safeT(
+                          'pricingPlans.freeConsultShort',
+                          locale === 'lt'
+                            ? 'Nemokama konsultacija'
+                            : 'Free consultation'
+                        )}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -485,33 +663,35 @@ const PricingPlans: React.FC<Props> = ({ products }) => {
         <div className='mt-10 sm:mt-14 text-center'>
           <div className='relative  rounded-2xl p-6 sm:p-8 overflow-hidden'>
             <h3 className='relative text-lg sm:text-xl font-semibold text-gray-600 mb-2 sm:mb-4 z-10'>
-              What&apos;s Included in Every Plan
+              {t('pricingPlans.includedTitle')}
             </h3>
             <div className='relative grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-xs sm:text-sm z-10'>
               <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
                 <span className='text-red-500 text-xl mb-1'>🛡️</span>
-                <span className='text-gray-700'>
-                  SSL Certificate & Security
-                </span>
+                <span className='text-gray-700'>{t('pricingPlans.ssl')}</span>
               </div>
               <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
                 <span className='text-yellow-500 text-xl mb-1'>⚡</span>
-                <span className='text-gray-700'>Performance Optimization</span>
+                <span className='text-gray-700'>
+                  {t('pricingPlans.performance')}
+                </span>
               </div>
               <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
                 <span className='text-blue-500 text-xl mb-1'>👥</span>
-                <span className='text-gray-700'>SEO & Analytics Setup</span>
+                <span className='text-gray-700'>{t('pricingPlans.seo')}</span>
               </div>
               <div className='bg-white/30 backdrop-blur-md border border-white/30 shadow-md rounded-2xl p-4 flex flex-col items-center text-center'>
                 <span className='text-black text-xl mb-1'>🎧</span>
-                <span className='text-gray-700'>Ongoing Support</span>
+                <span className='text-gray-700'>
+                  {t('pricingPlans.ongoingSupport')}
+                </span>
               </div>
             </div>
           </div>
         </div>
 
         <p className='text-center text-xs sm:text-sm text-gray-400 mt-4 sm:mt-6'>
-          * billed once annually
+          {t('pricingPlans.billedAnnually')}
         </p>
       </div>
     </section>

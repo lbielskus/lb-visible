@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { BlogPost } from '../types/index';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
+import { lt as ltLocale } from 'date-fns/locale';
 
 type Props = {
   posts: BlogPost[];
@@ -11,6 +14,8 @@ type Props = {
 export default function BlogSlide({ posts }: Props) {
   const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const [truncatedText, setTruncatedText] = useState<string>('');
+  const { t } = useTranslation('common');
+  const { locale } = useRouter();
 
   const truncateHtml = (html: string, maxLength: number): string => {
     if (typeof window === 'undefined') return '';
@@ -44,7 +49,7 @@ export default function BlogSlide({ posts }: Props) {
 
   if (!posts.length) {
     return (
-      <p className='text-center text-gray-400'>No blog posts available.</p>
+      <p className='text-center text-gray-400'>{t('blogSlide.noPosts')}</p>
     );
   }
 
@@ -58,9 +63,13 @@ export default function BlogSlide({ posts }: Props) {
         </h3>
 
         <p className='text-gray-600 sm:text-white mb-2 text-sm'>
-          Published on{' '}
+          {t('blogSlide.publishedOn')}{' '}
           {post.createdAt
-            ? format(new Date(post.createdAt), 'MMMM d, yyyy')
+            ? format(
+                new Date(post.createdAt),
+                'PPP',
+                locale === 'lt' ? { locale: ltLocale } : undefined
+              )
             : 'N/A'}
         </p>
 
@@ -73,7 +82,7 @@ export default function BlogSlide({ posts }: Props) {
             className='bg-primary hover:bg-primary/70 text-white px-5 py-2 rounded-lg shadow hover:bg-opacity-90 transition'
             onClick={() => redirectToPost(post.slug)}
           >
-            <span>Read More</span>
+            <span>{t('blogSlide.readMore')}</span>
           </button>
         </div>
       </div>

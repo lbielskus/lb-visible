@@ -4,11 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { poppins } from '../lib/fonts';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from 'react-icons/fa';
+import useTranslation from 'next-translate/useTranslation';
 
 const logoUrl =
   'https://ik.imagekit.io/tooos2eo5/42px.png?updatedAt=1749149087723';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation('common');
   const socialLinks: Record<string, string> = {
     facebook: 'https://www.facebook.com/',
     instagram: 'https://www.instagram.com/',
@@ -27,53 +29,65 @@ const Footer: React.FC = () => {
           <div className='w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0'>
             <div className='footer-link-items'>
               <h2 className='text-xl font-semibold mb-4 text-gray-200'>
-                About Us
+                {t('footer.about')}
               </h2>
               <div className='flex flex-col mb-2 text-gray-200'>
-                <Link href='/sub/how-it-works'>How it works</Link>
-                <Link href='/sub/mobile-responsive'>Mobile responsive</Link>
-                <Link href='/sub/developer-tools'>Developer tools</Link>
-                <Link href='/sub/cookies-info'>Cookies</Link>
-                <Link href='/privacy-policy'>Privacy Policy</Link>
+                <Link href='/sub/how-it-works'>{t('footer.howItWorks')}</Link>
+                <Link href='/sub/mobile-responsive'>
+                  {t('footer.mobileResponsive')}
+                </Link>
+                <Link href='/sub/developer-tools'>
+                  {t('footer.developerTools')}
+                </Link>
+                <Link href='/sub/cookies-info'>{t('footer.cookies')}</Link>
+                <Link href='/privacy-policy'>{t('footer.privacyPolicy')}</Link>
               </div>
             </div>
           </div>
 
           <div className='w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0'>
             <div className='footer-link-items text-gray-200'>
-              <h2 className='text-xl font-semibold mb-4'>Contact Us</h2>
+              <h2 className='text-xl font-semibold mb-4'>
+                {t('footer.contact')}
+              </h2>
               <div className='flex flex-col mb-2'>
-                <Link href='/contact'>Contact</Link>
-                <Link href='/sub/support'>Support</Link>
-                <Link href='/sub/faq'>F.A.Q.</Link>
-                <Link href='/sub/tutorials'>Tutorials</Link>
-                <Link href='/sub/terms-of-service'>Terms of Service</Link>
+                <Link href='/contact'>{t('footer.contactLink')}</Link>
+                <Link href='/sub/support'>{t('footer.support')}</Link>
+                <Link href='/sub/faq'>{t('footer.faq')}</Link>
+                <Link href='/sub/tutorials'>{t('footer.tutorials')}</Link>
+                <Link href='/sub/terms-of-service'>{t('footer.terms')}</Link>
               </div>
             </div>
           </div>
 
           <div className='w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0'>
             <div className='footer-link-items text-gray-200'>
-              <h2 className='text-xl font-semibold mb-4'>Websites</h2>
+              <h2 className='text-xl font-semibold mb-4'>
+                {t('footer.websites')}
+              </h2>
               <div className='flex flex-col mb-2'>
-                <Link href='/projects'>Examples</Link>
-                <Link href='/pricing'>Pricing</Link>
-                <Link href='/sub/domains'>Domains</Link>
-                <Link href='/sub/hosting'>Hosting</Link>
-                <Link href='/sub/services'>Services</Link>
+                <Link href='/projects'>{t('footer.examples')}</Link>
+                <Link href='/pricing'>{t('footer.pricing')}</Link>
+                <Link href='/sub/domains'>{t('footer.domains')}</Link>
+                <Link href='/sub/hosting'>{t('footer.hosting')}</Link>
+                <Link href='/sub/services'>{t('footer.services')}</Link>
               </div>
             </div>
           </div>
 
           <div className='w-full md:w-1/2 lg:w-1/4 mb-4 md:mb-0'>
             <div className='footer-link-items text-gray-200'>
-              <h2 className='text-xl font-semibold mb-4'>Social Media</h2>
+              <h2 className='text-xl font-semibold mb-4'>
+                {t('footer.social')}
+              </h2>
               <div className='flex flex-col mb-2'>
-                <Link href='/'>Instagram</Link>
-                <Link href='/'>Facebook</Link>
-                <Link href='/'>Youtube</Link>
-                <Link href='/'>LinkedIn</Link>
-                <Link href='https://www.tiktok.com/@letsbevisible'>TikTok</Link>
+                <Link href='/'>{t('footer.instagram')}</Link>
+                <Link href='/'>{t('footer.facebook')}</Link>
+                <Link href='/'>{t('footer.youtube')}</Link>
+                <Link href='/'>{t('footer.linkedin')}</Link>
+                <Link href='https://www.tiktok.com/@letsbevisible'>
+                  {t('footer.tiktok')}
+                </Link>
               </div>
             </div>
           </div>
@@ -91,7 +105,7 @@ const Footer: React.FC = () => {
               <span
                 className={`text-xs mt-2 ml-2 text-gray-200 ${poppins.className}`}
               >
-                Let&apos;s Be Visible
+                {t('navbar.brand')}
               </span>
             </Link>
           </div>
@@ -130,7 +144,7 @@ const Footer: React.FC = () => {
 
         <div className='mt-8'>
           <small className='website-rights text-gray-200'>
-            Created by Let’s Be Visible © 2024
+            {t('footer.createdBy')}
           </small>
         </div>
       </div>

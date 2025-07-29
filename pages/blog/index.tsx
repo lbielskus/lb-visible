@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { db } from '../../lib/firebase';
 import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { DefaultSeo } from 'next-seo';
+import useTranslation from 'next-translate/useTranslation';
 
 type BlogPost = {
   _id: string;
@@ -18,6 +19,7 @@ export default function Blog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { t, lang } = useTranslation('common');
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -86,16 +88,14 @@ export default function Blog() {
 
       <div className='mx-auto px-4 py-8'>
         <h1 className='text-2xl tracking-tight text-center text-third mb-6'>
-          Related Posts
+          {t('blog.relatedPosts')}
         </h1>
 
         <div className='grid grid-cols-1 gap-6 max-w-5xl mx-auto'>
           {loading ? (
             <p className='text-gray-400 text-center'>Loading...</p>
           ) : posts.length === 0 ? (
-            <p className='text-gray-400 text-center'>
-              No blog posts available.
-            </p>
+            <p className='text-gray-400 text-center'>{t('blog.noPosts')}</p>
           ) : (
             posts.map((post) => (
               <div
@@ -106,7 +106,14 @@ export default function Blog() {
                   {post.title}
                 </h2>
                 <p className='text-gray-500 mb-1 text-sm'>
-                  Published on {getFormattedDate(post.createdAt)}
+                  {t('blog.publishedOn')}{' '}
+                  {post.createdAt
+                    ? new Date(
+                        typeof post.createdAt === 'string'
+                          ? post.createdAt
+                          : post.createdAt.seconds * 1000
+                      ).toLocaleDateString(lang === 'lt' ? 'lt-LT' : 'en-US')
+                    : 'N/A'}
                 </p>
                 <p className='text-gray-600 text-sm mb-4'>
                   {truncateHtml(post.description || '', 300)}
@@ -118,7 +125,7 @@ export default function Blog() {
                     className='relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-third to-primary group-hover:from-third group-hover:to-primary hover:text-white dark:text-white'
                   >
                     <span className='relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-third rounded-md group-hover:bg-opacity-0'>
-                      Read More
+                      {t('blog.readMore')}
                     </span>
                   </button>
                 </div>

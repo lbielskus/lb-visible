@@ -17,6 +17,8 @@ import {
 } from 'react-icons/fi';
 import { poppins } from '../lib/fonts';
 import Image from 'next/image';
+import LanguageSwitcher from './LanguageSwitcher';
+import useTranslation from 'next-translate/useTranslation';
 
 const Header = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -24,6 +26,7 @@ const Header = () => {
   const { user } = useAuth();
   const router = useRouter();
   const { pathname } = router;
+  const { t } = useTranslation('common');
 
   const logout = async () => {
     await signOut(auth);
@@ -40,6 +43,11 @@ const Header = () => {
     }
   };
 
+  const brand = t('navbar.brand');
+  const visibleIndex = brand.lastIndexOf('Visible');
+  const before = visibleIndex !== -1 ? brand.slice(0, visibleIndex) : brand;
+  const after = visibleIndex !== -1 ? brand.slice(visibleIndex) : '';
+
   return (
     <header className='sticky top-0 z-40 w-full lg:rounded-b-xl shadow-xl backdrop-blur-sm bg-[rgba(15,23,42,0.84)]'>
       <div className='mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 border-b border-white/10 relative'>
@@ -55,8 +63,8 @@ const Header = () => {
             height={38}
           />
           <span className='opacity-90 ml-2 text-sm tracking-normal drop-shadow-sm'>
-            <span className='text-gray-300'>Let&apos;s Be </span>
-            <span className='text-white'>Visible</span>
+            <span className='text-gray-300'>{before}</span>
+            <span className='text-white'>{after}</span>
           </span>
         </div>
         {/* Mobile: Logo and Burger grouped left */}
@@ -131,41 +139,46 @@ const Header = () => {
               </svg>
             )}
           </button>
+          {/* Language Switcher for mobile, to the right of burger icon */}
+          <span className='ml-2'>
+            <LanguageSwitcher />
+          </span>
           {isMobileNavOpen && (
             <div className='absolute left-0 right-0 top-full w-full bg-white p-4 rounded-b-2xl border border-gray-200 shadow-2xl z-30 animate-slideDown'>
+              {/* Remove Language Switcher from dropdown */}
               <ul className='flex flex-col gap-2 text-center mt-2'>
                 {[
                   {
                     path: '/',
-                    label: 'Home',
+                    label: t('navbar.home'),
                     icon: (
                       <FiHome className='inline-block mr-2 text-pink-500 text-lg' />
                     ),
                   },
                   {
                     path: '/projects',
-                    label: 'Projects',
+                    label: t('navbar.projects'),
                     icon: (
                       <FiFolder className='inline-block mr-2 text-pink-500 text-lg' />
                     ),
                   },
                   {
                     path: '/contact',
-                    label: 'Contact',
+                    label: t('navbar.contact'),
                     icon: (
                       <FiMail className='inline-block mr-2 text-pink-500 text-lg' />
                     ),
                   },
                   {
                     path: '/pricing',
-                    label: 'Pricing',
+                    label: t('navbar.pricing'),
                     icon: (
                       <FiTag className='inline-block mr-2 text-pink-500 text-lg' />
                     ),
                   },
                   {
                     path: '/blog',
-                    label: 'Blog',
+                    label: t('navbar.blog'),
                     icon: (
                       <FiBookOpen className='inline-block mr-2 text-pink-500 text-lg' />
                     ),
@@ -194,26 +207,32 @@ const Header = () => {
 
         <nav aria-label='Global' className='hidden lg:block'>
           <ul className='flex items-center gap-6 text-md'>
-            {['/', '/projects', '/contact', '/pricing', '/blog'].map(
-              (path, i) => (
-                <li key={i}>
-                  <Link
-                    className={`text-white transition hover:text-zinc-400/75 ${
-                      pathname === path ? 'text-white' : ''
-                    }`}
-                    href={path}
-                  >
-                    {path === '/'
-                      ? 'Home'
-                      : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                  </Link>
-                </li>
-              )
-            )}
+            {[
+              { path: '/', label: t('navbar.home') },
+              { path: '/projects', label: t('navbar.projects') },
+              { path: '/contact', label: t('navbar.contact') },
+              { path: '/pricing', label: t('navbar.pricing') },
+              { path: '/blog', label: t('navbar.blog') },
+            ].map(({ path, label }, i) => (
+              <li key={i}>
+                <Link
+                  className={`text-white transition hover:text-zinc-400/75 ${
+                    pathname === path ? 'text-white' : ''
+                  }`}
+                  href={path}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
         <div className='flex items-center gap-4'>
+          {/* Language Switcher for desktop, to the left of cart */}
+          <span className='mr-2 hidden lg:inline-flex'>
+            <LanguageSwitcher />
+          </span>
           <div className='flow-root'>
             <Link href='/cart' className='group -m-2 flex items-center p-2'>
               <svg
@@ -231,9 +250,11 @@ const Header = () => {
                 />
               </svg>
               <div className='hidden lg:flex'>
-                <span className='ml-2 text-md text-white font-bold group-hover:text-green-600'>
-                  {cartProducts.length}
-                </span>
+                {cartProducts.length > 0 && (
+                  <span className='ml-2 text-md font-bold text-primary group-hover:text-primary transition-colors'>
+                    {cartProducts.length}
+                  </span>
+                )}
                 <span className='sr-only'>items in cart, view bag</span>
               </div>
             </Link>
@@ -250,19 +271,19 @@ const Header = () => {
                 onClick={logout}
                 className='text-sm text-white hover:underline'
               >
-                Logout
+                {t('navbar.logout')}
               </button>
             </div>
           ) : (
             <div className='flex gap-5'>
               <Link href='/signup'>
                 <span className='text-sm text-white hover:underline'>
-                  Register
+                  {t('navbar.register')}
                 </span>
               </Link>
               <Link href='/login'>
                 <span className='text-sm text-white hover:underline'>
-                  Login
+                  {t('navbar.login')}
                 </span>
               </Link>
             </div>

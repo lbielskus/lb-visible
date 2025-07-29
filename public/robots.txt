@@ -1,19 +1,56 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow: /api/
-Disallow: /404
-Disallow: /500
-Disallow: /reset-password
-Disallow: /forgot-password
-Disallow: /verify-email
-Disallow: /login
-Disallow: /signup
 Allow: /
 
+# Sitemaps
 Sitemap: https://www.lbvisible.com/sitemap.xml
 
-User-Agent: Googlebot
-Allow: /sitemap.xml
-Allow: .js
-Allow: .css
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Allow important pages
+Allow: /projects/
+Allow: /blog/
+Allow: /pricing/
+Allow: /contact/
+Allow: /sub/
+Allow: /lt/
+Allow: /privacy-policy
+Allow: /terms-of-service
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
 Allow: /

@@ -1,0 +1,707 @@
+{
+  "welcome": "Welcome to LB Visible!",
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "contact": "Contact",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "register": "Register",
+    "login": "Login",
+    "logout": "Logout",
+    "brand": "Let's Be Visible"
+  },
+  "footer": {
+    "about": "About Us",
+    "howItWorks": "How it works",
+    "mobileResponsive": "Mobile responsive",
+    "developerTools": "Developer tools",
+    "cookies": "Cookies",
+    "privacyPolicy": "Privacy Policy",
+    "contact": "Contact Us",
+    "contactLink": "Contact",
+    "support": "Support",
+    "faq": "F.A.Q.",
+    "tutorials": "Tutorials",
+    "terms": "Terms of Service",
+    "websites": "Websites",
+    "examples": "Examples",
+    "domains": "Domains",
+    "hosting": "Hosting",
+    "services": "Services",
+    "pricing": "Pricing",
+    "social": "Social Media",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "youtube": "Youtube",
+    "linkedin": "LinkedIn",
+    "tiktok": "TikTok",
+    "createdBy": "Created by Let's Be Visible © 2024"
+  },
+  "home": {
+    "title": "Home | LB Visible",
+    "description": "Custom-built websites, CMS, SEO, and marketing tools – all in one platform. Launch your business online with LB Visible.",
+    "ogImageAlt": "LB Visible Website & CMS Preview"
+  },
+  "products": {
+    "plan": "Plan",
+    "fromOnly": "From only",
+    "monthly": "monthly",
+    "viewProject": "View Project",
+    "addToCart": "Add to Cart",
+    "planAdded": "Plan added to cart!",
+    "billedYearly": "billed yearly for best value"
+  },
+  "projects": {
+    "searchPlaceholder": "Search products",
+    "planAdded": "Plan added to cart!",
+    "beginner": "Beginner",
+    "advanced": "Advanced",
+    "business": "Business",
+    "add": "Add"
+  },
+  "bannerHero": {
+    "headline": "This isn’t your average website.",
+    "parallaxDemo": "Check our Parallax demo"
+  },
+  "auditForm": {
+    "alreadyHaveWebsite": "Already have a website?",
+    "auditHelp": "For your existing website, an audit could help identify areas for improvement.",
+    "enterUrl": "Enter your website URL (https://...)",
+    "analysing": "Analysing. Please wait",
+    "runAudit": "Run Audit",
+    "errorFullUrl": "Please enter full URL including https://",
+    "errorAuditFailed": "Audit failed",
+    "enterEmail": "Enter your email to view full audit and receive future updates:",
+    "yourEmail": "Your email",
+    "seeResults": "See Results",
+    "errorValidEmail": "Enter a valid email",
+    "errorLimit": "Limit reached: Only 2 audits per day allowed per email.",
+    "errorSaveEmail": "Failed to save email or check limit",
+    "resultsFor": "Audit Results for",
+    "performance": "Performance",
+    "accessibility": "Accessibility",
+    "bestPractices": "Best Practices",
+    "seo": "SEO",
+    "optimizationTips": "Optimization Tips",
+    "retry": "Retry"
+  },
+  "blog": {
+    "relatedPosts": "Related Posts",
+    "publishedOn": "Published on",
+    "readMore": "Read More",
+    "noPosts": "No blog posts available."
+  },
+  "pricingPlans": {
+    "planAcc": "Plan",
+    "choosePlanTitle": "Choose Your Perfect Plan",
+    "subtitle": "From initial consultation to ongoing maintenance, we handle everything. One-time setup fee plus affordable monthly maintenance.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "saveUpTo": "Save up to",
+    "planAdded": "Plan added to cart",
+    "planAddFailed": "Failed to add plan to cart",
+    "beginner": "Beginner",
+    "advanced": "Advanced",
+    "business": "Business",
+    "thenOngoingMaintenance": "Then ongoing maintenance",
+    "perMonth": "/ month",
+    "perMonthStar": "/ month*",
+    "timeline": "Timeline",
+    "revisions": "Revisions",
+    "support": "Support",
+    "weeks23": "2-3 weeks",
+    "weeks34": "3-4 weeks",
+    "weeks46": "4-6 weeks",
+    "rounds3": "3 rounds",
+    "rounds5": "5 rounds",
+    "unlimited": "Unlimited",
+    "month1": "1 month",
+    "months3": "3 months",
+    "months6": "6 months",
+    "choosePlan": "Choose Plan",
+    "freeConsult": "Free consultation included • No setup fees",
+    "includedTitle": "What's Included in Every Plan",
+    "ssl": "SSL Certificate & Security",
+    "performance": "Performance Optimization",
+    "seo": "SEO & Analytics Setup",
+    "ongoingSupport": "Ongoing Support",
+    "billedAnnually": "* billed once annually",
+    "beginnerDesc": "Get your business online with a professional presence",
+    "advancedDesc": "Complete solution for growing businesses",
+    "businessDesc": "Custom web applications and advanced features",
+    "oneTimeSetup": "One-time setup"
+  },
+  "howItWorks": {
+    "title": "How We Build Your Website",
+    "subtitle": "From idea to launch, we handle everything. Planning, design, development, and support. So you can focus on your business.",
+    "consultation": "Personal Business Consultation",
+    "brand": "Complete Brand Ecosystem",
+    "content": "Content Management & Migration",
+    "design": "Continuous Design Evolution",
+    "hosting": "Complete Hosting & Domain Management",
+    "analytics": "Advanced Analytics & SEO Ecosystem",
+    "readMore": "Read More"
+  },
+  "howItWorksTech": {
+    "sectionTitle": "Built with Modern Technology",
+    "builtFromScratch.title": "Built from Scratch Philosophy",
+    "builtFromScratch.desc": "Every line of code is custom-written for your specific needs",
+    "builtFromScratch.1": "No bloated themes or unnecessary plugins",
+    "builtFromScratch.2": "Pixel-perfect implementation of designs",
+    "builtFromScratch.3": "Optimized for your specific use case",
+    "builtFromScratch.4": "Complete control over functionality",
+    "builtFromScratch.5": "Future-proof and scalable architecture",
+
+    "modernStack.title": "Next.js & Modern Stack",
+    "modernStack.desc": "Cutting-edge technology for unmatched performance",
+    "modernStack.1": "Lightning-fast loading times (under 2 seconds)",
+    "modernStack.2": "Automatic image optimization and lazy loading",
+    "modernStack.3": "Server-side rendering for better SEO",
+    "modernStack.4": "Progressive Web App capabilities",
+    "modernStack.5": "Edge computing for global performance",
+
+    "mobileFirst.title": "Mobile-First Design Approach",
+    "mobileFirst.desc": "Designed for mobile, enhanced for desktop",
+    "mobileFirst.1": "Touch-optimized interfaces and interactions",
+    "mobileFirst.2": "Responsive design that works on any device",
+    "mobileFirst.3": "Mobile-specific features and optimizations",
+    "mobileFirst.4": "App-like user experience",
+    "mobileFirst.5": "Cross-browser compatibility guaranteed",
+
+    "enterpriseSecurity.title": "Enterprise-Grade Security",
+    "enterpriseSecurity.desc": "Bank-level security built into every project",
+    "enterpriseSecurity.1": "Headless architecture reduces attack surface",
+    "enterpriseSecurity.2": "Automatic security updates and monitoring",
+    "enterpriseSecurity.3": "SSL/TLS encryption by default",
+    "enterpriseSecurity.4": "DDoS protection and firewall",
+    "enterpriseSecurity.5": "Regular security audits and penetration testing"
+  },
+  "howItWorksWhyUs": {
+    "sectionTitle": "Why Choose Us Over Everyone Else",
+    "careSuccess.title": "We Actually Care About Your Success",
+    "careSuccess.desc": "Your growth is our success metric, not just project completion",
+    "careSuccess.1": "Monthly check-ins and performance reviews",
+    "careSuccess.2": "Proactive suggestions for improvements",
+    "careSuccess.3": "Industry trend updates and recommendations",
+    "careSuccess.4": "Long-term partnership approach",
+
+    "humanCentered.title": "Human-Centered Development",
+    "humanCentered.desc": "Real people, real conversations, real solutions",
+    "humanCentered.1": "Direct access to developers (no middlemen)",
+    "humanCentered.2": "Video calls for all major decisions",
+    "humanCentered.3": "Transparent development process",
+    "humanCentered.4": "Regular progress updates and demos",
+
+    "innovationFirst.title": "Innovation-First Mindset",
+    "innovationFirst.desc": "We don't just build websites, we create digital experiences",
+    "innovationFirst.1": "Latest technology adoption and implementation",
+    "innovationFirst.2": "Creative problem-solving approaches",
+    "innovationFirst.3": "Custom solutions for unique challenges",
+    "innovationFirst.4": "Future-ready architecture and planning",
+
+    "resultsDriven.title": "Results-Driven Approach",
+    "resultsDriven.desc": "Every decision is made with your business goals in mind",
+    "resultsDriven.1": "Conversion optimization built-in",
+    "resultsDriven.2": "Performance metrics and KPI tracking",
+    "resultsDriven.3": "ROI-focused feature development",
+    "resultsDriven.4": "Data-driven design decisions"
+  },
+  "contactDiv": {
+    "title": "Contact Us",
+    "desc": "Have questions or need assistance? Feel free to contact us.",
+    "button": "Contact"
+  },
+  "banner": {
+    "confused": "Confused?",
+    "help": "Let us help!"
+  },
+  "contactForm": {
+    "getInTouch": "Get in Touch",
+    "haveQuestion": "Have a question? Feel free to contact us!",
+    "name": "Name*",
+    "phone": "Phone number*",
+    "subject": "Subject*",
+    "email": "Email*",
+    "message": "Message*",
+    "allFields": "* All fields are required",
+    "send": "Send",
+    "success": "Message sent successfully!",
+    "successDesc": "Soon we will contact you and will answer to all your questions.",
+    "successThanks": "Thank you for reaching us out!",
+    "invalidPhone": "Enter a valid phone number.",
+    "fail": "Failed to send message.",
+    "error": "An error occurred."
+  },
+  "mobileResponsive": {
+    "title": "Mobile Responsive",
+    "description": "LB Websites are fully mobile responsive, delivering flawless performance and accessibility on all screen sizes.",
+    "pageTitle": "Mobile Responsive | LB Websites",
+    "heading": "Mobile Responsive",
+    "subtitle": "Today's users browse from phones, tablets, and laptops. We build every website to adapt to any screen, giving your visitors a flawless experience wherever they are.",
+    "benefits": {
+      "userExperience": {
+        "title": "Better user experience:",
+        "desc": "Your site remains easy to navigate and visually appealing across all devices."
+      },
+      "seoRankings": {
+        "title": "Improved SEO rankings:",
+        "desc": "Google favors mobile-friendly websites in search results."
+      },
+      "accessibility": {
+        "title": "Increased accessibility:",
+        "desc": "Reach more people, including mobile-first users and those with accessibility needs."
+      },
+      "brandReputation": {
+        "title": "Stronger brand reputation:",
+        "desc": "A professional, consistent design builds trust and credibility."
+      },
+      "conversions": {
+        "title": "Higher conversions:",
+        "desc": "Responsive design helps drive more leads, sales, and customer engagement."
+      }
+    }
+  },
+  "developerTools": {
+    "title": "Developer Tools",
+    "description": "Professional developer tools and resources for modern web development.",
+    "pageTitle": "Developer Tools | LB Websites",
+    "heading": "Developer Tools",
+    "subtitle": "Access to professional development tools and resources to enhance your web development workflow.",
+    "tools": {
+      "codeEditor": {
+        "title": "Code Editor",
+        "desc": "Advanced code editing with syntax highlighting and auto-completion."
+      },
+      "debugger": {
+        "title": "Debugger",
+        "desc": "Powerful debugging tools for identifying and fixing issues."
+      },
+      "versionControl": {
+        "title": "Version Control",
+        "desc": "Git integration for tracking changes and collaboration."
+      },
+      "testing": {
+        "title": "Testing Tools",
+        "desc": "Comprehensive testing suite for quality assurance."
+      },
+      "deployment": {
+        "title": "Deployment Tools",
+        "desc": "Streamlined deployment processes for faster releases."
+      }
+    }
+  },
+  "cookiesInfo": {
+    "title": "Cookies Information",
+    "description": "Learn about how we use cookies and manage your preferences.",
+    "pageTitle": "Cookies Information | LB Websites",
+    "heading": "Cookies Information",
+    "subtitle": "We use cookies to enhance your browsing experience and provide personalized content.",
+    "whatAreCookies": {
+      "title": "What are cookies?",
+      "desc": "Cookies are small text files stored on your device that help us improve your experience."
+    },
+    "types": {
+      "essential": {
+        "title": "Essential Cookies",
+        "desc": "Required for basic site functionality and security."
+      },
+      "preference": {
+        "title": "Preference Cookies",
+        "desc": "Remember your language and layout preferences."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "desc": "Help us understand how users interact with our website."
+      }
+    },
+    "management": {
+      "title": "Managing Cookies",
+      "desc": "You can manage or withdraw your cookie consent anytime using our cookie banner or your browser settings."
+    }
+  },
+  "privacyPolicy": {
+    "title": "Privacy & Cookie Policy",
+    "description": "Learn how LB Websites handles your data and cookie preferences in compliance with GDPR regulations.",
+    "pageTitle": "Privacy Policy | LB Websites",
+    "intro": "At LB Websites, we respect your privacy and are committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data—especially in relation to cookie usage and GDPR compliance.",
+    "whatAreCookies": {
+      "title": "What Are Cookies?",
+      "desc": "Cookies are small text files stored on your device. They help us improve your experience by remembering preferences and providing usage analytics."
+    },
+    "typesOfCookies": {
+      "title": "Types of Cookies We Use",
+      "essential": {
+        "title": "Essential Cookies:",
+        "desc": "Required for basic site functionality and authentication."
+      },
+      "preference": {
+        "title": "Preference Cookies:",
+        "desc": "Remember your language and layout preferences."
+      },
+      "analytics": {
+        "title": "Analytics Cookies:",
+        "desc": "Help us understand how users interact with our website (Google Analytics, if accepted)."
+      }
+    },
+    "manageCookies": {
+      "title": "How You Can Manage Cookies",
+      "desc": "You can manage or withdraw your cookie consent anytime using our cookie banner or your browser settings. Refusing cookies may limit some functionality."
+    },
+    "lastUpdated": "Last updated:"
+  },
+  "support": {
+    "title": "Support",
+    "description": "Get help and support for your LB Websites services.",
+    "pageTitle": "Support | LB Websites",
+    "heading": "Support",
+    "subtitle": "We're here to help you with any questions or issues you may have.",
+    "contact": {
+      "title": "Contact Support",
+      "desc": "Get in touch with our support team for immediate assistance."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "desc": "Find answers to common questions and issues."
+    },
+    "documentation": {
+      "title": "Documentation",
+      "desc": "Access comprehensive guides and tutorials."
+    },
+    "community": {
+      "title": "Community",
+      "desc": "Connect with other users and share experiences."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about our services.",
+    "pageTitle": "FAQ | LB Websites",
+    "heading": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions about our services and website development process.",
+    "questions": {
+      "pricing": {
+        "question": "How much does a website cost?",
+        "answer": "Our pricing starts from €299 for basic websites and goes up based on your specific needs. We offer three main plans: Beginner, Advanced, and Business."
+      },
+      "timeline": {
+        "question": "How long does it take to build a website?",
+        "answer": "Typically, websites take 2-6 weeks depending on complexity. We'll provide a specific timeline during our initial consultation."
+      },
+      "cms": {
+        "question": "Can I update my website content myself?",
+        "answer": "Yes! We provide a user-friendly Content Management System (CMS) that allows you to easily update text, images, and other content without any technical knowledge."
+      },
+      "hosting": {
+        "question": "Do you provide hosting and domain services?",
+        "answer": "Yes, we handle all hosting and domain setup. We use reliable, fast hosting providers and can register domains for you or work with your existing domain."
+      },
+      "support": {
+        "question": "What kind of support do you provide?",
+        "answer": "We provide ongoing support including updates, maintenance, and technical assistance. Support duration varies by plan, from 1 month to 6 months."
+      },
+      "seo": {
+        "question": "Do you include SEO optimization?",
+        "answer": "Yes, all our websites include basic SEO optimization. We also offer advanced SEO services for better search engine rankings."
+      }
+    }
+  },
+  "tutorials": {
+    "title": "Tutorials",
+    "description": "Learn how to use your website and CMS effectively.",
+    "pageTitle": "Tutorials | LB Websites",
+    "heading": "Tutorials",
+    "subtitle": "Learn how to effectively use your website and content management system.",
+    "categories": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "desc": "Basic tutorials for new users"
+      },
+      "contentManagement": {
+        "title": "Content Management",
+        "desc": "How to update and manage your content"
+      },
+      "seo": {
+        "title": "SEO & Analytics",
+        "desc": "Optimize your website for search engines"
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "desc": "Keep your website running smoothly"
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "description": "Our terms and conditions for website development services.",
+    "pageTitle": "Terms of Service | LB Websites",
+    "heading": "Terms of Service",
+    "subtitle": "Please read these terms carefully before using our services.",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using our services, you accept and agree to be bound by the terms and provision of this agreement."
+      },
+      "services": {
+        "title": "Services",
+        "content": "We provide website development, hosting, and maintenance services as described in our service packages."
+      },
+      "payment": {
+        "title": "Payment Terms",
+        "content": "Payment is required upfront for all services. We accept major credit cards and bank transfers."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "content": "Upon full payment, you own the rights to your website design and content, excluding third-party components."
+      },
+      "limitation": {
+        "title": "Limitation of Liability",
+        "content": "We are not liable for any indirect, incidental, or consequential damages arising from the use of our services."
+      }
+    }
+  },
+  "domains": {
+    "title": "Domains",
+    "description": "Professional domain registration and management services.",
+    "pageTitle": "Domains | LB Websites",
+    "heading": "Domain Services",
+    "subtitle": "Professional domain registration and management to establish your online presence.",
+    "services": {
+      "registration": {
+        "title": "Domain Registration",
+        "desc": "Secure and reliable domain registration with competitive pricing."
+      },
+      "management": {
+        "title": "Domain Management",
+        "desc": "Easy-to-use tools for managing your domain settings and DNS."
+      },
+      "transfer": {
+        "title": "Domain Transfer",
+        "desc": "Seamless transfer of existing domains to our platform."
+      },
+      "protection": {
+        "title": "Domain Protection",
+        "desc": "Additional security features to protect your domain from unauthorized access."
+      }
+    }
+  },
+  "hosting": {
+    "title": "Hosting",
+    "description": "Fast, reliable hosting solutions for your website.",
+    "pageTitle": "Hosting | LB Websites",
+    "heading": "Hosting Services",
+    "subtitle": "Fast, reliable, and secure hosting solutions to keep your website running smoothly.",
+    "features": {
+      "speed": {
+        "title": "Lightning Fast",
+        "desc": "Optimized servers for maximum loading speed and performance."
+      },
+      "security": {
+        "title": "Enterprise Security",
+        "desc": "SSL certificates, DDoS protection, and regular security updates."
+      },
+      "reliability": {
+        "title": "99.9% Uptime",
+        "desc": "Guaranteed uptime with automatic backups and disaster recovery."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "desc": "Round-the-clock technical support for any hosting issues."
+      }
+    }
+  },
+  "services": {
+    "title": "Services",
+    "description": "Comprehensive web development and digital services.",
+    "pageTitle": "Services | LB Websites",
+    "heading": "Our Services",
+    "subtitle": "Comprehensive web development and digital services to grow your business online.",
+    "webDevelopment": {
+      "title": "Web Development",
+      "desc": "Custom websites built with modern technologies and best practices."
+    },
+    "cms": {
+      "title": "Content Management",
+      "desc": "User-friendly CMS for easy content updates and management."
+    },
+    "seo": {
+      "title": "SEO & Analytics",
+      "desc": "Search engine optimization and performance tracking."
+    },
+    "hosting": {
+      "title": "Hosting & Domains",
+      "desc": "Reliable hosting and domain management services."
+    },
+    "maintenance": {
+      "title": "Ongoing Support",
+      "desc": "Continuous maintenance and support for your website."
+    }
+  },
+  "serviceBanner": {
+    "whatMakesUsDifferent": "What Makes Us Different",
+    "builtWithModernTechnology": "Built with Modern Technology",
+    "whyChooseUs": "Why Choose Us Over Everyone Else",
+    "uniqueServices": {
+      "personalBusinessConsultation": {
+        "title": "Personal Business Consultation",
+        "description": "Deep-dive video calls to understand your vision, goals, and challenges",
+        "details": [
+          "1-on-1 strategy sessions with business analysis",
+          "Market research and competitor analysis",
+          "User journey mapping and conversion optimization",
+          "Brand positioning and messaging strategy",
+          "Growth planning and digital roadmap creation"
+        ],
+        "highlight": "We become your digital business partners, not just developers"
+      },
+      "completeBrandEcosystem": {
+        "title": "Complete Brand Ecosystem",
+        "description": "Logo, banners, brand guidelines, and visual identity creation",
+        "details": [
+          "Custom logo design with multiple concepts",
+          "Brand color palette and typography selection",
+          "Marketing materials (banners, social media assets)",
+          "Brand guidelines and style documentation",
+          "Print and digital asset creation"
+        ],
+        "highlight": "Cohesive brand experience across all touchpoints"
+      },
+      "contentManagement": {
+        "title": "Content Management & Migration",
+        "description": "We handle all your content uploads, organization, and optimization",
+        "details": [
+          "Product catalog setup with SEO optimization",
+          "Blog content migration and formatting",
+          "Image optimization and alt-text creation",
+          "Category and tag organization",
+          "Content calendar and publishing strategy"
+        ],
+        "highlight": "Your content, perfectly organized and optimized"
+      },
+      "continuousDesignEvolution": {
+        "title": "Continuous Design Evolution",
+        "description": "Ongoing design improvements and feature enhancements",
+        "details": [
+          "Monthly design reviews and updates",
+          "A/B testing for conversion optimization",
+          "User feedback implementation",
+          "Seasonal design refreshes",
+          "New feature development and integration"
+        ],
+        "highlight": "Your website evolves with your business"
+      },
+      "completeHosting": {
+        "title": "Complete Hosting & Domain Management",
+        "description": "End-to-end hosting setup with your custom domain",
+        "details": [
+          "Domain registration and DNS configuration",
+          "SSL certificate installation and management",
+          "CDN setup for global performance",
+          "Email hosting and professional addresses",
+          "Backup and disaster recovery systems"
+        ],
+        "highlight": "One-stop solution for all technical infrastructure"
+      },
+      "advancedAnalytics": {
+        "title": "Advanced Analytics & SEO Ecosystem",
+        "description": "Comprehensive tracking, analytics, and search optimization",
+        "details": [
+          "Google Analytics 4 and Search Console setup",
+          "Conversion tracking and goal configuration",
+          "SEO audit and ongoing optimization",
+          "Local SEO and Google My Business optimization",
+          "Performance monitoring and reporting"
+        ],
+        "highlight": "Data-driven insights for continuous growth"
+      }
+    },
+    "modernApproach": {
+      "builtFromScratch": {
+        "title": "Built from Scratch Philosophy",
+        "description": "Every line of code is custom-written for your specific needs",
+        "benefits": [
+          "No bloated themes or unnecessary plugins",
+          "Pixel-perfect implementation of designs",
+          "Optimized for your specific use case",
+          "Complete control over functionality",
+          "Future-proof and scalable architecture"
+        ]
+      },
+      "nextJsModernStack": {
+        "title": "Next.js & Modern Stack",
+        "description": "Cutting-edge technology for unmatched performance",
+        "benefits": [
+          "Lightning-fast loading times (under 2 seconds)",
+          "Automatic image optimization and lazy loading",
+          "Server-side rendering for better SEO",
+          "Progressive Web App capabilities",
+          "Edge computing for global performance"
+        ]
+      },
+      "mobileFirstDesign": {
+        "title": "Mobile-First Design Approach",
+        "description": "Designed for mobile, enhanced for desktop",
+        "benefits": [
+          "Touch-optimized interfaces and interactions",
+          "Responsive design that works on any device",
+          "Mobile-specific features and optimizations",
+          "App-like user experience",
+          "Cross-browser compatibility guaranteed"
+        ]
+      },
+      "enterpriseSecurity": {
+        "title": "Enterprise-Grade Security",
+        "description": "Bank-level security built into every project",
+        "benefits": [
+          "Headless architecture reduces attack surface",
+          "Automatic security updates and monitoring",
+          "SSL/TLS encryption by default",
+          "DDoS protection and firewall",
+          "Regular security audits and penetration testing"
+        ]
+      }
+    },
+    "uniqueDifferentiators": {
+      "careAboutSuccess": {
+        "title": "We Actually Care About Your Success",
+        "description": "Your growth is our success metric, not just project completion",
+        "proof": [
+          "Monthly check-ins and performance reviews",
+          "Proactive suggestions for improvements",
+          "Industry trend updates and recommendations",
+          "Long-term partnership approach"
+        ]
+      },
+      "humanCenteredDevelopment": {
+        "title": "Human-Centered Development",
+        "description": "Real people, real conversations, real solutions",
+        "proof": [
+          "Direct access to developers (no middlemen)",
+          "Video calls for all major decisions",
+          "Transparent development process",
+          "Regular progress updates and demos"
+        ]
+      },
+      "innovationFirst": {
+        "title": "Innovation-First Mindset",
+        "description": "We don't just build websites, we create digital experiences",
+        "proof": [
+          "Latest technology adoption and implementation",
+          "Creative problem-solving approaches",
+          "Custom solutions for unique challenges",
+          "Future-ready architecture and planning"
+        ]
+      },
+      "resultsDriven": {
+        "title": "Results-Driven Approach",
+        "description": "Every decision is made with your business goals in mind",
+        "proof": [
+          "Conversion optimization built-in",
+          "Performance metrics and KPI tracking",
+          "ROI-focused feature development",
+          "Data-driven design decisions"
+        ]
+      }
+    }
+  }
+}

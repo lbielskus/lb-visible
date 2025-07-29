@@ -4,8 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { HiArrowNarrowRight } from 'react-icons/hi';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function HeroBanner() {
+  const { t } = useTranslation('common');
   return (
     <section className='hidden sm:flex relative w-full max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-4 flex-col sm:flex-row items-center justify-between gap-10 bg-white/20 backdrop-blur-md rounded-3xl overflow-hidden'>
       {/* Left: Text Section */}
@@ -18,7 +20,7 @@ export default function HeroBanner() {
       >
         <div className='relative w-full '>
           <h2 className='text-2xl sm:text-4xl font-bold text-gray-500 mb-4'>
-            This isn’t your average website.
+            {t('bannerHero.headline')}
           </h2>
           <span className='absolute -bottom-2 left-1/2 -translate-x-1/2 w-full h-[3px] bg-gradient-to-r from-pink-500 to-blue-400 rounded-full animate-pulse' />
         </div>
@@ -29,7 +31,7 @@ export default function HeroBanner() {
           rel='noopener noreferrer'
           className='mt-4 text-pink-500 hover:text-pink-400 text-sm sm:text-base transition inline-flex items-center gap-1'
         >
-          Check our Parallax demo{' '}
+          {t('bannerHero.parallaxDemo')}{' '}
           <HiArrowNarrowRight className='inline w-4 h-4' />
         </Link>
       </motion.div>
