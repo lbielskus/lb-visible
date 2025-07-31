@@ -10,7 +10,8 @@ const staticPaths = [
   '/pricing',
   '/blog',
   '/contact',
-  '/terms',
+  '/terms-of-service',
+  '/privacy-policy',
 ];
 
 const subPages = [
@@ -54,7 +55,7 @@ function generateSitemap({
   const lastmod = new Date().toISOString();
   let urls: string[] = [];
 
-  // English pages
+  // English pages (default locale)
   urls = urls.concat(
     staticPaths.map(
       (path) => `
@@ -82,7 +83,7 @@ function generateSitemap({
     )
   );
 
-  // Lithuanian pages
+  // Lithuanian pages (with /lt prefix)
   urls = urls.concat(
     staticPaths.map(
       (path) => `
@@ -110,25 +111,7 @@ function generateSitemap({
     )
   );
 
-  // Privacy policy pages
-  urls.push(`
-    <url>
-      <loc>${BASE_URL}/privacy-policy</loc>
-      <lastmod>${lastmod}</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  `);
-  urls.push(`
-    <url>
-      <loc>${BASE_URL}/lt/privacy-policy</loc>
-      <lastmod>${lastmod}</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.6</priority>
-    </url>
-  `);
-
-  // Dynamic content
+  // Dynamic content - English
   urls = urls.concat(
     projects.map(
       (slug) => `
@@ -140,20 +123,24 @@ function generateSitemap({
       </url>
     `
     ),
-    projects.map(
+    blogs.map(
       (slug) => `
       <url>
-        <loc>${BASE_URL}/lt/projects/${slug}</loc>
+        <loc>${BASE_URL}/blog/${slug}</loc>
         <lastmod>${lastmod}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
       </url>
     `
-    ),
-    blogs.map(
+    )
+  );
+
+  // Dynamic content - Lithuanian
+  urls = urls.concat(
+    projects.map(
       (slug) => `
       <url>
-        <loc>${BASE_URL}/blog/${slug}</loc>
+        <loc>${BASE_URL}/lt/projects/${slug}</loc>
         <lastmod>${lastmod}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

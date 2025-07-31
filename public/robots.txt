@@ -8,13 +8,12 @@ Sitemap: https://www.lbvisible.com/sitemap.xml
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Disallow admin and private areas
+# Disallow admin and private areas only
 Disallow: /admin/
-Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
 
-# Allow important pages
+# Allow all important pages explicitly
 Allow: /projects/
 Allow: /blog/
 Allow: /pricing/
@@ -23,6 +22,7 @@ Allow: /sub/
 Allow: /lt/
 Allow: /privacy-policy
 Allow: /terms-of-service
+Allow: /api/
 
 # Specific rules for search engines
 User-agent: Googlebot
