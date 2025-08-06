@@ -149,10 +149,7 @@ function App(props: any) {
         </Head>
 
         <div className='relative min-h-screen'>
-          <div 
-            className='fixed inset-0 z-0'
-            style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
-          >
+          <div className='absolute inset-0 -z-10'>
             <LayeredBackground />
           </div>
 
