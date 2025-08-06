@@ -62,6 +62,11 @@ function App(props: any) {
     router.pathname
   );
 
+  // Get current URL and locale
+  const currentUrl = `https://www.lbvisible.com${router.asPath}`;
+  const isLithuanian = router.locale === 'lt' || router.asPath.startsWith('/lt');
+  const baseUrl = 'https://www.lbvisible.com';
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const consent = localStorage.getItem('cookieConsent');
@@ -98,13 +103,23 @@ function App(props: any) {
             name='description'
             content='Custom websites with CMS, SEO, and growth tools. Built with Next.js, powered by Firebase.'
           />
+          
+          {/* Canonical URL */}
+          <link rel='canonical' href={currentUrl} />
+          
+          {/* Hreflang tags for multilingual SEO */}
+          <link rel='alternate' hrefLang='en' href={currentUrl.replace('/lt', '')} />
+          <link rel='alternate' hrefLang='lt' href={currentUrl.includes('/lt') ? currentUrl : currentUrl.replace('/', '/lt/')} />
+          <link rel='alternate' hrefLang='x-default' href={currentUrl.replace('/lt', '')} />
+          
+          {/* Open Graph */}
           <meta property='fb:app_id' content='1223293146253930' />
           <meta property='og:title' content='LB Visible' />
           <meta
             property='og:description'
             content='Websites for your niche with custom CMS, SEO & Marketing tools.'
           />
-          <meta property='og:url' content='https://www.lbvisible.com' />
+          <meta property='og:url' content={currentUrl} />
           <meta property='og:type' content='website' />
           <meta
             property='og:image'
@@ -112,7 +127,10 @@ function App(props: any) {
           />
           <meta property='og:image:width' content='1200' />
           <meta property='og:image:height' content='630' />
+          <meta property='og:locale' content={isLithuanian ? 'lt_LT' : 'en_US'} />
+          <meta property='og:locale:alternate' content={isLithuanian ? 'en_US' : 'lt_LT'} />
 
+          {/* Twitter Card */}
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:title' content='LB Visible' />
           <meta
@@ -123,10 +141,18 @@ function App(props: any) {
             name='twitter:image'
             content='https://www.lbvisible.com/ogbanners/ogbanner.png'
           />
+          
+          {/* Additional SEO */}
+          <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+          <meta name='googlebot' content='index, follow' />
+          <meta name='bingbot' content='index, follow' />
         </Head>
 
         <div className='relative min-h-screen'>
-          <div className='absolute inset-0 -z-10'>
+          <div 
+            className='fixed inset-0 z-0'
+            style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
+          >
             <LayeredBackground />
           </div>
 

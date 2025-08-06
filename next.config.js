@@ -70,6 +70,16 @@ const nextConfig = nextTranslate({
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/lt/en',
+        destination: '/lt',
+        permanent: true,
+      },
+      {
+        source: '/en/lt',
+        destination: '/lt',
+        permanent: true,
+      },
     ];
   },
   // Performance optimizations

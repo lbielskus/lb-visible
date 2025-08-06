@@ -12,6 +12,11 @@ Crawl-delay: 1
 Disallow: /admin/
 Disallow: /_next/
 Disallow: /static/
+Disallow: /api/auth/
+Disallow: /api/login-session
+Disallow: /api/checkout
+Disallow: /api/cart
+Disallow: /api/stripe-webhook
 
 # Allow all important pages explicitly
 Allow: /projects/
@@ -22,7 +27,11 @@ Allow: /sub/
 Allow: /lt/
 Allow: /privacy-policy
 Allow: /terms-of-service
-Allow: /api/
+Allow: /api/audit
+Allow: /api/save-lead
+Allow: /api/submit
+Allow: /api/submitForm
+Allow: /api/sendOrderConfirmation
 
 # Specific rules for search engines
 User-agent: Googlebot
