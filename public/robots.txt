@@ -3,7 +3,9 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://www.lbvisible.com/sitemap-static.xml
+Sitemap: https://www.lbvisible.com/sitemap.xml
+Sitemap: https://www.lbvisible.com/sitemap-0.xml
+Sitemap: https://www.lbvisible.com/api/sitemap-dynamic
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
