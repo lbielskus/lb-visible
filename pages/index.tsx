@@ -80,6 +80,161 @@ export default function Home({
     },
   };
 
+  // Enhanced structured data for AI indexing
+  const localBusinessStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: "Let's Be Visible Lietuva",
+    alternateName: 'LB Visible',
+    description:
+      'Professional web development, mobile app development, and graphic design services in Lithuania. We create effective digital solutions for Lithuanian businesses, from idea to full implementation.',
+    url: 'https://www.lbvisible.com',
+    telephone: '+37065059050',
+    email: 'info@lbvisible.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'LT',
+      addressRegion: 'Vilnius',
+      addressLocality: 'Vilnius',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Lithuania',
+    },
+    serviceArea: {
+      '@type': 'GeoCircle',
+      geoMidpoint: {
+        '@type': 'GeoCoordinates',
+        latitude: 54.6872,
+        longitude: 25.2797,
+      },
+      geoRadius: '50000',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web Development Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Custom Website Development',
+            description:
+              'Professional custom websites built with Next.js and React',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'SEO Services',
+            description: 'Search engine optimization for Lithuanian businesses',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile App Development',
+            description: 'Cross-platform mobile applications',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Graphic Design',
+            description: 'Professional graphic design services',
+          },
+        },
+      ],
+    },
+    openingHours: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
+    priceRange: '€€',
+    paymentAccepted: ['Cash', 'Credit Card', 'Bank Transfer'],
+    currenciesAccepted: 'EUR',
+    languages: ['English', 'Lithuanian'],
+    foundingDate: '2024',
+    knowsAbout: [
+      'Web Development',
+      'SEO',
+      'Digital Marketing',
+      'Next.js',
+      'React',
+      'Firebase',
+      'E-commerce',
+      'CMS Development',
+      'Mobile App Development',
+      'Graphic Design',
+    ],
+    knowsLanguage: ['en', 'lt'],
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Lithuania',
+      },
+      {
+        '@type': 'City',
+        name: 'Vilnius',
+      },
+      {
+        '@type': 'City',
+        name: 'Kaunas',
+      },
+      {
+        '@type': 'City',
+        name: 'Klaipėda',
+      },
+    ],
+  };
+
+  // FAQ Schema for AI models
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What services does LB Visible offer?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'LB Visible offers custom website development, mobile app development, SEO services, graphic design, and digital marketing solutions for Lithuanian businesses.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where is LB Visible located?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'LB Visible is located in Lithuania, serving clients throughout the country including Vilnius, Kaunas, and Klaipėda.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What technologies does LB Visible use?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'LB Visible uses modern technologies including Next.js, React, Firebase, and other cutting-edge tools for web development and digital solutions.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Does LB Visible provide ongoing support?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, LB Visible provides ongoing technical support and maintenance to ensure the success of your digital operations.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <Head>
@@ -146,6 +301,18 @@ export default function Home({
           type='application/ld+json'
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationStructuredData),
+          }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessStructuredData),
+          }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqStructuredData),
           }}
         />
       </Head>

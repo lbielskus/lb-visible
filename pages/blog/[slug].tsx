@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { db } from '../../lib/firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { DefaultSeo } from 'next-seo';
+import Head from 'next/head';
 
 type BlogPost = {
   title: string;
@@ -21,11 +22,10 @@ export default function BlogPostPage() {
   const [post, setPost] = useState<BlogPost | null>(null);
 
   useEffect(() => {
+    if (!slug) return;
+
     const fetchPost = async () => {
-      if (!slug) return;
-      const clientId = process.env.NEXT_PUBLIC_CLIENT_ID!;
-      const ref = collection(db, 'clients', clientId, 'blogPosts');
-      const q = query(ref, where('slug', '==', slug));
+      const q = query(collection(db, 'blog'), where('slug', '==', slug));
       const snapshot = await getDocs(q);
 
       if (!snapshot.empty) {
@@ -58,6 +58,20 @@ export default function BlogPostPage() {
     return 'N/A';
   };
 
+  const getISODate = (date: BlogPost['createdAt']) => {
+    if (!date) return new Date().toISOString();
+
+    if (typeof date === 'string') {
+      return new Date(date).toISOString();
+    }
+
+    if ('seconds' in date) {
+      return new Date(date.seconds * 1000).toISOString();
+    }
+
+    return new Date().toISOString();
+  };
+
   if (!post)
     return (
       <p className='text-center text-gray-400 mt-12'>
@@ -65,8 +79,60 @@ export default function BlogPostPage() {
       </p>
     );
 
+  // Article Schema for AI indexing
+  const articleStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description.substring(0, 200) + '...',
+    image: post.mainImage || 'https://www.lbvisible.com/ogbanners/ogbanner.png',
+    datePublished: getISODate(post.createdAt),
+    dateModified: getISODate(post.createdAt),
+    author: {
+      '@type': 'Organization',
+      name: 'LB Visible',
+      url: 'https://www.lbvisible.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'LB Visible',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.lbvisible.com/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.lbvisible.com/blog/${slug}`,
+    },
+    articleSection: 'Web Development',
+    keywords: [
+      'web development',
+      'digital marketing',
+      'Lithuania',
+      'SEO',
+      'Next.js',
+      'React',
+      'custom websites',
+    ],
+    inLanguage: ['en', 'lt'],
+    isAccessibleForFree: true,
+    wordCount: post.description.split(' ').length,
+    articleBody: post.description,
+  };
+
   return (
     <>
+      <Head>
+        {/* Article Schema for AI models */}
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(articleStructuredData),
+          }}
+        />
+      </Head>
+
       <DefaultSeo
         title={`LB | ${post.title}`}
         description='Websites for your niche'

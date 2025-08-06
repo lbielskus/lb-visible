@@ -64,7 +64,8 @@ function App(props: any) {
 
   // Get current URL and locale
   const currentUrl = `https://www.lbvisible.com${router.asPath}`;
-  const isLithuanian = router.locale === 'lt' || router.asPath.startsWith('/lt');
+  const isLithuanian =
+    router.locale === 'lt' || router.asPath.startsWith('/lt');
   const baseUrl = 'https://www.lbvisible.com';
 
   useEffect(() => {
@@ -103,15 +104,31 @@ function App(props: any) {
             name='description'
             content='Custom websites with CMS, SEO, and growth tools. Built with Next.js, powered by Firebase.'
           />
-          
+
           {/* Canonical URL */}
           <link rel='canonical' href={currentUrl} />
-          
+
           {/* Hreflang tags for multilingual SEO */}
-          <link rel='alternate' hrefLang='en' href={currentUrl.replace('/lt', '')} />
-          <link rel='alternate' hrefLang='lt' href={currentUrl.includes('/lt') ? currentUrl : currentUrl.replace('/', '/lt/')} />
-          <link rel='alternate' hrefLang='x-default' href={currentUrl.replace('/lt', '')} />
-          
+          <link
+            rel='alternate'
+            hrefLang='en'
+            href={currentUrl.replace('/lt', '')}
+          />
+          <link
+            rel='alternate'
+            hrefLang='lt'
+            href={
+              currentUrl.includes('/lt')
+                ? currentUrl
+                : currentUrl.replace('/', '/lt/')
+            }
+          />
+          <link
+            rel='alternate'
+            hrefLang='x-default'
+            href={currentUrl.replace('/lt', '')}
+          />
+
           {/* Open Graph */}
           <meta property='fb:app_id' content='1223293146253930' />
           <meta property='og:title' content='LB Visible' />
@@ -127,8 +144,14 @@ function App(props: any) {
           />
           <meta property='og:image:width' content='1200' />
           <meta property='og:image:height' content='630' />
-          <meta property='og:locale' content={isLithuanian ? 'lt_LT' : 'en_US'} />
-          <meta property='og:locale:alternate' content={isLithuanian ? 'en_US' : 'lt_LT'} />
+          <meta
+            property='og:locale'
+            content={isLithuanian ? 'lt_LT' : 'en_US'}
+          />
+          <meta
+            property='og:locale:alternate'
+            content={isLithuanian ? 'en_US' : 'lt_LT'}
+          />
 
           {/* Twitter Card */}
           <meta name='twitter:card' content='summary_large_image' />
@@ -141,9 +164,12 @@ function App(props: any) {
             name='twitter:image'
             content='https://www.lbvisible.com/ogbanners/ogbanner.png'
           />
-          
+
           {/* Additional SEO */}
-          <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+          <meta
+            name='robots'
+            content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+          />
           <meta name='googlebot' content='index, follow' />
           <meta name='bingbot' content='index, follow' />
         </Head>
