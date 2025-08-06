@@ -53,6 +53,15 @@ export default function Document() {
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
 
+        {/* ✅ Favicon */}
+        <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+        <link
+          rel='icon'
+          type='image/png'
+          sizes='32x32'
+          href='/favicon-32x32.png'
+        />
+
         {/* ✅ Twitter Card Meta Tags */}
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:title' content='LB Visible' />
