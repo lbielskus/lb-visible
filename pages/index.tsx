@@ -97,10 +97,6 @@ export default function Home({
       addressRegion: 'Vilnius',
       addressLocality: 'Vilnius',
     },
-    areaServed: {
-      '@type': 'Country',
-      name: 'Lithuania',
-    },
     serviceArea: {
       '@type': 'GeoCircle',
       geoMidpoint: {
