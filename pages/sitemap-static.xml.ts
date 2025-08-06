@@ -87,14 +87,14 @@ ${urls.join('')}
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.setHeader('Content-Type', 'application/xml');
   res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
-  
+
   const sitemap = generateStaticSitemap();
   res.write(sitemap);
   res.end();
-  
+
   return { props: {} };
 };
 
 export default function SitemapStatic() {
   return null;
-} 
+}
