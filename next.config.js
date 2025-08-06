@@ -80,6 +80,11 @@ const nextConfig = nextTranslate({
         destination: '/lt',
         permanent: true,
       },
+      {
+        source: '/sitemap',
+        destination: '/sitemap.xml',
+        permanent: true,
+      },
     ];
   },
   // Performance optimizations
